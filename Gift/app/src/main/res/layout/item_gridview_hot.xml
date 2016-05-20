@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shap_round_item_hot"
+        android:layout_marginTop="6dp"
+        >
+
+    <ImageView
+        android:id="@+id/iv_gv_hot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+       />
+
+    <TextView
+        android:id="@+id/tv_title_gv_hot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_gv_hot"
+        android:layout_margin="5dp"
+        android:text="title" />
+
+    <TextView
+        android:id="@+id/tv_price_gv_hot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="price"
+        android:layout_below="@id/tv_title_gv_hot"/>
+
+    <ImageView
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/iv_like_gv_hot"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_below="@id/tv_title_gv_hot"
+        android:layout_toRightOf="@id/tv_price_gv_hot"
+        android:background="@mipmap/ic_small_heart_normal"
+        android:text="like"/>
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:id="@+id/tv_like_gv_hot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title_gv_hot"
+        android:layout_toRightOf="@id/iv_like_gv_hot"
+        android:text="like"
+       />
+    <!--<CheckBox-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:id="@+id/tv_like_gv_hot"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/tv_title_gv_hot"-->
+        <!--android:layout_toRightOf="@id/tv_price_gv_hot"-->
+        <!--android:button="@null"-->
+        <!--android:background="@drawable/item_like_checkbox"/>-->
+
+    </RelativeLayout>
+
+</RelativeLayout>
