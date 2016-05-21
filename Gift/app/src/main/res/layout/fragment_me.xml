@@ -162,8 +162,12 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/iv_favourite_me"
                     android:text="喜欢的礼物摆在这里哦"
-
                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/title_color_red"/>
 
             </RelativeLayout>
 

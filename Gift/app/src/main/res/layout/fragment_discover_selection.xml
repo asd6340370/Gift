@@ -4,22 +4,28 @@
     android:layout_height="match_parent">
 
     <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager_selection_discover"
         android:layout_width="match_parent"
         android:layout_height="150dp">
     </android.support.v4.view.ViewPager>
-    <RelativeLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_selection_discover"
         android:layout_width="match_parent"
         android:layout_height="100dp">
-    </RelativeLayout>
+    </android.support.v7.widget.RecyclerView>
     <TextClock
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:format12Hour="yyyy-MM-dd EEEE"
         android:background="@color/wight"
        />
+
     <ListView
         android:id="@+id/listView_discover_selection"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content">
+
+    </ListView>
+
 
 </LinearLayout>

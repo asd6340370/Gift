@@ -37,14 +37,16 @@ public class DiscoverFragment extends BaseFragment {
         DiscoverVPAdapter adapter = new DiscoverVPAdapter(getChildFragmentManager());
         fragments = new ArrayList<>();
         fragments.add(new DiscoverSelectionFragment());
-        fragments.add(new DiscoverSelectionFragment());
-        fragments.add(new DiscoverSelectionFragment());
-        fragments.add(new DiscoverSelectionFragment());
-        fragments.add(new DiscoverSelectionFragment());
-        fragments.add(new DiscoverSelectionFragment());
-        fragments.add(new DiscoverSelectionFragment());
-        fragments.add(new DiscoverSelectionFragment());
-        fragments.add(new DiscoverSelectionFragment());
+        fragments.add(new DiscoverListViewFragment());
+        fragments.add(new DiscoverListViewFragment());
+        fragments.add(new DiscoverListViewFragment());
+        fragments.add(new DiscoverListViewFragment());
+        fragments.add(new DiscoverListViewFragment());
+        fragments.add(new DiscoverListViewFragment());
+        fragments.add(new DiscoverListViewFragment());
+        fragments.add(new DiscoverListViewFragment());
+        fragments.add(new DiscoverListViewFragment());
+
 
         adapter.setFragments(fragments);
         discoverViewPager.setAdapter(adapter);
