@@ -26,12 +26,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView tvTitle;
     private RelativeLayout titleLayout;
 
-    private TextView btnLeft,btnRight;
-
-    private CategoryTitleButton categoryTitleButton;
-
-
-
     @Override
     public void initActivity() {
         setContentView(R.layout.activity_main);
@@ -46,9 +40,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         btnHot.setOnClickListener(this);
         btnCategory.setOnClickListener(this);
         btnMe.setOnClickListener(this);
-
-        btnLeft = (TextView)findViewById(R.id.btn_left_title_category);
-        btnRight = (TextView)findViewById(R.id.btn_right_title_category);
 
         //初始化
 
@@ -91,7 +82,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.btn_category:
                 replaceFragment(R.id.frameLayout_home, categoryFragment);
-                titleLayout.setVisibility(View.VISIBLE);
+                titleLayout.setVisibility(View.GONE);
                 break;
             case R.id.btn_me:
                 replaceFragment(R.id.frameLayout_home, meFragment);
