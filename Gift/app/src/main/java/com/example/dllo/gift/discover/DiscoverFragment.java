@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
+import com.example.dllo.gift.discover.disadapter.DiscoverVPAdapter;
 
 import java.util.ArrayList;
 

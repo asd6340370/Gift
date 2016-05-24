@@ -23,31 +23,7 @@
                 android:background="@mipmap/bg_profile"
                 android:id="@+id/relativeLayout">
 
-                <ImageView
-                    android:id="@+id/iv_message_me"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:src="@mipmap/icon_message"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:nestedScrollingEnabled="true" />
 
-                <ImageView
-                    android:id="@+id/iv_setting_me"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_margin="15dp"
-                    android:src="@mipmap/me_settings" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:layout_toLeftOf="@id/iv_setting_me"
-                    android:src="@mipmap/icon_scan" />
 
                 <ImageView
                     android:id="@+id/iv_avatar_me"
@@ -170,4 +146,31 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/iv_message_me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:src="@mipmap/icon_message"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:nestedScrollingEnabled="true" />
+
+    <ImageView
+        android:id="@+id/iv_setting_me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="15dp"
+        android:src="@mipmap/me_settings" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_toLeftOf="@id/iv_setting_me"
+        android:src="@mipmap/icon_scan" />
+
 </RelativeLayout>

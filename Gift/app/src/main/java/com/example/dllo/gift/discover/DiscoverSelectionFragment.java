@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
+import com.example.dllo.gift.discover.disadapter.DiscoverSRVAdapter;
+import com.example.dllo.gift.discover.disadapter.DiscoverSVPAdapter;
 
 import java.util.ArrayList;
 
