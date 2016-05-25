@@ -1,6 +1,8 @@
 package com.example.dllo.gift.hot;
 
 import android.content.Intent;
+import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +17,8 @@ import com.example.dllo.gift.net.NetListener;
 import com.example.dllo.gift.net.NetTools;
 import com.google.gson.Gson;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 
 /**
@@ -23,6 +27,9 @@ import java.util.ArrayList;
 public class HotFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
     private GridView gridViewHot;
+
+    private HotBean hotBean;
+    private HotBean.DataBean.ItemsBean.DataItem dataItem;
 
     @Override
     public int setLayout() {
@@ -37,6 +44,8 @@ public class HotFragment extends BaseFragment implements AdapterView.OnItemClick
 
     @Override
     public void initData() {
+
+
    final HotAdapter adapter = new HotAdapter(context);
         gridViewHot.setAdapter(adapter);
 
@@ -45,7 +54,7 @@ public class HotFragment extends BaseFragment implements AdapterView.OnItemClick
             @Override
             public void onSuccessed(String result) {
                 Gson gson = new Gson();
-               HotBean hotBean = gson.fromJson(result,HotBean.class);
+                hotBean = gson.fromJson(result,HotBean.class);
                 adapter.setDatas(hotBean);
             }
 
@@ -63,8 +72,14 @@ public class HotFragment extends BaseFragment implements AdapterView.OnItemClick
     //GridView 行布局item点击事件
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+         dataItem = hotBean.getData().getItems().get(position).getData();
         Intent intent = new Intent(context, DetailsActivity.class);
+        intent.putExtra("buy",dataItem);
         startActivity(intent);
+
+
+
+
 
     }
 }

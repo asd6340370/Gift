@@ -1,11 +1,14 @@
 package com.example.dllo.gift.hot;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
  * Created by dllo on 16/5/24.
  */
-public class HotBean {
+public class HotBean implements Parcelable{
 
     /**
      * code : 200
@@ -21,6 +24,23 @@ public class HotBean {
 
     private DataBean data;
     private String message;
+
+    protected HotBean(Parcel in) {
+        code = in.readInt();
+        message = in.readString();
+    }
+
+    public static final Creator<HotBean> CREATOR = new Creator<HotBean>() {
+        @Override
+        public HotBean createFromParcel(Parcel in) {
+            return new HotBean(in);
+        }
+
+        @Override
+        public HotBean[] newArray(int size) {
+            return new HotBean[size];
+        }
+    };
 
     public int getCode() {
         return code;
@@ -44,6 +64,17 @@ public class HotBean {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(code);
+        dest.writeString(message);
     }
 
     public static class DataBean {
@@ -134,7 +165,7 @@ public class HotBean {
                 this.type = type;
             }
 
-            public static class DataItem {
+            public static class DataItem implements Parcelable{
                 private Object brand_id;
                 private Object brand_order;
                 private int category_id;
@@ -159,6 +190,42 @@ public class HotBean {
                 private List<String> image_urls;
                 private List<String> post_ids;
                 private List<String> webp_urls;
+
+                protected DataItem(Parcel in) {
+                    category_id = in.readInt();
+                    cover_image_url = in.readString();
+                    cover_webp_url = in.readString();
+                    created_at = in.readInt();
+                    description = in.readString();
+                    editor_id = in.readInt();
+                    favorites_count = in.readInt();
+                    id = in.readInt();
+                    is_favorite = in.readByte() != 0;
+                    name = in.readString();
+                    price = in.readString();
+                    purchase_id = in.readString();
+                    purchase_status = in.readInt();
+                    purchase_type = in.readInt();
+                    purchase_url = in.readString();
+                    subcategory_id = in.readInt();
+                    updated_at = in.readInt();
+                    url = in.readString();
+                    image_urls = in.createStringArrayList();
+                    post_ids = in.createStringArrayList();
+                    webp_urls = in.createStringArrayList();
+                }
+
+                public static final Creator<DataItem> CREATOR = new Creator<DataItem>() {
+                    @Override
+                    public DataItem createFromParcel(Parcel in) {
+                        return new DataItem(in);
+                    }
+
+                    @Override
+                    public DataItem[] newArray(int size) {
+                        return new DataItem[size];
+                    }
+                };
 
                 public Object getBrand_id() {
                     return brand_id;
@@ -350,6 +417,36 @@ public class HotBean {
 
                 public void setWebp_urls(List<String> webp_urls) {
                     this.webp_urls = webp_urls;
+                }
+
+                @Override
+                public int describeContents() {
+                    return 0;
+                }
+
+                @Override
+                public void writeToParcel(Parcel dest, int flags) {
+                    dest.writeInt(category_id);
+                    dest.writeString(cover_image_url);
+                    dest.writeString(cover_webp_url);
+                    dest.writeInt(created_at);
+                    dest.writeString(description);
+                    dest.writeInt(editor_id);
+                    dest.writeInt(favorites_count);
+                    dest.writeInt(id);
+                    dest.writeByte((byte) (is_favorite ? 1 : 0));
+                    dest.writeString(name);
+                    dest.writeString(price);
+                    dest.writeString(purchase_id);
+                    dest.writeInt(purchase_status);
+                    dest.writeInt(purchase_type);
+                    dest.writeString(purchase_url);
+                    dest.writeInt(subcategory_id);
+                    dest.writeInt(updated_at);
+                    dest.writeString(url);
+                    dest.writeStringList(image_urls);
+                    dest.writeStringList(post_ids);
+                    dest.writeStringList(webp_urls);
                 }
             }
         }

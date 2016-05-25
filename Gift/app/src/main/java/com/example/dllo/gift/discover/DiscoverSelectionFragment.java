@@ -6,13 +6,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
+import com.example.dllo.gift.discover.disadapter.DiscoverLVAdapter;
 import com.example.dllo.gift.discover.disadapter.DiscoverSRVAdapter;
 import com.example.dllo.gift.discover.disadapter.DiscoverSVPAdapter;
+import com.example.dllo.gift.net.NetTools;
 
 import java.util.ArrayList;
 
@@ -21,13 +25,17 @@ import java.util.ArrayList;
  */
 public class DiscoverSelectionFragment extends BaseFragment {
 
-    private ArrayList<Integer> datas;
+
     private ViewPager vpDiscoverSelection;
-    private ImageView view;
+    private NetTools netTools;
     private RecyclerView rvDiscoverSelection;
     private Handler handler;
     private Thread thread;
     private boolean flag;
+    private View headerView;
+    private ListView listViewDiscoverSelection;
+    private DiscoverSRVAdapter srvAdapter;
+    private DiscoverSVPAdapter svpAdapter;
 
     @Override
     public int setLayout() {
@@ -36,33 +44,44 @@ public class DiscoverSelectionFragment extends BaseFragment {
 
     @Override
     public void initView(View view) {
-        vpDiscoverSelection = (ViewPager) view.findViewById(R.id.viewPager_selection_discover);
-        rvDiscoverSelection = (RecyclerView) view.findViewById(R.id.recyclerView_selection_discover);
+        listViewDiscoverSelection = (ListView) view.findViewById(R.id.listView_discover_selection);
+        //listView 的heardview
+        headerView = LayoutInflater.from(context).inflate(R.layout.header_discover_selection, null);
+        vpDiscoverSelection = (ViewPager) headerView.findViewById(R.id.viewPager_selection_discover);
+        rvDiscoverSelection = (RecyclerView) headerView.findViewById(R.id.recyclerView_selection_discover);
 
     }
 
     @Override
     public void initData() {
+        netTools = new NetTools();
+        DiscoverLVAdapter lvAdapter = new DiscoverLVAdapter(context);
+        listViewDiscoverSelection.addHeaderView(headerView);
+        listViewDiscoverSelection.setAdapter(lvAdapter);
+
 
 
         //viewPager
-        DiscoverSVPAdapter svpAdapter = new DiscoverSVPAdapter(context);
-        datas = new ArrayList<>();
-        datas.add(R.mipmap.ic_launcher);
-        datas.add(R.mipmap.ic_launcher_gift);
-        datas.add(R.mipmap.ic_launcher);
-        datas.add(R.mipmap.ic_launcher_gift);
-        datas.add(R.mipmap.ic_launcher);
-        datas.add(R.mipmap.ic_launcher_gift);
-        datas.add(R.mipmap.ic_launcher);
-        datas.add(R.mipmap.ic_launcher_gift);
-        datas.add(R.mipmap.ic_launcher);
-        datas.add(R.mipmap.ic_launcher_gift);
-        datas.add(R.mipmap.ic_launcher);
-        datas.add(R.mipmap.ic_launcher_gift);
-        svpAdapter.setDatas(datas);
+        netTools.getBanner();//获得数据并添加数据
+         svpAdapter = new DiscoverSVPAdapter(context);
         vpDiscoverSelection.setAdapter(svpAdapter);
-//        轮播
+        //轮播
+        runBanner();
+
+
+
+        //recyclerView
+        netTools.getSpecialList();
+         srvAdapter = new DiscoverSRVAdapter(context);
+        rvDiscoverSelection.setAdapter(srvAdapter);
+        LinearLayoutManager manager = new LinearLayoutManager(context);
+        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        rvDiscoverSelection.setLayoutManager(manager);
+
+    }
+
+    private void runBanner() {
+        //        轮播
 //        handler = new Handler(new Handler.Callback() {
 //            @Override
 //            public boolean handleMessage(Message msg) {
@@ -96,15 +115,6 @@ public class DiscoverSelectionFragment extends BaseFragment {
             }
         });
         thread.start();
-
-        //recyclerView
-        DiscoverSRVAdapter srvAdapter = new DiscoverSRVAdapter(context);
-        srvAdapter.setDatas(datas);
-        rvDiscoverSelection.setAdapter(srvAdapter);
-        LinearLayoutManager manager = new LinearLayoutManager(context);
-        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        rvDiscoverSelection.setLayoutManager(manager);
-
     }
 
     @Override
@@ -124,6 +134,9 @@ public class DiscoverSelectionFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        svpAdapter.unregister();
+        srvAdapter.unregister();
+
         Log.d("DiscoverSelectionFragme", "ondestroy");
     }
 }

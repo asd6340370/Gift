@@ -2,12 +2,18 @@ package com.example.dllo.gift.discover.disadapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.dllo.gift.R;
+import com.example.dllo.gift.discover.SpecialListBean;
+import com.squareup.picasso.Picasso;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 
@@ -15,21 +21,28 @@ import java.util.ArrayList;
  * Created by dllo on 16/5/21.
  */
 public class DiscoverSRVAdapter extends RecyclerView.Adapter<DiscoverSRVAdapter.MyViewHolder> {
-    private ArrayList<Integer> datas;
+    private SpecialListBean datas;
     private Context context;
 
-    public void setDatas(ArrayList<Integer> datas) {
+    public DiscoverSRVAdapter(Context context) {
+        this.context = context;
+        EventBus.getDefault().register(this);
+    }
+    @Subscribe
+    public void getSpecialList (SpecialListBean listBean){
+        setDatas(listBean);
+    }
+
+    public void setDatas(SpecialListBean datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }
 
-    public DiscoverSRVAdapter(Context context) {
-        this.context = context;
-    }
+
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_vp_discover,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_srv_discover,parent,false);
         MyViewHolder holder = new MyViewHolder(view);
 
         return holder;
@@ -37,12 +50,14 @@ public class DiscoverSRVAdapter extends RecyclerView.Adapter<DiscoverSRVAdapter.
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.ivShow.setImageResource(datas.get(position));
+    String url = datas.getData().getSecondary_banners().get(position).getImage_url();
+        Picasso.with(context).load(url).centerCrop().placeholder(R.mipmap.ic_launcher).fit().into(holder.ivShow);
+
     }
 
     @Override
     public int getItemCount() {
-        return datas == null ? 0 :datas.size();
+        return datas == null ? 0 :datas.getData().getSecondary_banners().size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
@@ -52,8 +67,12 @@ public class DiscoverSRVAdapter extends RecyclerView.Adapter<DiscoverSRVAdapter.
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            ivShow = (ImageView) itemView.findViewById(R.id.iv_vp_discover);
+            ivShow = (ImageView) itemView.findViewById(R.id.iv_srv_discover);
 
         }
+    }
+
+    public void unregister(){
+        EventBus.getDefault().unregister(this);
     }
 }

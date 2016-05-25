@@ -2,12 +2,19 @@ package com.example.dllo.gift.discover.disadapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.dllo.gift.R;
+import com.example.dllo.gift.discover.BannerBean;
+import com.squareup.picasso.Picasso;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
@@ -15,15 +22,20 @@ import java.util.ArrayList;
  * Created by dllo on 16/5/21.
  */
 public class DiscoverSVPAdapter extends PagerAdapter {
-    private ArrayList<Integer> datas;
+    private BannerBean datas;
     private Context context;
     private ImageView ivShow;
 
     public DiscoverSVPAdapter(Context context) {
         this.context = context;
+        EventBus.getDefault().register(this);
+    }
+    @Subscribe
+    public void getBanner (BannerBean bannerBean){
+       setDatas(bannerBean);
     }
 
-    public void setDatas(ArrayList<Integer> datas) {
+    public void setDatas(BannerBean datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }
@@ -43,13 +55,18 @@ public class DiscoverSVPAdapter extends PagerAdapter {
         View view = LayoutInflater.from(context).inflate(R.layout.item_vp_discover,container,false);
         container.addView(view);
         ivShow = (ImageView) view.findViewById(R.id.iv_vp_discover);
-        ivShow.setImageResource(datas.get(position % datas.size()));
-
+        String url = datas.getData().getBanners().get(position % datas.getData().getBanners().size()).getImage_url();
+//        Log.d("DiscoverSVPAdapter", url);
+        Picasso.with(context).load(url).centerCrop().fit().into(ivShow);
         return view;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
 //        container.removeView();
+    }
+
+    public void unregister(){
+        EventBus.getDefault().unregister(this);
     }
 }
