@@ -27,9 +27,9 @@
             android:text="宝贝详情"
             android:textColor="@color/wight"
             android:textSize="18sp"
-            android:textStyle="normal"
             android:lines="1"
-            android:maxLength="7"
+            android:maxWidth="150dp"
+            android:ellipsize="end"
             />
 
         <ImageView
@@ -59,8 +59,6 @@
             android:layout_toLeftOf="@id/iv_title_comments_details"
             android:background="@drawable/btn_favorites_title_selector_hot_details"
             android:button="@null" />
-
-
     </RelativeLayout>
 
     <WebView

@@ -5,20 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import com.example.dllo.gift.R;
-
-import java.util.ArrayList;
+import com.example.dllo.gift.discover.disbean.SpecialListBean;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by dllo on 16/5/21.
  */
 public class DiscoverLVAdapter extends BaseAdapter {
-    private ArrayList<String> datas;
+    private SpecialListBean datas;
     private Context context;
 
-    public void setDatas(ArrayList<String> datas) {
+    public void setDatas(SpecialListBean datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }
@@ -29,12 +29,12 @@ public class DiscoverLVAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return datas == null ? 0 : datas.size();
+        return datas == null ? 0 : datas.getData().getItems().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return datas == null ? null :datas.get(position);
+        return datas == null ? null :datas.getData().getItems().get(position);
     }
 
     @Override
@@ -46,22 +46,24 @@ public class DiscoverLVAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_listview_discover, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_listview_discover_selection, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }else{
            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.tvShow.setText(datas.get(position));
+        Picasso.with(context).load(datas.getData().getItems().get(position).getCover_image_url())
+        .centerCrop().fit().into(viewHolder.ivShow);
+
         return convertView;
     }
 
 
     class ViewHolder {
-        private TextView tvShow;
+        private ImageView ivShow;
         public ViewHolder(View view) {
-           tvShow = (TextView) view.findViewById(R.id.tv_listview_discover);
+           ivShow = (ImageView) view.findViewById(R.id.iv_listview_discover_selection);
         }
     }
 }

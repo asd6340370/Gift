@@ -7,7 +7,7 @@ import android.widget.ListView;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
-import com.example.dllo.gift.discover.disadapter.DiscoverLVAdapter;
+import com.example.dllo.gift.discover.disadapter.DiscoverSLVAdapter;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class DiscoverListViewFragment extends BaseFragment{
 
     private ArrayList<String> datas;
-    private DiscoverLVAdapter lvAdapter;
+    private DiscoverSLVAdapter lvAdapter;
     private ListView lvDiscoverListView;
 
     public static Fragment createListViewFragment (String data) {
@@ -46,13 +46,6 @@ public class DiscoverListViewFragment extends BaseFragment{
 //        String data = bundle.getString("data");
 
 
-        datas = new ArrayList<>();
-        lvAdapter = new DiscoverLVAdapter(context);
-        lvDiscoverListView.setAdapter(lvAdapter);
-        for (int i = 0; i < 100; i++) {
-            datas.add("listview" + i);
-        }
-        lvAdapter.setDatas(datas);
 
     }
 }

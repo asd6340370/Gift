@@ -5,20 +5,16 @@ import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
-import com.example.dllo.gift.discover.disadapter.DiscoverLVAdapter;
+import com.example.dllo.gift.discover.disadapter.DiscoverSLVAdapter;
 import com.example.dllo.gift.discover.disadapter.DiscoverSRVAdapter;
 import com.example.dllo.gift.discover.disadapter.DiscoverSVPAdapter;
-import com.example.dllo.gift.net.NetTools;
-
-import java.util.ArrayList;
+import com.example.dllo.gift.nettools.NetTools;
 
 /**
  * Created by dllo on 16/5/20.
@@ -36,6 +32,7 @@ public class DiscoverSelectionFragment extends BaseFragment {
     private ListView listViewDiscoverSelection;
     private DiscoverSRVAdapter srvAdapter;
     private DiscoverSVPAdapter svpAdapter;
+    private DiscoverSLVAdapter slvAdapter;
 
     @Override
     public int setLayout() {
@@ -44,6 +41,7 @@ public class DiscoverSelectionFragment extends BaseFragment {
 
     @Override
     public void initView(View view) {
+
         listViewDiscoverSelection = (ListView) view.findViewById(R.id.listView_discover_selection);
         //listView 的heardview
         headerView = LayoutInflater.from(context).inflate(R.layout.header_discover_selection, null);
@@ -54,29 +52,32 @@ public class DiscoverSelectionFragment extends BaseFragment {
 
     @Override
     public void initData() {
+
         netTools = new NetTools();
-        DiscoverLVAdapter lvAdapter = new DiscoverLVAdapter(context);
+        //speciallist
+        netTools.getDiscoverSpecialList();
+        slvAdapter = new DiscoverSLVAdapter(context);
         listViewDiscoverSelection.addHeaderView(headerView);
-        listViewDiscoverSelection.setAdapter(lvAdapter);
+        listViewDiscoverSelection.setAdapter(slvAdapter);
 
 
 
         //viewPager
-        netTools.getBanner();//获得数据并添加数据
-         svpAdapter = new DiscoverSVPAdapter(context);
+        netTools.getDiscoverBanner();//获得数据并添加数据
+        svpAdapter = new DiscoverSVPAdapter(context);
         vpDiscoverSelection.setAdapter(svpAdapter);
         //轮播
         runBanner();
 
 
-
         //recyclerView
-        netTools.getSpecialList();
-         srvAdapter = new DiscoverSRVAdapter(context);
+        netTools.getDiscoverSpecialListHeader();
+        srvAdapter = new DiscoverSRVAdapter(context);
         rvDiscoverSelection.setAdapter(srvAdapter);
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         rvDiscoverSelection.setLayoutManager(manager);
+
 
     }
 
@@ -117,18 +118,19 @@ public class DiscoverSelectionFragment extends BaseFragment {
         thread.start();
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
         flag = true;
-        Log.d("DiscoverSelectionFragme", "onresume");
+//        Log.d("DiscoverSelectionFragme", "onresume");
     }
 
     @Override
     public void onPause() {
         super.onPause();
         flag = false;
-        Log.d("DiscoverSelectionFragme", "onpause");
+//        Log.d("DiscoverSelectionFragme", "onpause");
     }
 
     @Override
@@ -136,7 +138,8 @@ public class DiscoverSelectionFragment extends BaseFragment {
         super.onDestroy();
         svpAdapter.unregister();
         srvAdapter.unregister();
-
-        Log.d("DiscoverSelectionFragme", "ondestroy");
+        slvAdapter.unregister();
+//        Log.d("DiscoverSelectionFragme", "ondestroy");
     }
+
 }

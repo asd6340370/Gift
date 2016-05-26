@@ -2,21 +2,17 @@ package com.example.dllo.gift.discover.disadapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.dllo.gift.R;
-import com.example.dllo.gift.discover.BannerBean;
+import com.example.dllo.gift.discover.disbean.BannerBean;
 import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/5/21.

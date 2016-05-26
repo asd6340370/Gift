@@ -4,15 +4,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-
 import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/5/19.
  */
-public class DiscoverVPAdapter extends FragmentPagerAdapter {
+public class DiscoverVPAdapter extends FragmentStatePagerAdapter {
     private ArrayList<Fragment> fragments;
 
     public void setFragments(ArrayList<Fragment> fragments) {

@@ -1,25 +1,17 @@
 package com.example.dllo.gift.hot;
 
 import android.content.Intent;
-import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.SimpleAdapter;
 
 import com.android.volley.VolleyError;
 import com.example.dllo.gift.DetailsActivity;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
-import com.example.dllo.gift.net.NetListener;
-import com.example.dllo.gift.net.NetTools;
+import com.example.dllo.gift.nettools.NetListener;
+import com.example.dllo.gift.nettools.NetTools;
 import com.google.gson.Gson;
-
-import org.greenrobot.eventbus.EventBus;
-
-import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/5/19.

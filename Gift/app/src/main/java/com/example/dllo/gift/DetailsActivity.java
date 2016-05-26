@@ -51,9 +51,9 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
     private void loadWeb() {
         //接收HotFragment传来的数据
         Intent intent = getIntent();
-        HotBean.DataBean.ItemsBean.DataItem dataItem = intent.getParcelableExtra("buy");
+        final HotBean.DataBean.ItemsBean.DataItem dataItem = intent.getParcelableExtra("buy");
         url = dataItem.getPurchase_url();
-        tvTitleDetails.setText(dataItem.getName());
+
 //        Log.d("DetailsActivity", url);
         webViewDetails.getSettings().setJavaScriptEnabled(true);
         //优先使用缓存
@@ -62,7 +62,8 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
         webViewDetails.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                webViewDetails.loadUrl(url);
+                view.loadUrl(url);
+                tvTitleDetails.setText(dataItem.getName());
                 return true;
 
 //                if( url.startsWith("http:") || url.startsWith("https:") ) {

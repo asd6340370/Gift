@@ -71,7 +71,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.btn_discover:
-                replaceFragment(R.id.frameLayout_home, discoverFragment);
+                replaceFragment(R.id.frameLayout_home, new DiscoverFragment());
                 tvTitle.setText("礼物说");
                 titleLayout.setVisibility(View.VISIBLE);
                 break;
