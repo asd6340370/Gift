@@ -2,7 +2,6 @@ package com.example.dllo.gift.discover.disadapter;
 
 import android.content.Context;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.dllo.gift.R;
-import com.example.dllo.gift.discover.disbean.SpecialListBean;
+import com.example.dllo.gift.discover.disbean.ListBean;
 import com.example.dllo.gift.tools.RoundRect;
 import com.squareup.picasso.Picasso;
 
@@ -24,7 +23,7 @@ import org.greenrobot.eventbus.Subscribe;
  * Created by dllo on 16/5/21.
  */
 public class DiscoverSLVAdapter extends BaseAdapter {
-    private SpecialListBean datas;
+    private ListBean datas;
     private Context context;
 
 
@@ -34,11 +33,11 @@ public class DiscoverSLVAdapter extends BaseAdapter {
         EventBus.getDefault().register(this);
     }
     @Subscribe
-    public void getData(SpecialListBean listBean) {
+    public void getData(ListBean listBean) {
         setDatas(listBean);
 //        Log.d("DiscoverSelectionFragme", listBean.getData().getItems().get(0).getCover_image_url());
     }
-    public void setDatas(SpecialListBean datas) {
+    public void setDatas(ListBean datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }

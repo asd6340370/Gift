@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.dllo.gift.R;
-import com.example.dllo.gift.discover.disbean.BannerBean;
+import com.example.dllo.gift.discover.disbean.SpecialBannerBean;
 import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
@@ -18,7 +18,7 @@ import org.greenrobot.eventbus.Subscribe;
  * Created by dllo on 16/5/21.
  */
 public class DiscoverSVPAdapter extends PagerAdapter {
-    private BannerBean datas;
+    private SpecialBannerBean datas;
     private Context context;
     private ImageView ivShow;
 
@@ -27,11 +27,11 @@ public class DiscoverSVPAdapter extends PagerAdapter {
         EventBus.getDefault().register(this);
     }
     @Subscribe
-    public void getBanner (BannerBean bannerBean){
-       setDatas(bannerBean);
+    public void getBanner (SpecialBannerBean specialBannerBean){
+       setDatas(specialBannerBean);
     }
 
-    public void setDatas(BannerBean datas) {
+    public void setDatas(SpecialBannerBean datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }

@@ -1,10 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_layout_discover_selection"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/wight"
+    android:orientation="vertical"
+    android:paddingLeft="6dp"
+    android:paddingRight="6dp"
+    android:paddingTop="6dp">
+
+    <ImageView
+        android:id="@+id/iv_listview_discover_selection"
+        android:layout_width="match_parent"
+        android:layout_height="160dp" />
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/iv_new_title_listview_discover_selection"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ig_marker_fresh" />
+
+    <CheckBox
+        android:id="@+id/checkBox_item_discover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/article_like_count_bg"
+        android:button="@null"
+        android:drawableLeft="@drawable/item_like_checkbox_discover_selection"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:paddingLeft="10dp"
+        android:paddingRight="5dp"
+        android:text="12"
+        android:textSize="10sp"
+        />
+
     <TextView
         android:id="@+id/tv_listview_discover"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:paddingBottom="10dp"
+        android:text="title"
+        android:textColor="@color/wight"
+        android:textSize="16sp" />
 
-</LinearLayout>
+
+</RelativeLayout>

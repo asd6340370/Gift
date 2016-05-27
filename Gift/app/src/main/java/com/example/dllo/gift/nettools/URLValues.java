@@ -9,4 +9,5 @@ public final class URLValues {
     public static final String DISCOVER_SPECIAL_BANNER = "http://api.liwushuo.com/v2/banners";
     public static final String DISCOVER_SPECIAL_LIST_Header = "http://api.liwushuo.com/v2/secondary_banners?gender=2&generation=1";
     public static final String DISCOVER_SPECIAL_LIST = "http://api.liwushuo.com/v2/channels/103/items?limit=20&ad=2&gender=2&offset=0&generation=1";
+    public static final String DISCOVER_TABLAYOUT_TITLES = "http://api.liwushuo.com/v2/channels/preset?gender=2&generation=1";
 }

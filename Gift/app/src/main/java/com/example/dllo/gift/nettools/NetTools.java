@@ -4,8 +4,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.dllo.gift.discover.disbean.BannerBean;
-import com.example.dllo.gift.discover.disbean.SpecialListBean;
+import com.example.dllo.gift.discover.DiscoverTitlesBean;
+import com.example.dllo.gift.discover.disbean.SpecialBannerBean;
+import com.example.dllo.gift.discover.disbean.ListBean;
 import com.example.dllo.gift.discover.disbean.SpecialListHeaderBean;
 import com.google.gson.Gson;
 
@@ -45,8 +46,8 @@ public class NetTools {
         StringRequest request = new StringRequest(URLValues.DISCOVER_SPECIAL_BANNER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                BannerBean bannerBean =  gson.fromJson(response, BannerBean.class);
-                eventBus.post(bannerBean);
+                SpecialBannerBean specialBannerBean =  gson.fromJson(response, SpecialBannerBean.class);
+                eventBus.post(specialBannerBean);
 
             }
         }, new Response.ErrorListener() {
@@ -78,8 +79,8 @@ public class NetTools {
         StringRequest request = new StringRequest(URLValues.DISCOVER_SPECIAL_LIST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                SpecialListBean specialListBean = gson.fromJson(response,SpecialListBean.class);
-                eventBus.post(specialListBean);
+                ListBean listBean = gson.fromJson(response,ListBean.class);
+                eventBus.post(listBean);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -87,7 +88,41 @@ public class NetTools {
             }
         });
         queue.add(request);
+    }
 
+
+
+    public void getDiscoverTitles(){
+        StringRequest request = new StringRequest(URLValues.DISCOVER_TABLAYOUT_TITLES, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                DiscoverTitlesBean titlesBean = gson.fromJson(response,DiscoverTitlesBean.class);
+                eventBus.post(titlesBean);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        queue.add(request);
+    }
+
+    public void getDiscoverList(String url, final NetListener listener){
+
+        StringRequest request = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                listener.onSuccessed(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onFailed(error);
+            }
+        });
+        queue.add(request);
     }
 
 }

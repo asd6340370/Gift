@@ -5,26 +5,36 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.dllo.gift.R;
-import com.example.dllo.gift.discover.disbean.SpecialListBean;
+import com.example.dllo.gift.discover.disbean.ListBean;
+import com.example.dllo.gift.tools.RoundRect;
 import com.squareup.picasso.Picasso;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by dllo on 16/5/21.
  */
 public class DiscoverLVAdapter extends BaseAdapter {
-    private SpecialListBean datas;
+    private ListBean datas;
     private Context context;
 
-    public void setDatas(SpecialListBean datas) {
-        this.datas = datas;
-        notifyDataSetChanged();
-    }
+
 
     public DiscoverLVAdapter(Context context) {
         this.context = context;
+
+    }
+
+    public void setDatas(ListBean datas) {
+        this.datas = datas;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -43,10 +53,10 @@ public class DiscoverLVAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        final ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_listview_discover_selection, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_listview_discover, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }else{
@@ -54,16 +64,29 @@ public class DiscoverLVAdapter extends BaseAdapter {
         }
 
         Picasso.with(context).load(datas.getData().getItems().get(position).getCover_image_url())
-        .centerCrop().fit().into(viewHolder.ivShow);
+        .transform(new RoundRect(20)).centerCrop().fit().into(viewHolder.ivShow);
+
+        viewHolder.tvTitleDiscover.setText(datas.getData().getItems().get(position).getTitle());
+        viewHolder.checkBoxLikesCounts.setText(datas.getData().getItems().get(position).getLikes_count() + "");
 
         return convertView;
     }
 
 
     class ViewHolder {
+        private final ImageView ivTitleNew;
+        private final TextView tvTitleDiscover;
         private ImageView ivShow;
+        private RelativeLayout itemLayout;
+        private CheckBox checkBoxLikesCounts;
         public ViewHolder(View view) {
+            checkBoxLikesCounts =  (CheckBox)view.findViewById(R.id.checkBox_item_discover);
+            itemLayout = (RelativeLayout) view.findViewById(R.id.item_layout_discover_selection);
+            tvTitleDiscover =  (TextView)view.findViewById(R.id.tv_listview_discover);
+            ivTitleNew = (ImageView)view.findViewById(R.id.iv_new_title_listview_discover_selection);
            ivShow = (ImageView) view.findViewById(R.id.iv_listview_discover_selection);
         }
     }
+
+
 }

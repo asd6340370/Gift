@@ -8,7 +8,10 @@ import android.widget.ListView;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
-import com.example.dllo.gift.discover.disadapter.DiscoverVPAdapter;
+import com.example.dllo.gift.nettools.NetTools;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 
@@ -16,10 +19,10 @@ import java.util.ArrayList;
  * Created by dllo on 16/5/19.
  */
 public class DiscoverFragment extends BaseFragment {
-    private ArrayList<Fragment> fragments;
     private TabLayout discoverTabLayout;
     private ViewPager discoverViewPager;
-    private ListView discoverListView;
+    private DiscoverVPAdapter adapter;
+    private NetTools netTools;
 
     @Override
     public int setLayout() {
@@ -34,25 +37,22 @@ public class DiscoverFragment extends BaseFragment {
 
     @Override
     public void initData() {
+        netTools = new NetTools();
 
-        DiscoverVPAdapter adapter = new DiscoverVPAdapter(getChildFragmentManager());
-        fragments = new ArrayList<>();
-        fragments.add(new DiscoverSelectionFragment());
-        fragments.add(new DiscoverListViewFragment());
-        fragments.add(new DiscoverListViewFragment());
-        fragments.add(new DiscoverListViewFragment());
-        fragments.add(new DiscoverListViewFragment());
-        fragments.add(new DiscoverListViewFragment());
-        fragments.add(new DiscoverListViewFragment());
-        fragments.add(new DiscoverListViewFragment());
-        fragments.add(new DiscoverListViewFragment());
-        fragments.add(new DiscoverListViewFragment());
-
-
-        adapter.setFragments(fragments);
+        netTools.getDiscoverTitles();
+        adapter = new DiscoverVPAdapter(getChildFragmentManager());
         discoverViewPager.setAdapter(adapter);
+
         discoverTabLayout.setupWithViewPager(discoverViewPager);
+        discoverTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
 
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        adapter.unregister();
     }
 }

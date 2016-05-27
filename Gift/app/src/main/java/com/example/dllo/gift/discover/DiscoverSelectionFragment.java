@@ -67,7 +67,7 @@ public class DiscoverSelectionFragment extends BaseFragment {
         svpAdapter = new DiscoverSVPAdapter(context);
         vpDiscoverSelection.setAdapter(svpAdapter);
         //轮播
-        runBanner();
+//        runBanner();
 
 
         //recyclerView
