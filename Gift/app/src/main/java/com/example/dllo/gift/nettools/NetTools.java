@@ -125,4 +125,22 @@ public class NetTools {
         queue.add(request);
     }
 
+    //以下为通用方法
+    public void getData (String url,final NetBean netBean, final Class<NetBean> classOfNetBean){
+
+        StringRequest request = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+             NetBean netBean = gson.fromJson(response,classOfNetBean);
+                eventBus.post(netBean);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        queue.add(request);
+    }
+
 }

@@ -14,7 +14,9 @@ import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.discover.disadapter.DiscoverSLVAdapter;
 import com.example.dllo.gift.discover.disadapter.DiscoverSRVAdapter;
 import com.example.dllo.gift.discover.disadapter.DiscoverSVPAdapter;
+import com.example.dllo.gift.discover.disbean.SpecialListHeaderBean;
 import com.example.dllo.gift.nettools.NetTools;
+import com.example.dllo.gift.nettools.URLValues;
 
 /**
  * Created by dllo on 16/5/20.
@@ -33,6 +35,8 @@ public class DiscoverSelectionFragment extends BaseFragment {
     private DiscoverSRVAdapter srvAdapter;
     private DiscoverSVPAdapter svpAdapter;
     private DiscoverSLVAdapter slvAdapter;
+
+    private SpecialListHeaderBean headerBean;
 
     @Override
     public int setLayout() {
@@ -72,6 +76,7 @@ public class DiscoverSelectionFragment extends BaseFragment {
 
         //recyclerView
         netTools.getDiscoverSpecialListHeader();
+//        netTools.getData(URLValues.DISCOVER_SPECIAL_LIST_Header,headerBean,SpecialListHeaderBean.class);
         srvAdapter = new DiscoverSRVAdapter(context);
         rvDiscoverSelection.setAdapter(srvAdapter);
         LinearLayoutManager manager = new LinearLayoutManager(context);

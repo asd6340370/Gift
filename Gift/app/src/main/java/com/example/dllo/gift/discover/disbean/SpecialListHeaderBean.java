@@ -1,11 +1,13 @@
 package com.example.dllo.gift.discover.disbean;
 
+import com.example.dllo.gift.nettools.NetBean;
+
 import java.util.List;
 
 /**
  * Created by dllo on 16/5/25.
  */
-public class SpecialListHeaderBean {
+public class SpecialListHeaderBean implements NetBean{
 
     /**
      * code : 200

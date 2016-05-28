@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.example.dllo.gift.base.BaseActivity;
 import com.example.dllo.gift.category.CategoryFragment;
 import com.example.dllo.gift.discover.DiscoverFragment;
-import com.example.dllo.gift.discover.DiscoverSelectionFragment;
 import com.example.dllo.gift.hot.HotFragment;
 import com.example.dllo.gift.me.MeFragment;
 
@@ -48,16 +47,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         categoryFragment = new CategoryFragment();
         meFragment = new MeFragment();
         //默认页面
-        replaceFragment(R.id.frameLayout_home, discoverFragment);
-
+        getSupportFragmentManager().beginTransaction().add(R.id.frameLayout_home,discoverFragment)
+                .add(R.id.frameLayout_home,hotFragment).add(R.id.frameLayout_home,categoryFragment)
+                .add(R.id.frameLayout_home,meFragment)
+                .commit();
+        showFragment(discoverFragment);
 
     }
 
     //通过FragmentManager 碎片管理器 替换fragment方法
-    private void replaceFragment(int id, Fragment fragment) {
+    private void showFragment(Fragment fragment) {
         FragmentManager manager = getSupportFragmentManager();
         transaction = manager.beginTransaction();
-        transaction.replace(id, fragment).commit();
+        transaction.hide(discoverFragment).hide(hotFragment).hide(categoryFragment).hide(meFragment)
+                .show(fragment).commit();
 
 //        transaction.add(new DiscoverFragment(),"discoverFragment").add(new HotFragment(),"hot")
 //                .add(new CategoryRaiderFragment(),"category").add(new MeFragment(),"me").commit();
@@ -71,21 +74,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.btn_discover:
-                replaceFragment(R.id.frameLayout_home, discoverFragment);
+                showFragment( discoverFragment);
                 tvTitle.setText("礼物说");
                 titleLayout.setVisibility(View.VISIBLE);
                 break;
             case R.id.btn_hot:
-                replaceFragment(R.id.frameLayout_home, hotFragment);
+                showFragment( hotFragment);
                 tvTitle.setText("热门");
                 titleLayout.setVisibility(View.VISIBLE);
                 break;
             case R.id.btn_category:
-                replaceFragment(R.id.frameLayout_home, categoryFragment);
+                showFragment( categoryFragment);
                 titleLayout.setVisibility(View.GONE);
                 break;
             case R.id.btn_me:
-                replaceFragment(R.id.frameLayout_home, meFragment);
+                showFragment( meFragment);
                 titleLayout.setVisibility(View.GONE);
                 break;
 
