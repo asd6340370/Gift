@@ -1,11 +1,9 @@
 package com.example.dllo.gift;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -17,9 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dllo.gift.hot.HotBean;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by dllo on 16/5/24.
@@ -38,7 +33,7 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
         setContentView(R.layout.activity_details);
         webViewDetails = (WebView) findViewById(R.id.webView_details_activity);
         checkBoxTitleDetails = (CheckBox) findViewById(R.id.checkBox_title_detail);
-        backTitleDetails = (ImageView) findViewById(R.id.back_title_details);
+        backTitleDetails = (ImageView) findViewById(R.id.back_title_hot_details);
         tvTitleDetails = (TextView) findViewById(R.id.tv_title_hot_details);
         checkBoxTitleDetails.setOnCheckedChangeListener(this);
         backTitleDetails.setOnClickListener(this);
@@ -89,6 +84,19 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
 
     @Override
     public void onClick(View v) {
-        finish();
+        switch (v.getId()){
+            case R.id.back_title_hot_details:
+                finish();
+                break;
+            case R.id.checkBox_title_detail:
+                Toast.makeText(this, "tu一下", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.iv_title_comments_details:
+                Toast.makeText(this, "tu一下", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.iv_title_share_details:
+                Toast.makeText(this, "tu一下", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }

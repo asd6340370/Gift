@@ -30,13 +30,9 @@ public class DiscoverSLVAdapter extends BaseAdapter {
 
     public DiscoverSLVAdapter(Context context) {
         this.context = context;
-        EventBus.getDefault().register(this);
+
     }
-    @Subscribe
-    public void getData(ListBean listBean) {
-        setDatas(listBean);
-//        Log.d("DiscoverSelectionFragme", listBean.getData().getItems().get(0).getCover_image_url());
-    }
+
     public void setDatas(ListBean datas) {
         this.datas = datas;
         notifyDataSetChanged();
@@ -73,13 +69,25 @@ public class DiscoverSLVAdapter extends BaseAdapter {
 
         viewHolder.tvTitleDiscover.setText(datas.getData().getItems().get(position).getTitle());
         viewHolder.checkBoxLikesCounts.setText(datas.getData().getItems().get(position).getLikes_count() + "");
-        viewHolder.itemLayout.setOnClickListener(new View.OnClickListener() {
+        viewHolder.checkBoxLikesCounts.setChecked(datas.getData().getItems().get(position).isLiked());
+//        if (datas.getData().getItems().get(position).getStatus() == 1)
+//            viewHolder.ivTitleNew.setVisibility(View.GONE);
+//        viewHolder.itemLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                viewHolder.ivTitleNew.setVisibility(View.GONE);
+//                datas.getData().getItems().get(position).setStatus(1);
+//            }
+//        });
+
+        viewHolder.checkBoxLikesCounts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewHolder.ivTitleNew.setVisibility(View.GONE);
-                datas.getData().getItems().get(position).setStatus(1);
+                CheckBox checkBox = (CheckBox) v;
+                datas.getData().getItems().get(position).setLiked(checkBox.isChecked());
             }
         });
+
         if(datas.getData().getItems().get(position).getStatus() != 1){
             viewHolder.ivTitleNew.setVisibility(View.VISIBLE);
         }else {
@@ -104,7 +112,5 @@ public class DiscoverSLVAdapter extends BaseAdapter {
         }
     }
 
-    public void unregister(){
-        EventBus.getDefault().unregister(this);
-    }
+
 }

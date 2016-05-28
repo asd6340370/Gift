@@ -1,13 +1,16 @@
 package com.example.dllo.gift.discover;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
+import com.example.dllo.gift.DiscoverListViewDetailsActivtiy;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.discover.disadapter.DiscoverLVAdapter;
@@ -22,12 +25,13 @@ import java.util.ArrayList;
 /**
  * Created by dllo on 16/5/21.
  */
-public class DiscoverListViewFragment extends BaseFragment{
+public class DiscoverListViewFragment extends BaseFragment implements AdapterView.OnItemClickListener {
     private DiscoverLVAdapter lvAdapter;
     private ListView lvDiscoverListView;
     private NetTools netTools;
     private String  num;
     private RequestQueue queue;
+    private ListBean listBean;
 
     public static Fragment createListViewFragment (String url) {
         Fragment fragment = new DiscoverListViewFragment();
@@ -45,6 +49,7 @@ public class DiscoverListViewFragment extends BaseFragment{
     @Override
     public void initView(View view) {
         lvDiscoverListView = (ListView) view.findViewById(R.id.listView_discover_listView);
+        lvDiscoverListView.setOnItemClickListener(this);
 
     }
 
@@ -59,7 +64,7 @@ public class DiscoverListViewFragment extends BaseFragment{
             @Override
             public void onSuccessed(String result) {
                 Gson gson = new Gson();
-                ListBean listBean =  gson.fromJson(result,ListBean.class);
+                listBean =  gson.fromJson(result,ListBean.class);
 
                 lvAdapter.setDatas(listBean);
             }
@@ -72,5 +77,15 @@ public class DiscoverListViewFragment extends BaseFragment{
 
 
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String url = listBean.getData().getItems().get(position).getUrl();
+        String title = listBean.getData().getItems().get(position).getTitle();
+        Intent intent = new Intent(context, DiscoverListViewDetailsActivtiy.class);
+        intent.putExtra("url",url);
+        intent.putExtra("title",title);
+        startActivity(intent);
     }
 }

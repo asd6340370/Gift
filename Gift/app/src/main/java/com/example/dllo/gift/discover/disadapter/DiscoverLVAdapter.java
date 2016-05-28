@@ -68,7 +68,14 @@ public class DiscoverLVAdapter extends BaseAdapter {
 
         viewHolder.tvTitleDiscover.setText(datas.getData().getItems().get(position).getTitle());
         viewHolder.checkBoxLikesCounts.setText(datas.getData().getItems().get(position).getLikes_count() + "");
-
+        viewHolder.checkBoxLikesCounts.setChecked(datas.getData().getItems().get(position).isLiked());
+        viewHolder.checkBoxLikesCounts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CheckBox checkBox = (CheckBox) v;
+                datas.getData().getItems().get(position).setLiked(checkBox.isChecked());
+            }
+        });
         return convertView;
     }
 
