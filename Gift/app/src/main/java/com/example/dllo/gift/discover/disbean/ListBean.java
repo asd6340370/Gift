@@ -3,12 +3,13 @@ package com.example.dllo.gift.discover.disbean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by dllo on 16/5/26.
  */
-public class ListBean {
+public class ListBean implements Parcelable{
 
     /**
      * code : 200
@@ -31,6 +32,17 @@ public class ListBean {
     }
 
 
+    public static final Creator<ListBean> CREATOR = new Creator<ListBean>() {
+        @Override
+        public ListBean createFromParcel(Parcel in) {
+            return new ListBean(in);
+        }
+
+        @Override
+        public ListBean[] newArray(int size) {
+            return new ListBean[size];
+        }
+    };
 
     public int getCode() {
         return code;
@@ -56,8 +68,19 @@ public class ListBean {
         this.message = message;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-    public static class DataBean {
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(code);
+        dest.writeString(message);
+    }
+
+
+    public static class DataBean implements Parcelable{
         /**
          * next_url : http://api.liwushuo.com/v2/channels/103/items?ad=2&generation=1&gender=2&+limit=20&limit=10&offset=10
          */
@@ -90,6 +113,21 @@ public class ListBean {
 
         private List<ItemsBean> items;
 
+        protected DataBean(Parcel in) {
+        }
+
+        public static final Creator<DataBean> CREATOR = new Creator<DataBean>() {
+            @Override
+            public DataBean createFromParcel(Parcel in) {
+                return new DataBean(in);
+            }
+
+            @Override
+            public DataBean[] newArray(int size) {
+                return new DataBean[size];
+            }
+        };
+
         public PagingBean getPaging() {
             return paging;
         }
@@ -106,8 +144,33 @@ public class ListBean {
             this.items = items;
         }
 
-        public static class PagingBean {
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+        }
+
+        public static class PagingBean implements Parcelable {
             private String next_url;
+
+            protected PagingBean(Parcel in) {
+                next_url = in.readString();
+            }
+
+            public static final Creator<PagingBean> CREATOR = new Creator<PagingBean>() {
+                @Override
+                public PagingBean createFromParcel(Parcel in) {
+                    return new PagingBean(in);
+                }
+
+                @Override
+                public PagingBean[] newArray(int size) {
+                    return new PagingBean[size];
+                }
+            };
 
             public String getNext_url() {
                 return next_url;
@@ -116,9 +179,19 @@ public class ListBean {
             public void setNext_url(String next_url) {
                 this.next_url = next_url;
             }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(next_url);
+            }
         }
 
-        public static class ItemsBean {
+        public static class ItemsBean implements Parcelable{
             private int content_type;
             private String content_url;
             private String cover_image_url;
@@ -141,6 +214,40 @@ public class ListBean {
             private List<?> ad_monitors;
             private List<?> feature_list;
             private List<?> labels;
+
+            protected ItemsBean(Parcel in) {
+                content_type = in.readInt();
+                content_url = in.readString();
+                cover_image_url = in.readString();
+                cover_webp_url = in.readString();
+                created_at = in.readInt();
+                editor_id = in.readInt();
+                hidden_cover_image = in.readByte() != 0;
+                id = in.readInt();
+                liked = in.readByte() != 0;
+                likes_count = in.readInt();
+                published_at = in.readInt();
+                share_msg = in.readString();
+                short_title = in.readString();
+                status = in.readInt();
+                template = in.readString();
+                title = in.readString();
+                type = in.readString();
+                updated_at = in.readInt();
+                url = in.readString();
+            }
+
+            public static final Creator<ItemsBean> CREATOR = new Creator<ItemsBean>() {
+                @Override
+                public ItemsBean createFromParcel(Parcel in) {
+                    return new ItemsBean(in);
+                }
+
+                @Override
+                public ItemsBean[] newArray(int size) {
+                    return new ItemsBean[size];
+                }
+            };
 
             public int getContent_type() {
                 return content_type;
@@ -316,6 +423,34 @@ public class ListBean {
 
             public void setLabels(List<?> labels) {
                 this.labels = labels;
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeInt(content_type);
+                dest.writeString(content_url);
+                dest.writeString(cover_image_url);
+                dest.writeString(cover_webp_url);
+                dest.writeInt(created_at);
+                dest.writeInt(editor_id);
+                dest.writeByte((byte) (hidden_cover_image ? 1 : 0));
+                dest.writeInt(id);
+                dest.writeByte((byte) (liked ? 1 : 0));
+                dest.writeInt(likes_count);
+                dest.writeInt(published_at);
+                dest.writeString(share_msg);
+                dest.writeString(short_title);
+                dest.writeInt(status);
+                dest.writeString(template);
+                dest.writeString(title);
+                dest.writeString(type);
+                dest.writeInt(updated_at);
+                dest.writeString(url);
             }
         }
     }

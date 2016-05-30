@@ -1,11 +1,13 @@
 package com.example.dllo.gift.discover;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,12 +21,14 @@ import com.example.dllo.gift.discover.disadapter.DiscoverSLVAdapter;
 import com.example.dllo.gift.discover.disadapter.DiscoverSRVAdapter;
 import com.example.dllo.gift.discover.disadapter.DiscoverSVPAdapter;
 import com.example.dllo.gift.discover.disbean.ListBean;
-import com.example.dllo.gift.discover.disbean.SpecialListHeaderBean;
+
 import com.example.dllo.gift.nettools.NetTools;
-import com.example.dllo.gift.nettools.URLValues;
+
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+
+import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/5/20.
@@ -74,7 +78,6 @@ public class DiscoverSelectionFragment extends BaseFragment implements AdapterVi
         slvAdapter = new DiscoverSLVAdapter(context);
         listViewDiscoverSelection.addHeaderView(headerView);
         listViewDiscoverSelection.setAdapter(slvAdapter);
-
 
 
         //viewPager
@@ -140,14 +143,24 @@ public class DiscoverSelectionFragment extends BaseFragment implements AdapterVi
         });
         thread.start();
     }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        //获得position 正确位置 index
+        int index = (int) parent.getAdapter().getItemId(position);
         view.findViewById(R.id.iv_new_title_listview_discover_selection).setVisibility(View.GONE);
-        listBean.getData().getItems().get(position).setStatus(1);
+        listBean.getData().getItems().get(index).setStatus(1);
         slvAdapter.setDatas(listBean);
-        String url = listBean.getData().getItems().get(position).getUrl();
+        ArrayList<String> urlDatas = new ArrayList<>();
+        for (ListBean.DataBean.ItemsBean b : listBean.getData().getItems()) {
+            urlDatas.add(b.getUrl());
+        }
         Intent intent = new Intent(context, DiscoverListViewDetailsActivtiy.class);
-        intent.putExtra("url",url);
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("url",urlDatas);
+        intent.putExtras(bundle);
+        intent.putExtra("position", index);
         startActivity(intent);
     }
 
@@ -170,7 +183,7 @@ public class DiscoverSelectionFragment extends BaseFragment implements AdapterVi
         super.onDestroy();
         svpAdapter.unregister();
         srvAdapter.unregister();
-       EventBus.getDefault().unregister(this);
+        EventBus.getDefault().unregister(this);
 
     }
 

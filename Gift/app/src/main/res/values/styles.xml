@@ -7,5 +7,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    
+    <style name="myPopupWindow_anim_style">
+        <item name="android:windowEnterAnimation">@anim/popup_window_show</item>
+        <!--指定显示动画-->
+        <item name="android:windowExitAnimation">@anim/popup_window_hide</item>
+        <!--指定消失动画-->
+    </style>
 
 </resources>

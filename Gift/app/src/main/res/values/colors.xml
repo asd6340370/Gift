@@ -7,4 +7,5 @@
     <color name="color_text_selected">#ff2349</color>
     <color name="color_text_normal">#9d9f9f</color>
     <color name="title_color_red">#ff2d47</color>
+    <color name="color_login">#ff8a9c</color>
 </resources>

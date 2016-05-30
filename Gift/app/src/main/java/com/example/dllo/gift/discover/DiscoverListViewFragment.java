@@ -81,10 +81,17 @@ public class DiscoverListViewFragment extends BaseFragment implements AdapterVie
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String url = listBean.getData().getItems().get(position).getUrl();
         String title = listBean.getData().getItems().get(position).getTitle();
         Intent intent = new Intent(context, DiscoverListViewDetailsActivtiy.class);
-        intent.putExtra("url",url);
+        ArrayList<String> urlDatas = new ArrayList<>();
+        for (ListBean.DataBean.ItemsBean b :
+                listBean.getData().getItems()) {
+            urlDatas.add(b.getUrl());
+        }
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("url",urlDatas);
+        intent.putExtras(bundle);
+        intent.putExtra("position",position);
         intent.putExtra("title",title);
         startActivity(intent);
     }

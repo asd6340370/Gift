@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/id_view_webview_discover_details">
 
     <ImageView
         android:id="@+id/iv_web_discover_details"
