@@ -21,6 +21,8 @@
         <activity android:name=".DetailsActivity"/>
         <activity android:name=".DiscoverListViewDetailsActivtiy"/>
         <activity android:name=".LoginActivity"/>
+        <activity android:name=".comments.CommentsActivity"/>
+        <activity android:name=".comments.CommentsHotMoreActivity"/>
     </application>
 
 </manifest>

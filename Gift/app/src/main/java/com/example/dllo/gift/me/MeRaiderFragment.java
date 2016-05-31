@@ -11,7 +11,7 @@ import com.example.dllo.gift.base.BaseFragment;
 public class MeRaiderFragment extends BaseFragment {
     @Override
     public int setLayout() {
-        return R.layout.fragment_meraider;
+        return R.layout.fragment_me_raider;
     }
 
     @Override

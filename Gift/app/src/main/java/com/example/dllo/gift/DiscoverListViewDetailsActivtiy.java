@@ -1,26 +1,22 @@
 package com.example.dllo.gift;
 
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
+import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.dllo.gift.comments.CommentsActivity;
 import com.example.dllo.gift.discover.disbean.ListBean;
+import com.example.dllo.gift.tools.SharePopupWindow;
 
 import java.util.ArrayList;
 
@@ -35,28 +31,44 @@ public class DiscoverListViewDetailsActivtiy extends AppCompatActivity implement
     private TextView tvTitleShow;
     private ListBean listBean;
     private int position;
+    private SharePopupWindow sharePopupWindow;
+    private ArrayList<ListBean.DataBean.ItemsBean> itemsBeens;
+    private CheckBox checkBoxLikesDiscoverDetail;
+    private TextView tvShareDiscoverDetails, tvCommentsDiscoverDetails;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discover_listview_details);
         findViewById(R.id.back_title_discover_details).setOnClickListener(this);
-        findViewById(R.id.checkBox_listview_discover_detail).setOnClickListener(this);
-        findViewById(R.id.iv_share_listview_discover_details).setOnClickListener(this);
-        findViewById(R.id.iv_comments_listview_discover_details).setOnClickListener(this);
-        webViewDiscoverDetails = (WebView) findViewById(R.id.webView_listview_discover_details);
-        //接受数据
 
+        checkBoxLikesDiscoverDetail = (CheckBox) findViewById(R.id.checkBox_listview_discover_detail);
+        checkBoxLikesDiscoverDetail.setOnClickListener(this);
+        tvShareDiscoverDetails = (TextView) findViewById(R.id.iv_share_listview_discover_details);
+        tvShareDiscoverDetails.setOnClickListener(this);
+        tvCommentsDiscoverDetails = (TextView) findViewById(R.id.iv_comments_listview_discover_details);
+        tvCommentsDiscoverDetails.setOnClickListener(this);
+        webViewDiscoverDetails = (WebView) findViewById(R.id.webView_listview_discover_details);
+
+
+        //接受数据
         Intent intent = getIntent();
-        title = intent.getStringExtra("title");
+        itemsBeens = intent.getParcelableArrayListExtra("bean");
+        title = itemsBeens.get(position).getTitle();
         position = intent.getIntExtra("position", 0);
-        Bundle bundle = intent.getExtras();
-//        ArrayList<String> urlDatas =bundle.getStringArrayList("url");
-//        url = urlDatas.get(position);
+
+        checkBoxLikesDiscoverDetail.setText(String.valueOf(itemsBeens.get(position).getLikes_count()));
+
+
+
+
+        url = itemsBeens.get(position).getUrl();
+//        Log.d("DiscoverListViewDetails", url);
         if (url != null) {
             loadWebData(url);
         }
-
+        //初始化popupWindow
+        sharePopupWindow = new SharePopupWindow(this, R.id.iv_share_listview_discover_details);
     }
 
     //加载WebView网络页面
@@ -95,31 +107,18 @@ public class DiscoverListViewDetailsActivtiy extends AppCompatActivity implement
                 startActivity(intent);
                 break;
             case R.id.iv_comments_listview_discover_details:
-                Toast.makeText(this, "tu一下", Toast.LENGTH_SHORT).show();
+                Intent commentsIntent = new Intent(this, CommentsActivity.class);
+                String id = String.valueOf(itemsBeens.get(position).getId());
+                commentsIntent.putExtra("id",id);
+                startActivity(commentsIntent);
                 break;
             case R.id.iv_share_listview_discover_details:
-                showPopupWindow();
+                sharePopupWindow.showPopupWindow();
                 break;
-            case R.id.webView_listview_discover_details:
-                Toast.makeText(this, "tu一下", Toast.LENGTH_SHORT).show();
-                break;
+
+
         }
     }
 
-    public void showPopupWindow() {
-        PopupWindow popupWindow = new PopupWindow(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        popupWindow.setFocusable(true);
-        ColorDrawable drawable = new ColorDrawable(0xb0000000);
-        popupWindow.setBackgroundDrawable(drawable);
-        View view = LayoutInflater.from(this).inflate(R.layout.share_popupwindow, null);
-        popupWindow.setContentView(view);
-        //设置动画
-        popupWindow.setAnimationStyle(R.style.myPopupWindow_anim_style);
-        //在底部显示
-        popupWindow.showAtLocation(this.findViewById(R.id.iv_share_listview_discover_details),
-                Gravity.BOTTOM,0,0);
-
-
-    }
 
 }

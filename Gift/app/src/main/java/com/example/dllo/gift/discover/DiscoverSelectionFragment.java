@@ -90,7 +90,6 @@ public class DiscoverSelectionFragment extends BaseFragment implements AdapterVi
 
         //recyclerView
         netTools.getDiscoverSpecialListHeader();
-//        netTools.getData(URLValues.DISCOVER_SPECIAL_LIST_Header,headerBean,SpecialListHeaderBean.class);
         srvAdapter = new DiscoverSRVAdapter(context);
         rvDiscoverSelection.setAdapter(srvAdapter);
         LinearLayoutManager manager = new LinearLayoutManager(context);
@@ -152,14 +151,15 @@ public class DiscoverSelectionFragment extends BaseFragment implements AdapterVi
         view.findViewById(R.id.iv_new_title_listview_discover_selection).setVisibility(View.GONE);
         listBean.getData().getItems().get(index).setStatus(1);
         slvAdapter.setDatas(listBean);
+
+        ArrayList<ListBean.DataBean.ItemsBean> itemsBeens = new ArrayList<>();
         ArrayList<String> urlDatas = new ArrayList<>();
         for (ListBean.DataBean.ItemsBean b : listBean.getData().getItems()) {
             urlDatas.add(b.getUrl());
+            itemsBeens.add(b);
         }
         Intent intent = new Intent(context, DiscoverListViewDetailsActivtiy.class);
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("url",urlDatas);
-        intent.putExtras(bundle);
+        intent.putParcelableArrayListExtra("bean",itemsBeens);
         intent.putExtra("position", index);
         startActivity(intent);
     }

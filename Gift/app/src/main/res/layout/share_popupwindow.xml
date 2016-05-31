@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/wight">
+   >
 
     <TextView
         android:layout_width="match_parent"
@@ -13,11 +13,13 @@
         android:textSize="25sp" />
 
     <LinearLayout
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/share_wechat_timeline_popup"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,6 +28,7 @@
             android:drawablePadding="5dp"
             android:text="微信朋友圈"/>
         <Button
+            android:id="@+id/share_wechat_popup"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,6 +37,7 @@
             android:drawablePadding="5dp"
             android:text="微信好友"/>
         <Button
+            android:id="@+id/share_sina_weibo_popup"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,12 +49,13 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:id="@+id/share_qq_zone_popup"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,6 +64,7 @@
             android:drawablePadding="5dp"
             android:text="QQ空间"/>
         <Button
+            android:id="@+id/share_qq_popup"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,6 +73,7 @@
             android:drawablePadding="5dp"
             android:text="QQ好友"/>
         <Button
+            android:id="@+id/share_hyperlink_popup"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,10 +83,20 @@
             android:text="复制链接"/>
     </LinearLayout>
     <TextView
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+    <TextView
+        android:layout_marginBottom="5dp"
+        android:id="@+id/share_cancle_popup"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="取消"
         android:textSize="25sp"
         android:gravity="center"/>
+
+
 
 </LinearLayout>

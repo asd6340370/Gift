@@ -108,7 +108,7 @@ public class NetTools {
         queue.add(request);
     }
 
-    public void getDiscoverList(String url, final NetListener listener){
+    public void getNormalList(String url, final NetListener listener){
 
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
@@ -126,12 +126,12 @@ public class NetTools {
     }
 
     //以下为通用方法
-    public void getData (String url,final NetBean netBean, final Class<NetBean> classOfNetBean){
+    public <T> void  getDataForEventBus (String url, T netBean, final Class<T> classOfNetBean){
 
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-             NetBean netBean = gson.fromJson(response,classOfNetBean);
+             T netBean = gson.fromJson(response,classOfNetBean);
                 eventBus.post(netBean);
             }
         }, new Response.ErrorListener() {
@@ -142,5 +142,7 @@ public class NetTools {
         });
         queue.add(request);
     }
+
+
 
 }

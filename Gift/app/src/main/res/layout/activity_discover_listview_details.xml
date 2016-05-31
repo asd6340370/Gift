@@ -28,7 +28,7 @@
             android:maxWidth="150dp"
             android:text="攻略详情"
             android:textColor="@color/wight"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <!--<ImageView-->
         <!--android:id="@+id/iv_title_share_details"-->

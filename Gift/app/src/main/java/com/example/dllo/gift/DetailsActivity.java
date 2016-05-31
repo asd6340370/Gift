@@ -14,7 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dllo.gift.comments.CommentsActivity;
 import com.example.dllo.gift.hot.HotBean;
+import com.example.dllo.gift.tools.SharePopupWindow;
 
 /**
  * Created by dllo on 16/5/24.
@@ -26,6 +28,9 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
     private CheckBox checkBoxTitleDetails;
     private ImageView backTitleDetails;
     private TextView tvTitleDetails;
+    private SharePopupWindow sharePopupWindow;
+    private ImageView commentsTitleDetails;
+    private ImageView shareTitleDetails;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,9 +40,17 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
         checkBoxTitleDetails = (CheckBox) findViewById(R.id.checkBox_title_detail);
         backTitleDetails = (ImageView) findViewById(R.id.back_title_hot_details);
         tvTitleDetails = (TextView) findViewById(R.id.tv_title_hot_details);
+        commentsTitleDetails = (ImageView) findViewById(R.id.iv_title_comments_details);
+        shareTitleDetails = (ImageView) findViewById(R.id.iv_title_share_details);
+        commentsTitleDetails.setOnClickListener(this);
+        shareTitleDetails.setOnClickListener(this);
         checkBoxTitleDetails.setOnCheckedChangeListener(this);
+        checkBoxTitleDetails.setOnClickListener(this);
         backTitleDetails.setOnClickListener(this);
         loadWeb();
+
+        //初始化popupWindow
+        sharePopupWindow = new SharePopupWindow(this,R.id.iv_title_share_details);
 
 
     }
@@ -75,27 +88,29 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(isChecked){
+        if (isChecked) {
             Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
-        }else{
+        } else {
             Toast.makeText(this, "取消收藏成功", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.back_title_hot_details:
                 finish();
                 break;
             case R.id.checkBox_title_detail:
-                Toast.makeText(this, "tu一下", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
                 break;
             case R.id.iv_title_comments_details:
-                Toast.makeText(this, "tu一下", Toast.LENGTH_SHORT).show();
+                Intent commentsIntent = new Intent(this,CommentsActivity.class);
+                startActivity(commentsIntent);
                 break;
             case R.id.iv_title_share_details:
-                Toast.makeText(this, "tu一下", Toast.LENGTH_SHORT).show();
+                sharePopupWindow.showPopupWindow();
                 break;
         }
     }

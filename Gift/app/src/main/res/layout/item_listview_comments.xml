@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/wight"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants">
+
+    <ImageView
+        android:id="@+id/iv_icon_user_comments"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="10dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/iv_icon_user_comments">
+
+        <TextView
+            android:id="@+id/tv_username_comments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="name"
+           />
+
+        <TextView
+            android:id="@+id/tv_usertime_comments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_username_comments"
+            android:gravity="center"
+            android:text="time"
+            android:textSize="10sp"
+            />
+
+        <CheckBox
+            android:id="@+id/checkbox_userlike_comments"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:button="@null"
+            android:drawableLeft="@drawable/like_checkbox_listview_comments"
+            android:drawablePadding="10dp"
+            android:text="123"
+            android:textSize="12sp"
+            android:textColor="@color/color_text_radiobutton"/>
+
+        <TextView
+            android:id="@+id/tv_content_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_usertime_comments"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+
+            android:lineSpacingMultiplier="1.2"
+            android:text="content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/tv_content_comments"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/darker_gray" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -3,7 +3,6 @@ package com.example.dllo.gift.discover;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -14,7 +13,6 @@ import com.example.dllo.gift.DiscoverListViewDetailsActivtiy;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.discover.disadapter.DiscoverLVAdapter;
-import com.example.dllo.gift.discover.disadapter.DiscoverSLVAdapter;
 import com.example.dllo.gift.discover.disbean.ListBean;
 import com.example.dllo.gift.nettools.NetListener;
 import com.example.dllo.gift.nettools.NetTools;
@@ -60,7 +58,7 @@ public class DiscoverListViewFragment extends BaseFragment implements AdapterVie
         lvAdapter = new DiscoverLVAdapter(context);
         lvDiscoverListView.setAdapter(lvAdapter);
         netTools = new NetTools();
-        netTools.getDiscoverList(num, new NetListener() {
+        netTools.getNormalList(num, new NetListener() {
             @Override
             public void onSuccessed(String result) {
                 Gson gson = new Gson();
@@ -83,14 +81,12 @@ public class DiscoverListViewFragment extends BaseFragment implements AdapterVie
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String title = listBean.getData().getItems().get(position).getTitle();
         Intent intent = new Intent(context, DiscoverListViewDetailsActivtiy.class);
-        ArrayList<String> urlDatas = new ArrayList<>();
+        ArrayList<ListBean.DataBean.ItemsBean> itemsBeens = new ArrayList<>();
         for (ListBean.DataBean.ItemsBean b :
                 listBean.getData().getItems()) {
-            urlDatas.add(b.getUrl());
+            itemsBeens.add(b);
         }
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("url",urlDatas);
-        intent.putExtras(bundle);
+        intent.putParcelableArrayListExtra("bean",itemsBeens);
         intent.putExtra("position",position);
         intent.putExtra("title",title);
         startActivity(intent);
