@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.dllo.gift.R;
@@ -15,8 +14,6 @@ import com.example.dllo.gift.discover.disbean.ListBean;
 import com.example.dllo.gift.tools.RoundRect;
 import com.squareup.picasso.Picasso;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by dllo on 16/5/21.
@@ -84,14 +81,12 @@ public class DiscoverLVAdapter extends BaseAdapter {
         private final ImageView ivTitleNew;
         private final TextView tvTitleDiscover;
         private ImageView ivShow;
-        private RelativeLayout itemLayout;
         private CheckBox checkBoxLikesCounts;
         public ViewHolder(View view) {
             checkBoxLikesCounts =  (CheckBox)view.findViewById(R.id.checkBox_item_discover);
-            itemLayout = (RelativeLayout) view.findViewById(R.id.item_layout_discover_selection);
             tvTitleDiscover =  (TextView)view.findViewById(R.id.tv_listview_discover);
-            ivTitleNew = (ImageView)view.findViewById(R.id.iv_new_title_listview_discover_selection);
-           ivShow = (ImageView) view.findViewById(R.id.iv_listview_discover_selection);
+            ivTitleNew = (ImageView)view.findViewById(R.id.iv_new_title_listview_discover);
+           ivShow = (ImageView) view.findViewById(R.id.iv_listview_discover);
         }
     }
 

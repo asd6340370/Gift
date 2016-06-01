@@ -1,9 +1,10 @@
-package com.example.dllo.gift;
+package com.example.dllo.gift.raidersdetails;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -14,9 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dllo.gift.LoginActivity;
+import com.example.dllo.gift.R;
 import com.example.dllo.gift.comments.CommentsActivity;
 import com.example.dllo.gift.hot.HotBean;
-import com.example.dllo.gift.tools.SharePopupWindow;
+import com.example.dllo.gift.tools.MyPopupWindow;
 
 /**
  * Created by dllo on 16/5/24.
@@ -28,7 +31,7 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
     private CheckBox checkBoxTitleDetails;
     private ImageView backTitleDetails;
     private TextView tvTitleDetails;
-    private SharePopupWindow sharePopupWindow;
+    private MyPopupWindow popupWindow;
     private ImageView commentsTitleDetails;
     private ImageView shareTitleDetails;
 
@@ -50,7 +53,7 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
         loadWeb();
 
         //初始化popupWindow
-        sharePopupWindow = new SharePopupWindow(this,R.id.iv_title_share_details);
+        popupWindow = new MyPopupWindow(this,R.id.iv_title_share_details);
 
 
     }
@@ -66,6 +69,7 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
         webViewDetails.getSettings().setJavaScriptEnabled(true);
         //优先使用缓存
         webViewDetails.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+
         webViewDetails.loadUrl(url);
         webViewDetails.setWebViewClient(new WebViewClient() {
             @Override
@@ -110,7 +114,7 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
                 startActivity(commentsIntent);
                 break;
             case R.id.iv_title_share_details:
-                sharePopupWindow.showPopupWindow();
+                popupWindow.showSharePopupWindow();
                 break;
         }
     }

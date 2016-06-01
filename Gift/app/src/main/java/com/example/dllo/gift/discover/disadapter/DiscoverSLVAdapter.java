@@ -16,9 +16,6 @@ import com.example.dllo.gift.discover.disbean.ListBean;
 import com.example.dllo.gift.tools.RoundRect;
 import com.squareup.picasso.Picasso;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-
 /**
  * Created by dllo on 16/5/21.
  */
@@ -104,9 +101,9 @@ public class DiscoverSLVAdapter extends BaseAdapter {
         private RelativeLayout itemLayout;
         private CheckBox checkBoxLikesCounts;
         public ViewHolder(View view) {
-            checkBoxLikesCounts =  (CheckBox)view.findViewById(R.id.checkBox_item_discover);
+            checkBoxLikesCounts =  (CheckBox)view.findViewById(R.id.checkBox_item_discover_selection);
             itemLayout = (RelativeLayout) view.findViewById(R.id.item_layout_discover_selection);
-            tvTitleDiscover =  (TextView)view.findViewById(R.id.tv_listview_discover);
+            tvTitleDiscover =  (TextView)view.findViewById(R.id.tv_listview_discover_selection);
             ivTitleNew = (ImageView)view.findViewById(R.id.iv_new_title_listview_discover_selection);
            ivShow = (ImageView) view.findViewById(R.id.iv_listview_discover_selection);
         }

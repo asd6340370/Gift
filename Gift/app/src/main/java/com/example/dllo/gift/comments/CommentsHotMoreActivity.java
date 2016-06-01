@@ -2,6 +2,7 @@ package com.example.dllo.gift.comments;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.VolleyError;
@@ -10,12 +11,13 @@ import com.example.dllo.gift.base.BaseActivity;
 import com.example.dllo.gift.nettools.NetListener;
 import com.example.dllo.gift.nettools.NetTools;
 import com.example.dllo.gift.nettools.URLValues;
+import com.example.dllo.gift.tools.MyPopupWindow;
 import com.google.gson.Gson;
 
 /**
  * Created by dllo on 16/5/31.
  */
-public class CommentsHotMoreActivity extends BaseActivity implements View.OnClickListener {
+public class CommentsHotMoreActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
 
     private ListView listViewHotCommentsMore;
@@ -31,6 +33,7 @@ public class CommentsHotMoreActivity extends BaseActivity implements View.OnClic
         listViewHotCommentsMore = (ListView) findViewById(R.id.listview_hot_comments_details);
         adapter = new CommentsAdapter(this);
         listViewHotCommentsMore.setAdapter(adapter);
+        listViewHotCommentsMore.setOnItemClickListener(this);
 
         Intent intent = getIntent();
         id = intent.getStringExtra("url");
@@ -63,5 +66,11 @@ public class CommentsHotMoreActivity extends BaseActivity implements View.OnClic
                 break;
 
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        MyPopupWindow myPopupWindow = new MyPopupWindow(this,R.id.back_hot_comments_title_details);
+        myPopupWindow.showCommentsSendMessagePopupWindow();
     }
 }

@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.VolleyError;
@@ -12,6 +14,7 @@ import com.example.dllo.gift.R;
 import com.example.dllo.gift.nettools.NetListener;
 import com.example.dllo.gift.nettools.NetTools;
 import com.example.dllo.gift.nettools.URLValues;
+import com.example.dllo.gift.tools.MyPopupWindow;
 import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
@@ -20,28 +23,36 @@ import org.greenrobot.eventbus.Subscribe;
 /**
  * Created by dllo on 16/5/31.
  */
-public class CommentsActivity extends AppCompatActivity implements View.OnClickListener {
+public class CommentsActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private ListView listViewTopCommentsDetails, listViewBottomCommentsDetails;
     private NetTools netTools;
     private CommentsBean commentsTopBean,commentsBottomBean;
     private CommentsAdapter adapterTop, adapterBottom;
     private String id;
+    private MyPopupWindow popupWindow;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
         EventBus.getDefault().register(this);
-        findViewById(R.id.comments_hot_more_comments).setOnClickListener(this);
+
         findViewById(R.id.back_comments_title_details).setOnClickListener(this);
         findViewById(R.id.tv_send_message_comments_details).setOnClickListener(this);
-        listViewTopCommentsDetails = (ListView) findViewById(R.id.listview_top_comments_details);
+
+
+        View view = LayoutInflater.from(this).inflate(R.layout.header_comments,null);
+        view.findViewById(R.id.comments_hot_more_comments).setOnClickListener(this);
+        listViewTopCommentsDetails = (ListView)view.findViewById(R.id.listview_top_comments_details);
+
         listViewBottomCommentsDetails = (ListView) findViewById(R.id.listview_bottom_comments_details);
+        listViewBottomCommentsDetails.addHeaderView(view);
         adapterTop = new CommentsAdapter(this);
         listViewTopCommentsDetails.setAdapter(adapterTop);
         adapterBottom = new CommentsAdapter(this);
         listViewBottomCommentsDetails.setAdapter(adapterBottom);
+        listViewBottomCommentsDetails.setOnItemClickListener(this);
 
 
 
@@ -52,8 +63,8 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
 
         netTools = new NetTools();
         //上部分数据
-        netTools.getDataForEventBus(URLValues.COMMENTS_BEFORE + id + URLValues.COMMENTS_HOT_AFTER + URLValues.COMMENTS_HOT_TOP,
-                commentsTopBean, CommentsBean.class);
+        netTools.getDataForEventBus(URLValues.COMMENTS_BEFORE + id + URLValues.COMMENTS_HOT_AFTER + URLValues.COMMENTS_HOT_TOP
+                , CommentsBean.class);
         //下部分数据
         String url = URLValues.COMMENTS_BEFORE + id + URLValues.COMMENTS_AFTER;
         netTools.getNormalList(url,new NetListener() {
@@ -83,7 +94,9 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
             case R.id.tv_send_message_comments_details:
-                //TODO  需要添加popupWindow 事件
+                 popupWindow = new MyPopupWindow(this,R.id.tv_content_comments);
+                popupWindow.showCommentsSendMessagePopupWindow();
+
                 break;
         }
     }
@@ -97,5 +110,12 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //获得正确行布局位置
+        int index = (int) parent.getAdapter().getItemId(position);
+
     }
 }

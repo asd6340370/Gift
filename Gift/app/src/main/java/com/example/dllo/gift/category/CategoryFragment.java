@@ -7,6 +7,7 @@ import android.widget.RadioButton;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
+import com.example.dllo.gift.category.categoryadapter.CategoryVPAdapter;
 
 import java.util.ArrayList;
 

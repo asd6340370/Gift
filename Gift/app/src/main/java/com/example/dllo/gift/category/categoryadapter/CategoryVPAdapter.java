@@ -1,4 +1,4 @@
-package com.example.dllo.gift.category;
+package com.example.dllo.gift.category.categoryadapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="选礼神器"
-        android:textSize="17sp"
+        android:textSize="15sp"
         android:padding="12dp"
         android:paddingEnd="20dp"
         android:gravity="center_vertical"
@@ -15,6 +15,10 @@
         android:drawableRight="@mipmap/ic_chevron_alternative"
         android:drawablePadding="6dp"
         android:background="@color/wight"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e0e0e0"/>
 
 
 <LinearLayout
@@ -27,6 +31,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:scrollbars="none"
+        android:divider="@null"
         >
 
     </ListView>
@@ -35,7 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
-        android:background="@color/wight"></ListView>
+        android:background="@color/wight"
+        android:divider="@null"></ListView>
 </LinearLayout>
 
 </LinearLayout>

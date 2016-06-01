@@ -1,11 +1,9 @@
-package com.example.dllo.gift;
+package com.example.dllo.gift.raidersdetails;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -14,9 +12,11 @@ import android.webkit.WebViewClient;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.dllo.gift.LoginActivity;
+import com.example.dllo.gift.R;
 import com.example.dllo.gift.comments.CommentsActivity;
 import com.example.dllo.gift.discover.disbean.ListBean;
-import com.example.dllo.gift.tools.SharePopupWindow;
+import com.example.dllo.gift.tools.MyPopupWindow;
 
 import java.util.ArrayList;
 
@@ -31,7 +31,7 @@ public class DiscoverListViewDetailsActivtiy extends AppCompatActivity implement
     private TextView tvTitleShow;
     private ListBean listBean;
     private int position;
-    private SharePopupWindow sharePopupWindow;
+    private MyPopupWindow popupWindow;
     private ArrayList<ListBean.DataBean.ItemsBean> itemsBeens;
     private CheckBox checkBoxLikesDiscoverDetail;
     private TextView tvShareDiscoverDetails, tvCommentsDiscoverDetails;
@@ -68,7 +68,7 @@ public class DiscoverListViewDetailsActivtiy extends AppCompatActivity implement
             loadWebData(url);
         }
         //初始化popupWindow
-        sharePopupWindow = new SharePopupWindow(this, R.id.iv_share_listview_discover_details);
+        popupWindow = new MyPopupWindow(this, R.id.iv_share_listview_discover_details);
     }
 
     //加载WebView网络页面
@@ -82,6 +82,7 @@ public class DiscoverListViewDetailsActivtiy extends AppCompatActivity implement
         webViewDiscoverDetails.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         webViewDiscoverDetails.getSettings().setJavaScriptEnabled(true);
         webViewDiscoverDetails.loadUrl(url);
+
         webViewDiscoverDetails.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -113,7 +114,7 @@ public class DiscoverListViewDetailsActivtiy extends AppCompatActivity implement
                 startActivity(commentsIntent);
                 break;
             case R.id.iv_share_listview_discover_details:
-                sharePopupWindow.showPopupWindow();
+                popupWindow.showSharePopupWindow();
                 break;
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/item_layout_discover_selection"
+    android:id="@+id/item_layout_discover"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/wight"
@@ -12,13 +12,13 @@
     >
 
     <ImageView
-        android:id="@+id/iv_listview_discover_selection"
+        android:id="@+id/iv_listview_discover"
         android:layout_width="match_parent"
         android:layout_height="160dp" />
 
     <ImageView
         android:visibility="gone"
-        android:id="@+id/iv_new_title_listview_discover_selection"
+        android:id="@+id/iv_new_title_listview_discover"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@mipmap/ig_marker_fresh" />

@@ -126,7 +126,7 @@ public class NetTools {
     }
 
     //以下为通用方法
-    public <T> void  getDataForEventBus (String url, T netBean, final Class<T> classOfNetBean){
+    public <T> void  getDataForEventBus (String url, final Class<T> classOfNetBean){
 
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override

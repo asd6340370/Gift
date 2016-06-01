@@ -6,7 +6,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.android.volley.VolleyError;
-import com.example.dllo.gift.DetailsActivity;
+import com.example.dllo.gift.raidersdetails.DetailsActivity;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.nettools.NetListener;
