@@ -13,13 +13,19 @@ import com.example.dllo.gift.category.categorybean.CategoryGiftBean;
 /**
  * Created by dllo on 16/6/1.
  */
-public class CategoryListViewTitleAdapter extends BaseAdapter {
+public class CategoryGiftListViewTitleAdapter extends BaseAdapter {
     private CategoryGiftBean giftBean;
     private int mCheckedPosition = - 1;
 
     public void setmCheckedPosition(int mCheckedPosition) {
         this.mCheckedPosition = mCheckedPosition;
+        notifyDataSetChanged();
     }
+
+
+
+
+
 
     public void setGiftBean(CategoryGiftBean giftBean) {
         this.giftBean = giftBean;
@@ -28,7 +34,7 @@ public class CategoryListViewTitleAdapter extends BaseAdapter {
 
     private Context context;
 
-    public CategoryListViewTitleAdapter(Context context) {
+    public CategoryGiftListViewTitleAdapter(Context context) {
         this.context = context;
     }
 
@@ -58,6 +64,15 @@ public class CategoryListViewTitleAdapter extends BaseAdapter {
             holder = (CategoryListViewHolder) convertView.getTag();
         }
 
+        if (mCheckedPosition == position){
+            holder.tvTitleLeft.setSelected(true);
+            holder.tvTitleLeftIv.setSelected(true);
+        }else {
+            holder.tvTitleLeft.setSelected(false);
+            holder.tvTitleLeftIv.setSelected(false);
+        }
+
+
         holder.tvTitleLeft.setText(giftBean.getData().getCategories().get(position).getName());
 
 
@@ -65,9 +80,12 @@ public class CategoryListViewTitleAdapter extends BaseAdapter {
     }
 
     class CategoryListViewHolder {
+        private final TextView tvTitleLeftIv;
         private TextView tvTitleLeft;
+
         public CategoryListViewHolder (View view) {
             tvTitleLeft = (TextView) view.findViewById(R.id.tv_listview_title_left);
+            tvTitleLeftIv = (TextView) view.findViewById(R.id.tv_listview_title_left_iv);
         }
     }
 }

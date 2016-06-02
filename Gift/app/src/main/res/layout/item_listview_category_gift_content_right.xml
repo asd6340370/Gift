@@ -32,11 +32,11 @@
     </LinearLayout>
 
 
-    <GridView
+    <com.example.dllo.gift.tools.NoScrollGridView
         android:id="@+id/item_gridview_category_gift_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="3"
-        android:scrollbars="none"></GridView>
+        android:scrollbars="none"></com.example.dllo.gift.tools.NoScrollGridView>
 
 </LinearLayout>

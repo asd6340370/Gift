@@ -1,4 +1,4 @@
-package com.example.dllo.gift.raidersdetails;
+package com.example.dllo.gift.details;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +34,7 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
     private MyPopupWindow popupWindow;
     private ImageView commentsTitleDetails;
     private ImageView shareTitleDetails;
+    private String id;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,8 +65,8 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
         Intent intent = getIntent();
         final HotBean.DataBean.ItemsBean.DataItem dataItem = intent.getParcelableExtra("buy");
         url = dataItem.getPurchase_url();
-
-//        Log.d("DetailsActivity", url);
+        id = String.valueOf(dataItem.getId());
+        Log.d("DetailsActivity", url);
         webViewDetails.getSettings().setJavaScriptEnabled(true);
         //优先使用缓存
         webViewDetails.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
@@ -111,6 +112,7 @@ public class DetailsActivity extends AppCompatActivity implements CompoundButton
                 break;
             case R.id.iv_title_comments_details:
                 Intent commentsIntent = new Intent(this,CommentsActivity.class);
+                commentsIntent.putExtra("id",id);
                 startActivity(commentsIntent);
                 break;
             case R.id.iv_title_share_details:

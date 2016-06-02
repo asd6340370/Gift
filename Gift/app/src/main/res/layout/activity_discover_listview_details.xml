@@ -64,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
-        
+
     </WebView>
 
     <LinearLayout
@@ -74,40 +74,40 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:drawablePadding="5dp"
             android:id="@+id/checkBox_listview_discover_detail"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:button="@null"
             android:drawableLeft="@drawable/like_checkbox_listview_discover"
-
+            android:drawablePadding="5dp"
             android:paddingLeft="30dp"
             android:text="123" />
 
         <TextView
-            android:paddingLeft="30dp"
-            android:drawablePadding="5dp"
-            android:gravity="center_vertical"
-            android:text="123"
             android:id="@+id/iv_share_listview_discover_details"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:drawableLeft="@mipmap/ic_action_compact_share"
             android:layout_weight="1"
-            android:src="@mipmap/baichuan_btn_share" />
-
-        <TextView
-            android:paddingLeft="30dp"
+            android:drawableLeft="@mipmap/ic_action_compact_share"
             android:drawablePadding="5dp"
             android:gravity="center_vertical"
-            android:text="123"
+            android:paddingLeft="30dp"
+            android:src="@mipmap/baichuan_btn_share"
+            android:text="123" />
+
+        <TextView
             android:id="@+id/iv_comments_listview_discover_details"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-           android:drawableLeft="@mipmap/ic_action_compact_comment"
             android:layout_weight="1"
-            android:src="@mipmap/baichuan_btn_comments" />
+            android:drawableLeft="@mipmap/ic_action_compact_comment"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            android:src="@mipmap/baichuan_btn_comments"
+            android:text="123" />
 
 
     </LinearLayout>

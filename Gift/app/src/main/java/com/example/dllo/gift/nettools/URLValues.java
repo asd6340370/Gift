@@ -20,8 +20,10 @@ public final class URLValues {
     public static final String COMMENTS_HOT_OTHER = "&dataset=all";
     //分类
     public static final String CATEGORY_GIFT = "http://api.liwushuo.com/v2/item_categories/tree";
-
-
+    //攻略header图片
+    public static final String CATEGORY_RAIDER_HEADER_BANNER = "http://api.liwushuo.com/v2/collections?limit=10&offset=0";
+    //攻略列表
+    public static final String CATEGORY_RAIDER = "http://api.liwushuo.com/v2/channel_groups/all";
 
 
 }

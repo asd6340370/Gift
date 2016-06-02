@@ -68,7 +68,6 @@
             android:layout_below="@id/tv_usertime_comments_ago"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-
             android:lineSpacingMultiplier="1.2"
             android:text="content" />
 

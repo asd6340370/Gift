@@ -23,7 +23,7 @@ public class MyPopupWindow implements View.OnClickListener {
     private int id;
 
 
-    public MyPopupWindow(final Activity activity, int id) {
+    public MyPopupWindow( Activity activity, int id) {
         this.id = id;
         this.activity = activity;
         popupWindow = new PopupWindow(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT) {
@@ -32,9 +32,9 @@ public class MyPopupWindow implements View.OnClickListener {
             public void dismiss() {
                 super.dismiss();
                 // 重写dismiss方法 改回父容器背景透明度
-                WindowManager.LayoutParams params1 = activity.getWindow().getAttributes();
+                WindowManager.LayoutParams params1 = MyPopupWindow.this.activity.getWindow().getAttributes();
                 params1.alpha = 1;
-                activity.getWindow().setAttributes(params1);
+                MyPopupWindow.this.activity.getWindow().setAttributes(params1);
 
             }
 

@@ -7,8 +7,8 @@ import android.widget.ListView;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
-import com.example.dllo.gift.category.categoryadapter.CategoryListViewContentAdapter;
-import com.example.dllo.gift.category.categoryadapter.CategoryListViewTitleAdapter;
+import com.example.dllo.gift.category.categoryadapter.CategoryGiftListViewContentAdapter;
+import com.example.dllo.gift.category.categoryadapter.CategoryGiftListViewTitleAdapter;
 import com.example.dllo.gift.category.categorybean.CategoryGiftBean;
 import com.example.dllo.gift.nettools.NetTools;
 import com.example.dllo.gift.nettools.URLValues;
@@ -21,12 +21,12 @@ import org.greenrobot.eventbus.Subscribe;
  */
 public class CategoryGiftFragment extends BaseFragment{
 
-    private ListView listViewTitle;
-    private CategoryListViewTitleAdapter titleAdapter;
+    private ListView listViewTitleLeft;
+    private CategoryGiftListViewTitleAdapter titleAdapter;
     private NetTools netTools;
     private CategoryGiftBean giftBean;
-    private ListView listViewContent;
-    private CategoryListViewContentAdapter contentAdapter;
+    private ListView listViewContentRight;
+    private CategoryGiftListViewContentAdapter contentAdapter;
 
     @Override
     public int setLayout() {
@@ -35,8 +35,8 @@ public class CategoryGiftFragment extends BaseFragment{
 
     @Override
     public void initView(View view) {
-        listViewTitle = (ListView) view.findViewById(R.id.listView_title_category_gift);
-        listViewContent = (ListView) view.findViewById(R.id.listView_content_category_gift);
+        listViewTitleLeft = (ListView) view.findViewById(R.id.listView_title_category_gift);
+        listViewContentRight = (ListView) view.findViewById(R.id.listView_content_category_gift);
 
 
 
@@ -45,10 +45,11 @@ public class CategoryGiftFragment extends BaseFragment{
     @Override
     public void initData() {
         EventBus.getDefault().register(this);
-        titleAdapter = new CategoryListViewTitleAdapter(context);
-        listViewTitle.setAdapter(titleAdapter);
-        contentAdapter = new CategoryListViewContentAdapter(context);
-        listViewContent.setAdapter(contentAdapter);
+        titleAdapter = new CategoryGiftListViewTitleAdapter(context);
+        listViewTitleLeft.setAdapter(titleAdapter);
+//        listViewTitleLeft.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+        contentAdapter = new CategoryGiftListViewContentAdapter(context);
+        listViewContentRight.setAdapter(contentAdapter);
 
         netTools = new NetTools();
         netTools.getDataForEventBus(URLValues.CATEGORY_GIFT, CategoryGiftBean.class);
@@ -69,21 +70,19 @@ public class CategoryGiftFragment extends BaseFragment{
     }
     //左右两个listview 联动
     public void setListViewLeftRightChange(){
-        listViewTitle.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewTitleLeft.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //传点击位置position到adapter
                 titleAdapter.setmCheckedPosition(position);
                 //设置右侧显示位置与左侧一直
-                listViewContent.setSelection(position);
+                listViewContentRight.setSelection(position);
                 //刷新  重绘控件
                 contentAdapter.notifyDataSetInvalidated();
             }
         });
-
-
-
-        listViewContent.setOnScrollListener(new AbsListView.OnScrollListener() {
+        //右侧联动
+        listViewContentRight.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
 
@@ -93,8 +92,9 @@ public class CategoryGiftFragment extends BaseFragment{
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 if (lastPos != firstVisibleItem){
                     lastPos = firstVisibleItem;
-                    listViewTitle.smoothScrollToPosition(firstVisibleItem);
-
+                    listViewTitleLeft.smoothScrollToPosition(firstVisibleItem);
+                    titleAdapter.setmCheckedPosition(firstVisibleItem);
+//                    contentAdapter.set
                 }
             }
         });

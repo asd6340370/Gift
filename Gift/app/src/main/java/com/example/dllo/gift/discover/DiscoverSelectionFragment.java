@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.example.dllo.gift.raidersdetails.DiscoverListViewDetailsActivtiy;
+import com.example.dllo.gift.details.DiscoverListViewDetailsActivtiy;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.discover.disadapter.DiscoverSLVAdapter;

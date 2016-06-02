@@ -18,8 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".raidersdetails.DetailsActivity"/>
-        <activity android:name=".raidersdetails.DiscoverListViewDetailsActivtiy"/>
+        <activity android:name=".details.DetailsActivity"/>
+        <activity android:name=".details.DiscoverListViewDetailsActivtiy"/>
         <activity android:name=".LoginActivity"/>
         <activity android:name=".comments.CommentsActivity"/>
         <activity android:name=".comments.CommentsHotMoreActivity"/>
