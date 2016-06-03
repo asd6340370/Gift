@@ -7,9 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
-import com.example.dllo.gift.details.DiscoverListViewDetailsActivtiy;
+import com.example.dllo.gift.details.DetailsListViewActivtiy;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.discover.disadapter.DiscoverLVAdapter;
@@ -27,8 +26,7 @@ public class DiscoverListViewFragment extends BaseFragment implements AdapterVie
     private DiscoverLVAdapter lvAdapter;
     private ListView lvDiscoverListView;
     private NetTools netTools;
-    private String  num;
-    private RequestQueue queue;
+    private String url;
     private ListBean listBean;
 
     public static Fragment createListViewFragment (String url) {
@@ -53,17 +51,18 @@ public class DiscoverListViewFragment extends BaseFragment implements AdapterVie
 
     @Override
     public void initData() {
+        //
         Bundle bundle = getArguments();
-        num = bundle.getString("data");
+        url = bundle.getString("data");
+
         lvAdapter = new DiscoverLVAdapter(context);
         lvDiscoverListView.setAdapter(lvAdapter);
         netTools = new NetTools();
-        netTools.getNormalList(num, new NetListener() {
+        netTools.getNormalData(url, new NetListener() {
             @Override
             public void onSuccessed(String result) {
                 Gson gson = new Gson();
                 listBean =  gson.fromJson(result,ListBean.class);
-
                 lvAdapter.setDatas(listBean);
             }
 
@@ -80,15 +79,15 @@ public class DiscoverListViewFragment extends BaseFragment implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String title = listBean.getData().getItems().get(position).getTitle();
-        Intent intent = new Intent(context, DiscoverListViewDetailsActivtiy.class);
-        ArrayList<ListBean.DataBean.ItemsBean> itemsBeens = new ArrayList<>();
+        Intent intent = new Intent(context, DetailsListViewActivtiy.class);
+
+        ArrayList<String> idArray = new ArrayList<>();
         for (ListBean.DataBean.ItemsBean b :
                 listBean.getData().getItems()) {
-            itemsBeens.add(b);
+            idArray.add(String.valueOf(b.getId()));
         }
-        intent.putParcelableArrayListExtra("bean",itemsBeens);
+        intent.putStringArrayListExtra("idArray",idArray);
         intent.putExtra("position",position);
-        intent.putExtra("title",title);
         startActivity(intent);
     }
 }

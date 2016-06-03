@@ -26,9 +26,10 @@ public class DiscoverSVPAdapter extends PagerAdapter {
         this.context = context;
         EventBus.getDefault().register(this);
     }
+
     @Subscribe
-    public void getBanner (SpecialBannerBean specialBannerBean){
-       setDatas(specialBannerBean);
+    public void getBanner(SpecialBannerBean specialBannerBean) {
+        setDatas(specialBannerBean);
     }
 
     public void setDatas(SpecialBannerBean datas) {
@@ -48,21 +49,21 @@ public class DiscoverSVPAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_vp_discover,container,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_vp_discover, container, false);
         container.addView(view);
         ivShow = (ImageView) view.findViewById(R.id.iv_vp_discover);
         String url = datas.getData().getBanners().get(position % datas.getData().getBanners().size()).getImage_url();
-//        Log.d("DiscoverSVPAdapter", url);
         Picasso.with(context).load(url).centerCrop().fit().into(ivShow);
         return view;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-//        container.removeView();
+
     }
 
-    public void unregister(){
+
+    public void unregister() {
         EventBus.getDefault().unregister(this);
     }
 }

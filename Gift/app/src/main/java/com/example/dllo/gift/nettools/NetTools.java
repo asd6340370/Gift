@@ -108,7 +108,7 @@ public class NetTools {
         queue.add(request);
     }
 
-    public void getNormalList(String url, final NetListener listener){
+    public void getNormalData(String url, final NetListener listener){
 
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override

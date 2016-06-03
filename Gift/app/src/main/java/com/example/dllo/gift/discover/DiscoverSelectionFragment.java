@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.example.dllo.gift.details.DiscoverListViewDetailsActivtiy;
+import com.example.dllo.gift.details.DetailsListViewActivtiy;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.discover.disadapter.DiscoverSLVAdapter;
@@ -151,13 +151,14 @@ public class DiscoverSelectionFragment extends BaseFragment implements AdapterVi
         slvAdapter.setDatas(listBean);
 
         ArrayList<ListBean.DataBean.ItemsBean> itemsBeens = new ArrayList<>();
-        ArrayList<String> urlDatas = new ArrayList<>();
+        ArrayList<String> idArray = new ArrayList<>();
+        //遍历创建id集合
         for (ListBean.DataBean.ItemsBean b : listBean.getData().getItems()) {
-            urlDatas.add(b.getUrl());
-            itemsBeens.add(b);
+           idArray.add(String.valueOf(b.getId()));
         }
-        Intent intent = new Intent(context, DiscoverListViewDetailsActivtiy.class);
-        intent.putParcelableArrayListExtra("bean",itemsBeens);
+        //跳转页面并传值 id集合 和 位置信息 position
+        Intent intent = new Intent(context, DetailsListViewActivtiy.class);
+        intent.putStringArrayListExtra("idArray",idArray);
         intent.putExtra("position", index);
         startActivity(intent);
     }
@@ -179,6 +180,7 @@ public class DiscoverSelectionFragment extends BaseFragment implements AdapterVi
     @Override
     public void onDestroy() {
         super.onDestroy();
+        //取消EventBus注册
         svpAdapter.unregister();
         srvAdapter.unregister();
         EventBus.getDefault().unregister(this);

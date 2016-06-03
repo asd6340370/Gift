@@ -6,7 +6,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.android.volley.VolleyError;
-import com.example.dllo.gift.details.DetailsActivity;
+import com.example.dllo.gift.details.DetailsHotActivity;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.nettools.NetListener;
@@ -65,7 +65,7 @@ public class HotFragment extends BaseFragment implements AdapterView.OnItemClick
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
          dataItem = hotBean.getData().getItems().get(position).getData();
-        Intent intent = new Intent(context, DetailsActivity.class);
+        Intent intent = new Intent(context, DetailsHotActivity.class);
         intent.putExtra("buy",dataItem);
         startActivity(intent);
 

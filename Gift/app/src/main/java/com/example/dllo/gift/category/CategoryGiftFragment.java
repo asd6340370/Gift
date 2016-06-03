@@ -47,6 +47,7 @@ public class CategoryGiftFragment extends BaseFragment{
         EventBus.getDefault().register(this);
         titleAdapter = new CategoryGiftListViewTitleAdapter(context);
         listViewTitleLeft.setAdapter(titleAdapter);
+        //设置listview单选模式
 //        listViewTitleLeft.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
         contentAdapter = new CategoryGiftListViewContentAdapter(context);
         listViewContentRight.setAdapter(contentAdapter);
@@ -55,19 +56,14 @@ public class CategoryGiftFragment extends BaseFragment{
         netTools.getDataForEventBus(URLValues.CATEGORY_GIFT, CategoryGiftBean.class);
 
         setListViewLeftRightChange();
-
     }
+    //收到网络解析的数据
     @Subscribe
-    public void getGiftBean(CategoryGiftBean giftBean){
+    public void getGiftBeanData(CategoryGiftBean giftBean){
         titleAdapter.setGiftBean(giftBean);
         contentAdapter.setGiftBean(giftBean);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-    }
     //左右两个listview 联动
     public void setListViewLeftRightChange(){
         listViewTitleLeft.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -85,20 +81,23 @@ public class CategoryGiftFragment extends BaseFragment{
         listViewContentRight.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-
             }
-
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 if (lastPos != firstVisibleItem){
                     lastPos = firstVisibleItem;
                     listViewTitleLeft.smoothScrollToPosition(firstVisibleItem);
                     titleAdapter.setmCheckedPosition(firstVisibleItem);
-//                    contentAdapter.set
                 }
             }
         });
     }
     int lastPos = 0;
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //取消注册
+        EventBus.getDefault().unregister(this);
+    }
 }

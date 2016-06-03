@@ -18,11 +18,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".details.DetailsActivity"/>
-        <activity android:name=".details.DiscoverListViewDetailsActivtiy"/>
+        <activity android:name=".details.DetailsHotActivity"/>
+        <activity android:name=".details.DetailsListViewActivtiy"/>
         <activity android:name=".LoginActivity"/>
         <activity android:name=".comments.CommentsActivity"/>
         <activity android:name=".comments.CommentsHotMoreActivity"/>
+        <activity android:name=".details.DetailsCategoryRaiderActivity"/>
+        <activity android:name=".details.DetailsCategoryGiftActivity"/>
     </application>
 
 </manifest>

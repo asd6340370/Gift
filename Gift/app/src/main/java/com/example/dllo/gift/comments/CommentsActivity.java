@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.example.dllo.gift.R;
@@ -31,6 +33,8 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
     private CommentsAdapter adapterTop, adapterBottom;
     private String id;
     private MyPopupWindow popupWindow;
+    private TextView commentsAll;
+    private Gson gson;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,11 +47,13 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
 
 
         View view = LayoutInflater.from(this).inflate(R.layout.header_comments,null);
+        commentsAll = (TextView) view.findViewById(R.id.tv_comments_all);
         view.findViewById(R.id.comments_hot_more_comments).setOnClickListener(this);
         listViewTopCommentsDetails = (ListView)view.findViewById(R.id.listview_top_comments_details);
 
         listViewBottomCommentsDetails = (ListView) findViewById(R.id.listview_bottom_comments_details);
         listViewBottomCommentsDetails.addHeaderView(view);
+
         adapterTop = new CommentsAdapter(this);
         listViewTopCommentsDetails.setAdapter(adapterTop);
         adapterBottom = new CommentsAdapter(this);
@@ -55,7 +61,7 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
         listViewBottomCommentsDetails.setOnItemClickListener(this);
 
 
-
+        gson = new Gson();
 
 
         Intent intent = getIntent();
@@ -63,14 +69,29 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
 
         netTools = new NetTools();
         //上部分数据
-        netTools.getDataForEventBus(URLValues.COMMENTS_BEFORE + id + URLValues.COMMENTS_HOT_AFTER + URLValues.COMMENTS_HOT_TOP
-                , CommentsBean.class);
-        //下部分数据
-        String url = URLValues.COMMENTS_BEFORE + id + URLValues.COMMENTS_AFTER;
-        netTools.getNormalList(url,new NetListener() {
+        String urlTop = URLValues.COMMENTS_BEFORE + id + URLValues.COMMENTS_HOT_AFTER + URLValues.COMMENTS_HOT_TOP;
+        netTools.getNormalData(urlTop, new NetListener() {
             @Override
             public void onSuccessed(String result) {
-                Gson gson = new Gson();
+                commentsTopBean = gson.fromJson(result,CommentsBean.class);
+                adapterTop.setCommentsBean(commentsTopBean);
+                if (commentsTopBean == null){
+                    commentsAll.setVisibility(View.GONE);
+                }else {
+                    commentsAll.setVisibility(View.VISIBLE);
+                }
+            }
+            @Override
+            public void onFailed(VolleyError error) {
+
+            }
+        });
+
+        //下部分数据
+        String urlBottom = URLValues.COMMENTS_BEFORE + id + URLValues.COMMENTS_AFTER;
+        netTools.getNormalData(urlBottom,new NetListener() {
+            @Override
+            public void onSuccessed(String result) {
                 commentsBottomBean = gson.fromJson(result,CommentsBean.class);
                 adapterBottom.setCommentsBean(commentsBottomBean);
             }

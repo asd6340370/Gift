@@ -18,12 +18,20 @@ public final class URLValues {
     public static final String COMMENTS_AFTER = "/comments?limit=20&offset=0";
     public static final String COMMENTS_HOT_TOP = "&dataset=top";
     public static final String COMMENTS_HOT_OTHER = "&dataset=all";
+    //攻略详情页
+    public static final String DETAILS_RAIDER_BEFORE = "http://api.liwushuo.com/v2/posts/";
+    public static final String DETAILS_RAIDER_AFTER = "?show_baichuan=1";
     //分类
     public static final String CATEGORY_GIFT = "http://api.liwushuo.com/v2/item_categories/tree";
     //攻略header图片
     public static final String CATEGORY_RAIDER_HEADER_BANNER = "http://api.liwushuo.com/v2/collections?limit=10&offset=0";
     //攻略列表
     public static final String CATEGORY_RAIDER = "http://api.liwushuo.com/v2/channel_groups/all";
-
+    //攻略列表圆形图片跳转
+    public static final String CATEGORY_RAIDER_DETAILS_BEFORE = "http://api.liwushuo.com/v2/channels/";
+    public static final String CATEGORY_RAIDER_DETAILS_AFTER =  "/items?limit=20&offset=0";
+    //礼物列表圆形图片跳转
+    public static final String CATEGORY_GIFT_DETAILS_BEFORE = "http://api.liwushuo.com/v2/item_subcategories/";
+    public static final String CATEGORY_GIFT_DETAILS_AFTER =  "/items?limit=20&offset=0";
 
 }

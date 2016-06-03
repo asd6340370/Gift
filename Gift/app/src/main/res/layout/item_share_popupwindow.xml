@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:drawableTop="@mipmap/ic_share_wechat_timeline"
+            android:drawableTop="@drawable/share_selector_wechat_timeline"
             android:drawablePadding="5dp"
             android:text="微信朋友圈"/>
         <Button
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:drawableTop="@mipmap/ic_share_wechat"
+            android:drawableTop="@drawable/share_selector_wechat"
             android:drawablePadding="5dp"
             android:text="微信好友"/>
         <Button
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:drawableTop="@mipmap/ic_share_sina_weibo"
+            android:drawableTop="@drawable/share_selector_sina"
             android:drawablePadding="5dp"
             android:text="微信新浪微博"/>
 
@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:drawableTop="@mipmap/ic_share_tencent_qzone"
+            android:drawableTop="@drawable/share_selector_qqzone"
             android:drawablePadding="5dp"
             android:text="QQ空间"/>
         <Button
@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:drawableTop="@mipmap/ic_share_tencent_qq"
+            android:drawableTop="@drawable/share_selector_qq"
             android:drawablePadding="5dp"
             android:text="QQ好友"/>
         <Button
@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:drawableTop="@mipmap/ic_share_hyperlink"
+            android:drawableTop="@drawable/share_selector_hyperlink"
             android:drawablePadding="5dp"
             android:text="复制链接"/>
     </LinearLayout>

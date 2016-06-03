@@ -23,7 +23,6 @@ public class DiscoverLVAdapter extends BaseAdapter {
     private Context context;
 
 
-
     public DiscoverLVAdapter(Context context) {
         this.context = context;
 
@@ -41,7 +40,7 @@ public class DiscoverLVAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return datas == null ? null :datas.getData().getItems().get(position);
+        return datas == null ? null : datas.getData().getItems().get(position);
     }
 
     @Override
@@ -56,12 +55,12 @@ public class DiscoverLVAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_listview_discover, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
-        }else{
-           viewHolder = (ViewHolder) convertView.getTag();
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         Picasso.with(context).load(datas.getData().getItems().get(position).getCover_image_url())
-        .transform(new RoundRect(20)).centerCrop().fit().into(viewHolder.ivShow);
+                .transform(new RoundRect(20)).centerCrop().fit().into(viewHolder.ivShow);
 
         viewHolder.tvTitleDiscover.setText(datas.getData().getItems().get(position).getTitle());
         viewHolder.checkBoxLikesCounts.setText(datas.getData().getItems().get(position).getLikes_count() + "");
@@ -78,15 +77,15 @@ public class DiscoverLVAdapter extends BaseAdapter {
 
 
     class ViewHolder {
-        private final ImageView ivTitleNew;
-        private final TextView tvTitleDiscover;
+
+        private TextView tvTitleDiscover;
         private ImageView ivShow;
         private CheckBox checkBoxLikesCounts;
+
         public ViewHolder(View view) {
-            checkBoxLikesCounts =  (CheckBox)view.findViewById(R.id.checkBox_item_discover);
-            tvTitleDiscover =  (TextView)view.findViewById(R.id.tv_listview_discover);
-            ivTitleNew = (ImageView)view.findViewById(R.id.iv_new_title_listview_discover);
-           ivShow = (ImageView) view.findViewById(R.id.iv_listview_discover);
+            checkBoxLikesCounts = (CheckBox) view.findViewById(R.id.checkBox_item_discover);
+            tvTitleDiscover = (TextView) view.findViewById(R.id.tv_listview_discover);
+            ivShow = (ImageView) view.findViewById(R.id.iv_listview_discover);
         }
     }
 
