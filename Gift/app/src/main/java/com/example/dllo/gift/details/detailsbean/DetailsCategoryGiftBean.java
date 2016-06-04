@@ -1,11 +1,11 @@
-package com.example.dllo.gift.details;
+package com.example.dllo.gift.details.detailsbean;
 
 import java.util.List;
 
 /**
  * Created by dllo on 16/6/3.
  */
-public class DetailsGiftBean {
+public class DetailsCategoryGiftBean {
 
     /**
      * code : 200

@@ -1,4 +1,4 @@
-package com.example.dllo.gift.details;
+package com.example.dllo.gift.details.detailsbean;
 
 import com.google.gson.annotations.SerializedName;
 

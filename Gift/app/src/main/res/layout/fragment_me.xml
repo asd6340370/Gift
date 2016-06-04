@@ -40,7 +40,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:text="未登录"
-                    android:textColor="@color/wight" />
+                    android:textColor="@color/white" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -48,14 +48,14 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:text="积分: "
-                    android:textColor="@color/wight" />
+                    android:textColor="@color/white" />
             </RelativeLayout>
 
             <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@color/wight"
+                android:background="@color/white"
                 android:orientation="horizontal">
 
                 <TextView
@@ -100,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:orientation="horizontal"
-                android:background="@color/wight">
+                android:background="@color/white">
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"

@@ -63,7 +63,7 @@ public class DetailsCategoryRaiderActivity extends BaseActivity implements View.
                     idArray.add(String.valueOf(b.getId()));
                 }
                 //跳转传值
-                detailsIntent = new Intent(DetailsCategoryRaiderActivity.this, DetailsListViewActivtiy.class);
+                detailsIntent = new Intent(DetailsCategoryRaiderActivity.this, DetailsRaidActivtiy.class);
                 detailsIntent.putStringArrayListExtra("idArray", idArray);
             }
 

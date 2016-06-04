@@ -21,6 +21,12 @@ public class MyPopupWindow implements View.OnClickListener {
 
     private Activity activity;
     private int id;
+    public MyPopupWindow(Activity activity,int id ,int v){
+        this.id = id;
+        this.activity = activity;
+        popupWindow = new PopupWindow(400,WindowManager.LayoutParams.WRAP_CONTENT);
+
+    }
 
 
     public MyPopupWindow( Activity activity, int id) {
@@ -35,11 +41,27 @@ public class MyPopupWindow implements View.OnClickListener {
                 WindowManager.LayoutParams params1 = MyPopupWindow.this.activity.getWindow().getAttributes();
                 params1.alpha = 1;
                 MyPopupWindow.this.activity.getWindow().setAttributes(params1);
-
             }
-
         };
     }
+    public void  showMenuSortPopupWindow(){
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_popupwindow_menu_sort,null);
+        view.findViewById(R.id.tv_normal_menu_sort_popupwindow).setOnClickListener(this);
+        view.findViewById(R.id.iv_normal_menu_sort_popupwindow).setOnClickListener(this);
+        view.findViewById(R.id.tv_hot_menu_sort_popupwindow).setOnClickListener(this);
+        view.findViewById(R.id.iv_hot_menu_sort_popupwindow).setOnClickListener(this);
+        view.findViewById(R.id.tv_downtotop_menu_sort_menu_sort_popupwindow).setOnClickListener(this);
+        view.findViewById(R.id.iv_downtotop_menu_sort_menu_sort_popupwindow).setOnClickListener(this);
+        view.findViewById(R.id.tv_toptodown_menu_sort_menu_sort_popupwindow).setOnClickListener(this);
+        view.findViewById(R.id.iv_toptodown_menu_sort_menu_sort_popupwindow).setOnClickListener(this);
+        popupWindow.setContentView(view);
+        popupWindow.setFocusable(true);
+        ColorDrawable drawable = new ColorDrawable(0x00000000);
+        popupWindow.setBackgroundDrawable(drawable);
+        popupWindow.showAsDropDown(activity.findViewById(id));
+    }
+
+
     public void showCommentsSendMessagePopupWindow(){
 
        View view  = LayoutInflater.from(activity).inflate(R.layout.item_comments_popupwindow,null);
@@ -103,6 +125,7 @@ public class MyPopupWindow implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            //showComments
             case R.id.share_wechat_timeline_popup:
                 Toast.makeText(activity, "tu一下", Toast.LENGTH_SHORT).show();
                 break;
@@ -124,16 +147,37 @@ public class MyPopupWindow implements View.OnClickListener {
             case R.id.share_cancle_popup:
                 popupWindow.dismiss();
                 break;
-
+            //showShare
             case R.id.tv_cancel_comments_popupwindow:
                 popupWindow.dismiss();
                 break;
             case R.id.tv_send_comments_popupwindow:
                 popupWindow.dismiss();
                 break;
+            //showMenuSort
+            case R.id.tv_normal_menu_sort_popupwindow:
+            break;
+            case R.id.tv_hot_menu_sort_popupwindow:
+                break;
+            case R.id.tv_downtotop_menu_sort_menu_sort_popupwindow:
+                break;
+            case R.id.tv_toptodown_menu_sort_menu_sort_popupwindow:
+                break;
         }
     }
+    public interface SortOnClickListener{
+        void getHotUrl();
+        void getDefaultUrl();
+        void getPriceHighToLow();
+        void getPriceLowToHigh();
+
+    }
 }
+
+
+
+
+
 
 
 

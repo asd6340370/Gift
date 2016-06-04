@@ -55,12 +55,15 @@ public class CommentsAdapter extends BaseAdapter {
         } else {
             holder = (MyViewHolder) convertView.getTag();
         }
+        if (position == commentsBean.getData().getComments().size() - 1) {
+            holder.bottomLine.setVisibility(View.GONE);
+        }
 
 
         if (!commentsBean.getData().getComments().get(position).getUser().getAvatar_url().trim().equals("")) {
             Picasso.with(context).load(commentsBean.getData().getComments().get(position).getUser().getAvatar_url())
                     .transform(new Circle()).centerCrop().fit().error(R.mipmap.me_avatar_boy).into(holder.ivUserIcon);
-        }else {
+        } else {
             holder.ivUserIcon.setImageResource(R.mipmap.me_avatar_boy);
         }
         holder.tvUserName.setText(commentsBean.getData().getComments().get(position).getUser().getNickname());
@@ -73,14 +76,16 @@ public class CommentsAdapter extends BaseAdapter {
 
     class MyViewHolder {
 
-        private final TextView tvUserTime;
+        private TextView tvUserTime;
         private ImageView ivUserIcon;
         private TextView tvUserName;
         private TextView tvUserTimeAgo;
         private CheckBox checkBoxUserLike;
         private TextView tvUserContent;
+        private TextView bottomLine;
 
         public MyViewHolder(View view) {
+            bottomLine = (TextView)view.findViewById(R.id.tv_bottom_line_comments);
             ivUserIcon = (ImageView) view.findViewById(R.id.iv_icon_user_comments);
             tvUserName = (TextView) view.findViewById(R.id.tv_username_comments);
             tvUserTimeAgo = (TextView) view.findViewById(R.id.tv_usertime_comments_ago);

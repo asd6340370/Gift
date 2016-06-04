@@ -1,6 +1,7 @@
 package com.example.dllo.gift.discover;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -12,15 +13,17 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.example.dllo.gift.details.DetailsListViewActivtiy;
+import com.example.dllo.gift.details.DetailsRaidActivtiy;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
+import com.example.dllo.gift.details.DetailsSpecialActivity;
 import com.example.dllo.gift.discover.disadapter.DiscoverSLVAdapter;
 import com.example.dllo.gift.discover.disadapter.DiscoverSRVAdapter;
 import com.example.dllo.gift.discover.disadapter.DiscoverSVPAdapter;
 import com.example.dllo.gift.discover.disbean.ListBean;
 
 import com.example.dllo.gift.nettools.NetTools;
+import com.example.dllo.gift.tools.RecyclerOnClickListener;
 
 
 import org.greenrobot.eventbus.EventBus;
@@ -93,8 +96,26 @@ public class DiscoverSelectionFragment extends BaseFragment implements AdapterVi
         LinearLayoutManager manager = new LinearLayoutManager(context);
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         rvDiscoverSelection.setLayoutManager(manager);
-
-
+        srvAdapter.setRecyclerOnClickListener(new RecyclerOnClickListener() {
+            @Override
+            public void onClick(int position) {
+                switch (position){
+                    case 1 :
+                        break;
+                    case 2 :
+                        break;
+                    case 3:
+                        break;
+                    default:
+                    String url = srvAdapter.getDatas().getData().getSecondary_banners().get(position).getTarget_url();
+                    String urlId = Uri.parse(url).getQueryParameter("topic_id");
+                    Intent intent = new Intent(context, DetailsSpecialActivity.class);
+                    intent.putExtra("urlId",urlId);
+                    startActivity(intent);
+                        break;
+                }
+            }
+        });
     }
 
     @Subscribe
@@ -154,11 +175,11 @@ public class DiscoverSelectionFragment extends BaseFragment implements AdapterVi
         ArrayList<String> idArray = new ArrayList<>();
         //遍历创建id集合
         for (ListBean.DataBean.ItemsBean b : listBean.getData().getItems()) {
-           idArray.add(String.valueOf(b.getId()));
+            idArray.add(String.valueOf(b.getId()));
         }
         //跳转页面并传值 id集合 和 位置信息 position
-        Intent intent = new Intent(context, DetailsListViewActivtiy.class);
-        intent.putStringArrayListExtra("idArray",idArray);
+        Intent intent = new Intent(context, DetailsRaidActivtiy.class);
+        intent.putStringArrayListExtra("idArray", idArray);
         intent.putExtra("position", index);
         startActivity(intent);
     }

@@ -14,7 +14,7 @@
         android:drawableLeft="@mipmap/gift_category_guide"
         android:drawableRight="@mipmap/ic_chevron_alternative"
         android:drawablePadding="6dp"
-        android:background="@color/wight"/>
+        android:background="@color/white"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
-        android:background="@color/wight"
+        android:background="@color/white"
         android:divider="@null"></ListView>
 </LinearLayout>
 

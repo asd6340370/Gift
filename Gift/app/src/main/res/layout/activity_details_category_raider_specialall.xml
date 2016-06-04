@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
 
         android:layout_width="match_parent"
@@ -11,31 +9,29 @@
         android:background="@color/title_color_red">
 
         <ImageView
-            android:id="@+id/back_hot_comments_title_details"
+            android:id="@+id/back_details_category_raider_specialall_title"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:padding="15dp"
             android:src="@mipmap/ic_action_back" />
 
-        <TextView
+        <ImageView
+            android:src="@mipmap/logo_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:ellipsize="end"
             android:lines="1"
-            android:maxWidth="150dp"
-            android:text="热门评论"
+            android:text="评论"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </RelativeLayout>
-
-    <ListView
-        android:id="@+id/listview_hot_comments_details"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:divider="@null"></ListView>
-
+<ListView
+    android:id="@+id/listview_details_category_raider_specialall"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:divider="@null"
+   ></ListView>
 
 </LinearLayout>

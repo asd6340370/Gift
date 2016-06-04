@@ -1,4 +1,4 @@
-package com.example.dllo.gift.hot;
+package com.example.dllo.gift.details.detailsadapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,21 +9,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.gift.R;
+import com.example.dllo.gift.details.detailsbean.DetailsCategoryGiftBean;
 import com.squareup.picasso.Picasso;
 
 /**
  * Created by dllo on 16/5/19.
  */
-public class HotAdapter extends BaseAdapter {
-    private HotBean datas;
+public class DetailsCategoryGiftGVAdapter extends BaseAdapter {
+    private DetailsCategoryGiftBean datas;
     private Context context;
 
-    public void setDatas(HotBean datas) {
+    public void setDatas(DetailsCategoryGiftBean datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }
 
-    public HotAdapter(Context context) {
+    public DetailsCategoryGiftGVAdapter(Context context) {
         this.context = context;
     }
 
@@ -53,12 +54,12 @@ public class HotAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         //毕加索解析图片
-        Picasso.with(context).load(datas.getData().getItems().get(position).getData().getCover_image_url())
+        Picasso.with(context).load(datas.getData().getItems().get(position).getCover_image_url())
               .centerCrop().fit().into(viewHolder.ivShow);
 
-        viewHolder.tvTitle.setText(datas.getData().getItems().get(position).getData().getName());
-        viewHolder.tvPrice.setText(datas.getData().getItems().get(position).getData().getPrice());
-        viewHolder.tvLikes.setText(datas.getData().getItems().get(position).getData().getFavorites_count()+"");
+        viewHolder.tvTitle.setText(datas.getData().getItems().get(position).getName());
+        viewHolder.tvPrice.setText(datas.getData().getItems().get(position).getPrice());
+        viewHolder.tvLikes.setText(String.valueOf(datas.getData().getItems().get(position).getFavorites_count()));
 
 
         return convertView;

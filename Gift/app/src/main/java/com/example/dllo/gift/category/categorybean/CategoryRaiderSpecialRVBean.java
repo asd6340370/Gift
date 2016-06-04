@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by dllo on 16/6/2.
  */
-public class CategoryRaiderHeaderRVBean {
+public class CategoryRaiderSpecialRVBean {
 
     /**
      * code : 200

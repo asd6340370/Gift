@@ -13,7 +13,7 @@
         android:id="@+id/comments_hot_more_comments"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/wight"
+        android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 

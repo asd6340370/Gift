@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/wight">
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/close_login"
@@ -67,7 +67,7 @@
         android:background="@drawable/shap_login"
         android:gravity="center"
         android:text="@string/login"
-        android:textColor="@color/wight"
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
     <TextView

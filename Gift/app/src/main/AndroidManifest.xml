@@ -18,13 +18,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".details.DetailsHotActivity"/>
-        <activity android:name=".details.DetailsListViewActivtiy"/>
+        <activity android:name=".details.DetailsPurchaseActivity"/>
+        <activity android:name=".details.DetailsRaidActivtiy"/>
         <activity android:name=".LoginActivity"/>
         <activity android:name=".comments.CommentsActivity"/>
         <activity android:name=".comments.CommentsHotMoreActivity"/>
         <activity android:name=".details.DetailsCategoryRaiderActivity"/>
         <activity android:name=".details.DetailsCategoryGiftActivity"/>
+        <activity android:name=".details.DetailsCategoryRaiderSpecialAllActivity"/>
+        <activity android:name=".details.DetailsSpecialActivity"/>
     </application>
 
 </manifest>

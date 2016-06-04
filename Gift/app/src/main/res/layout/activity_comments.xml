@@ -27,7 +27,7 @@
             android:lines="1"
             android:maxWidth="150dp"
             android:text="评论"
-            android:textColor="@color/wight"
+            android:textColor="@color/white"
             android:textSize="20sp" />
     </RelativeLayout>
 

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -24,22 +23,23 @@ import com.example.dllo.gift.tools.MyPopupWindow;
 /**
  * Created by dllo on 16/5/24.
  */
-public class DetailsHotActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+public class DetailsPurchaseActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
     private WebView webViewDetails;
-    private String url;
     private CheckBox checkBoxTitleDetails;
     private ImageView backTitleDetails;
     private TextView tvTitleDetails;
     private MyPopupWindow popupWindow;
     private ImageView commentsTitleDetails;
     private ImageView shareTitleDetails;
-    private String id;
+    private HotBean.DataBean.ItemsBean.DataItem dataItem;
+    private String urlId;
+    private String titleName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details);
+        setContentView(R.layout.activity_details_hot);
         webViewDetails = (WebView) findViewById(R.id.webView_details_activity);
         checkBoxTitleDetails = (CheckBox) findViewById(R.id.checkBox_title_detail);
         backTitleDetails = (ImageView) findViewById(R.id.back_title_hot_details);
@@ -51,33 +51,37 @@ public class DetailsHotActivity extends AppCompatActivity implements CompoundBut
         checkBoxTitleDetails.setOnCheckedChangeListener(this);
         checkBoxTitleDetails.setOnClickListener(this);
         backTitleDetails.setOnClickListener(this);
-        loadWeb();
+
 
         //初始化popupWindow
-        popupWindow = new MyPopupWindow(this,R.id.iv_title_share_details);
+        popupWindow = new MyPopupWindow(this, R.id.iv_title_share_details);
 
-
+        //接收页面跳转传来的数据
+        Intent intent = getIntent();
+//        dataItem = intent.getParcelableExtra("buy");
+        String purchaseUrl = intent.getStringExtra("purchaseUrl");
+        urlId = intent.getStringExtra("urlId");
+        titleName = intent.getStringExtra("titleName");
+        loadWeb(purchaseUrl);
     }
 
     //加载web数据
-    private void loadWeb() {
-        //接收HotFragment传来的数据
-        Intent intent = getIntent();
-        final HotBean.DataBean.ItemsBean.DataItem dataItem = intent.getParcelableExtra("buy");
-        url = dataItem.getPurchase_url();
-        id = String.valueOf(dataItem.getId());
+    private void loadWeb(String purchaseUrl) {
+
+//        url = dataItem.getPurchase_url();
+//        id = String.valueOf(dataItem.getId());
 //        Log.d("DetailsActivity!!!!!!", dataItem.getId()+"");
 //        Log.d("DetailsActivity", url);
         webViewDetails.getSettings().setJavaScriptEnabled(true);
         //优先使用缓存
         webViewDetails.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 
-        webViewDetails.loadUrl(url);
+        webViewDetails.loadUrl(purchaseUrl);
         webViewDetails.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
-                tvTitleDetails.setText(dataItem.getName());
+                tvTitleDetails.setText(titleName);
                 return true;
 
 //                if( url.startsWith("http:") || url.startsWith("https:") ) {
@@ -112,8 +116,8 @@ public class DetailsHotActivity extends AppCompatActivity implements CompoundBut
                 startActivity(intent);
                 break;
             case R.id.iv_title_comments_details:
-                Intent commentsIntent = new Intent(this,CommentsActivity.class);
-                commentsIntent.putExtra("id",id);
+                Intent commentsIntent = new Intent(this, CommentsActivity.class);
+                commentsIntent.putExtra("id", urlId);
                 //TODO 接口有问题
                 startActivity(commentsIntent);
                 break;

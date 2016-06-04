@@ -25,7 +25,7 @@
             android:lines="1"
             android:maxWidth="150dp"
             android:text="test"
-            android:textColor="@color/wight"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <ImageView
@@ -34,16 +34,20 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:padding="15dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="10dp"
+            android:layout_marginBottom="10dp"
             android:src="@mipmap/ic_menu_sort" />
     </RelativeLayout>
     <GridView
         android:id="@+id/gridView_details_category_gift"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:horizontalSpacing="8dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:horizontalSpacing="6dp"
         android:numColumns="2"
         android:scrollbars="none"></GridView>
 

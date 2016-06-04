@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -16,8 +15,8 @@ import android.widget.TextView;
 import com.example.dllo.gift.LoginActivity;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.comments.CommentsActivity;
+import com.example.dllo.gift.details.detailsbean.DetailsRaiderBean;
 import com.example.dllo.gift.discover.disbean.ListBean;
-import com.example.dllo.gift.nettools.NetBean;
 import com.example.dllo.gift.nettools.NetTools;
 import com.example.dllo.gift.nettools.URLValues;
 import com.example.dllo.gift.tools.MyPopupWindow;
@@ -30,7 +29,7 @@ import java.util.ArrayList;
 /**
  * Created by dllo on 16/5/28.
  */
-public class DetailsListViewActivtiy extends AppCompatActivity implements View.OnClickListener {
+public class DetailsRaidActivtiy extends AppCompatActivity implements View.OnClickListener {
 
 
     private WebView webViewDiscoverDetails;
@@ -82,6 +81,7 @@ public class DetailsListViewActivtiy extends AppCompatActivity implements View.O
     //收到网络解析数据后 进行设置
     @Subscribe
     public void getDetailsRaiderData(DetailsRaiderBean bean) {
+        this.raiderBean = bean;
         checkBoxLikesDiscoverDetail.setText(String.valueOf(bean.getData().getLikes_count()));
         tvShareDiscoverDetails.setText(String.valueOf(bean.getData().getShares_count()));
         tvCommentsDiscoverDetails.setText(String.valueOf(bean.getData().getComments_count()));
@@ -131,18 +131,24 @@ public class DetailsListViewActivtiy extends AppCompatActivity implements View.O
                 break;
             //喜欢
             case R.id.checkBox_listview_discover_detail:
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
+                if (raiderBean != null) {
+                    Intent intent = new Intent(this, LoginActivity.class);
+                    startActivity(intent);
+                }
                 break;
             //评论
             case R.id.iv_comments_listview_discover_details:
-                Intent commentsIntent = new Intent(this, CommentsActivity.class);
-                commentsIntent.putExtra("id", id);
-                startActivity(commentsIntent);
+                if (raiderBean != null){
+                    Intent commentsIntent = new Intent(this, CommentsActivity.class);
+                    commentsIntent.putExtra("id", id);
+                    startActivity(commentsIntent);
+                }
                 break;
-            //分享
+                //分享
             case R.id.iv_share_listview_discover_details:
-                popupWindow.showSharePopupWindow();
+                if (raiderBean != null) {
+                    popupWindow.showSharePopupWindow();
+                }
                 break;
 
 

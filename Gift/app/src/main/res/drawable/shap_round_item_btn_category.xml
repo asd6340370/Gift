@@ -6,6 +6,6 @@
         android:bottomRightRadius="0dp"/>
 
     <stroke android:dashWidth="1dp"
-        android:color="@color/wight"/>
+        android:color="@color/white"/>
     <solid android:color="@color/title_color_red"/>
 </shape>

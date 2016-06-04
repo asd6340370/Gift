@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.VolleyError;
-import com.example.dllo.gift.details.DetailsListViewActivtiy;
+import com.example.dllo.gift.details.DetailsRaidActivtiy;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.discover.disadapter.DiscoverLVAdapter;
@@ -79,7 +79,7 @@ public class DiscoverListViewFragment extends BaseFragment implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String title = listBean.getData().getItems().get(position).getTitle();
-        Intent intent = new Intent(context, DetailsListViewActivtiy.class);
+        Intent intent = new Intent(context, DetailsRaidActivtiy.class);
 
         ArrayList<String> idArray = new ArrayList<>();
         for (ListBean.DataBean.ItemsBean b :

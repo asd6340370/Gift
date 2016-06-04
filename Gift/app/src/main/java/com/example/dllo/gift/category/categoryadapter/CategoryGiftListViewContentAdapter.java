@@ -75,7 +75,7 @@ public class CategoryGiftListViewContentAdapter extends BaseAdapter  {
                 String urlId = String.valueOf(giftBean.getData().getCategories().get(holder.pos).getSubcategories().get(position).getId());
                 String titleName = giftBean.getData().getCategories().get(holder.pos).getSubcategories().get(position).getName();
                 Intent intent = new Intent(context, DetailsCategoryGiftActivity.class);
-                intent.putExtra("id",urlId);
+                intent.putExtra("urlId",urlId);
                 intent.putExtra("titleName",titleName);
                 context.startActivity(intent);
             }

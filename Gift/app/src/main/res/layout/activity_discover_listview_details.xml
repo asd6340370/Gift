@@ -27,7 +27,7 @@
             android:lines="1"
             android:maxWidth="150dp"
             android:text="攻略详情"
-            android:textColor="@color/wight"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <!--<ImageView-->
@@ -70,7 +70,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/wight"
+        android:background="@color/white"
         android:orientation="horizontal">
 
         <CheckBox
@@ -83,7 +83,8 @@
             android:drawableLeft="@drawable/like_checkbox_listview_discover"
             android:drawablePadding="5dp"
             android:paddingLeft="30dp"
-            android:text="123" />
+            android:text="123"
+            android:textColor="#757575"/>
 
         <TextView
             android:id="@+id/iv_share_listview_discover_details"

@@ -6,7 +6,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.android.volley.VolleyError;
-import com.example.dllo.gift.details.DetailsHotActivity;
+import com.example.dllo.gift.details.DetailsPurchaseActivity;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.nettools.NetListener;
@@ -38,7 +38,7 @@ public class HotFragment extends BaseFragment implements AdapterView.OnItemClick
     public void initData() {
 
 
-   final HotAdapter adapter = new HotAdapter(context);
+        final HotAdapter adapter = new HotAdapter(context);
         gridViewHot.setAdapter(adapter);
 
         NetTools netTools = new NetTools();
@@ -46,8 +46,10 @@ public class HotFragment extends BaseFragment implements AdapterView.OnItemClick
             @Override
             public void onSuccessed(String result) {
                 Gson gson = new Gson();
-                hotBean = gson.fromJson(result,HotBean.class);
+                hotBean = gson.fromJson(result, HotBean.class);
                 adapter.setDatas(hotBean);
+
+
             }
 
             @Override
@@ -57,20 +59,21 @@ public class HotFragment extends BaseFragment implements AdapterView.OnItemClick
         });
 
 
-
-
-
     }
+
     //GridView 行布局item点击事件
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-         dataItem = hotBean.getData().getItems().get(position).getData();
-        Intent intent = new Intent(context, DetailsHotActivity.class);
-        intent.putExtra("buy",dataItem);
+        dataItem = hotBean.getData().getItems().get(position).getData();
+        String purchaseUrl = hotBean.getData().getItems().get(position).getData().getPurchase_url();
+        String urlId = String.valueOf(hotBean.getData().getItems().get(position).getData().getId());
+        String titleName = hotBean.getData().getItems().get(position).getData().getName();
+        Intent intent = new Intent(context, DetailsPurchaseActivity.class);
+//        intent.putExtra("buy",dataItem);
+        intent.putExtra("purchaseUrl",purchaseUrl);
+        intent.putExtra("urlId",urlId);
+        intent.putExtra("titleName",titleName);
         startActivity(intent);
-
-
-
 
 
     }

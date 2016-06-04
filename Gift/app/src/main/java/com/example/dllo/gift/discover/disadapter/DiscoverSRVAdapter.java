@@ -6,10 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.discover.disbean.SpecialListHeaderBean;
+import com.example.dllo.gift.tools.RecyclerOnClickListener;
 import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
@@ -21,6 +21,11 @@ import org.greenrobot.eventbus.Subscribe;
 public class DiscoverSRVAdapter extends RecyclerView.Adapter<DiscoverSRVAdapter.MyViewHolder> {
     private SpecialListHeaderBean datas;
     private Context context;
+    private RecyclerOnClickListener recyclerOnClickListener;
+
+    public void setRecyclerOnClickListener(RecyclerOnClickListener recyclerOnClickListener) {
+        this.recyclerOnClickListener = recyclerOnClickListener;
+    }
 
     public DiscoverSRVAdapter(Context context) {
         this.context = context;
@@ -29,6 +34,10 @@ public class DiscoverSRVAdapter extends RecyclerView.Adapter<DiscoverSRVAdapter.
     @Subscribe
     public void getSpecialList (SpecialListHeaderBean listBean){
         setDatas(listBean);
+    }
+
+    public SpecialListHeaderBean getDatas() {
+        return datas;
     }
 
     public void setDatas(SpecialListHeaderBean datas) {
@@ -47,9 +56,15 @@ public class DiscoverSRVAdapter extends RecyclerView.Adapter<DiscoverSRVAdapter.
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
     String url = datas.getData().getSecondary_banners().get(position).getImage_url();
         Picasso.with(context).load(url).centerCrop().fit().into(holder.ivShow);
+        holder.ivShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerOnClickListener.onClick(position);
+            }
+        });
 
     }
 

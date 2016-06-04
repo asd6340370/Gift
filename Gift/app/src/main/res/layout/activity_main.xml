@@ -20,7 +20,7 @@
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty_dp"
-        android:background="@color/wight"
+        android:background="@color/white"
         android:orientation="horizontal"
         android:weightSum="4">
 

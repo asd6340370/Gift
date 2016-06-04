@@ -33,7 +33,7 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
     private CommentsAdapter adapterTop, adapterBottom;
     private String id;
     private MyPopupWindow popupWindow;
-    private TextView commentsAll;
+    private LinearLayout commentsAll;
     private Gson gson;
 
     @Override
@@ -47,8 +47,8 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
 
 
         View view = LayoutInflater.from(this).inflate(R.layout.header_comments,null);
-        commentsAll = (TextView) view.findViewById(R.id.tv_comments_all);
-        view.findViewById(R.id.comments_hot_more_comments).setOnClickListener(this);
+        commentsAll = (LinearLayout) view.findViewById(R.id.comments_hot_more_comments);
+        commentsAll.setOnClickListener(this);
         listViewTopCommentsDetails = (ListView)view.findViewById(R.id.listview_top_comments_details);
 
         listViewBottomCommentsDetails = (ListView) findViewById(R.id.listview_bottom_comments_details);
@@ -75,10 +75,10 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
             public void onSuccessed(String result) {
                 commentsTopBean = gson.fromJson(result,CommentsBean.class);
                 adapterTop.setCommentsBean(commentsTopBean);
-                if (commentsTopBean == null){
+                if (commentsTopBean.getData().getComments().size() == 0){
                     commentsAll.setVisibility(View.GONE);
                 }else {
-                    commentsAll.setVisibility(View.VISIBLE);
+//                    commentsAll.setVisibility(View.VISIBLE);
                 }
             }
             @Override

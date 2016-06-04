@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.dllo.gift.R;
-import com.example.dllo.gift.category.categorybean.CategoryRaiderHeaderRVBean;
+import com.example.dllo.gift.tools.RecyclerOnClickListener;
+import com.example.dllo.gift.category.categorybean.CategoryRaiderSpecialRVBean;
 import com.example.dllo.gift.tools.RoundRect;
 import com.squareup.picasso.Picasso;
 
@@ -18,20 +19,29 @@ import org.greenrobot.eventbus.Subscribe;
 /**
  * Created by dllo on 16/6/2.
  */
-public class CategoryRaiderHeaderRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRaiderHeaderRecyclerViewAdapter.HeaderRecycleViewHolder> {
-    private CategoryRaiderHeaderRVBean beans;
+public class CategoryRaiderSpecialRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRaiderSpecialRecyclerViewAdapter.HeaderRecycleViewHolder> {
+    private CategoryRaiderSpecialRVBean beans;
     private Context context;
+    private RecyclerOnClickListener recyclerOnClickListener;
 
-    public CategoryRaiderHeaderRecyclerViewAdapter(Context context) {
+    public CategoryRaiderSpecialRVBean getBeans() {
+        return beans;
+    }
+
+    public void setRecyclerOnClickListener(RecyclerOnClickListener recyclerOnClickListener) {
+        this.recyclerOnClickListener = recyclerOnClickListener;
+    }
+
+    public CategoryRaiderSpecialRecyclerViewAdapter(Context context) {
         EventBus.getDefault().register(this);
         this.context = context;
     }
     @Subscribe
-    public void getData(CategoryRaiderHeaderRVBean beans){
+    public void getData(CategoryRaiderSpecialRVBean beans){
         setBeans(beans);
     }
 
-    public void setBeans(CategoryRaiderHeaderRVBean beans) {
+    public void setBeans(CategoryRaiderSpecialRVBean beans) {
         this.beans = beans;
         notifyDataSetChanged();
     }
@@ -45,13 +55,21 @@ public class CategoryRaiderHeaderRecyclerViewAdapter extends RecyclerView.Adapte
     }
 
     @Override
-    public void onBindViewHolder(HeaderRecycleViewHolder holder, int position) {
+    public void onBindViewHolder(HeaderRecycleViewHolder holder, final int position) {
 //        Log.d("CategoryHeaderRecyclerV", beans.getData().getCollections().get(position).getBanner_image_url());
         Picasso.with(context).load(beans.getData().getCollections().get(position).getBanner_image_url())
                 .transform(new RoundRect(14)).centerCrop().fit().into(holder.ivShow);
         if (position == 0){
             holder.ivShow.setPadding(30,0,0,0);
         }
+        holder.ivShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerOnClickListener.onClick(position);
+
+            }
+        });
+
 
     }
 
@@ -67,7 +85,6 @@ public class CategoryRaiderHeaderRecyclerViewAdapter extends RecyclerView.Adapte
         public HeaderRecycleViewHolder(View itemView) {
             super(itemView);
             ivShow = (ImageView) itemView.findViewById(R.id.iv_item_header_category_raider);
-
         }
     }
     public void unregister(){
