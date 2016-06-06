@@ -27,6 +27,7 @@
         <activity android:name=".details.DetailsCategoryGiftActivity"/>
         <activity android:name=".details.DetailsCategoryRaiderSpecialAllActivity"/>
         <activity android:name=".details.DetailsSpecialActivity"/>
+        <activity android:name=".comments.CommentsPurchaseActivity"/>
     </application>
 
 </manifest>

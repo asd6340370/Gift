@@ -42,7 +42,7 @@ public class DetailsRaidActivtiy extends AppCompatActivity implements View.OnCli
     private CheckBox checkBoxLikesDiscoverDetail;
     private TextView tvShareDiscoverDetails, tvCommentsDiscoverDetails;
     private NetTools netTools;
-    private String id;
+    private String urlId;
     private DetailsRaiderBean raiderBean;
 
 
@@ -67,11 +67,11 @@ public class DetailsRaidActivtiy extends AppCompatActivity implements View.OnCli
         idData = intent.getStringArrayListExtra("idArray");
         position = intent.getIntExtra("position", 0);
         //获取当前界面id 用于url拼接 和传到评论页面
-        id = idData.get(position);
+        urlId = idData.get(position);
 
         netTools = new NetTools();
         //解析网络数据
-        netTools.getDataForEventBus(URLValues.DETAILS_RAIDER_BEFORE + id + URLValues.DETAILS_RAIDER_AFTER,
+        netTools.getDataForEventBus(URLValues.DETAILS_RAIDER_BEFORE + urlId + URLValues.DETAILS_RAIDER_AFTER,
                 DetailsRaiderBean.class);
 
         //初始化popupWindow
@@ -140,7 +140,7 @@ public class DetailsRaidActivtiy extends AppCompatActivity implements View.OnCli
             case R.id.iv_comments_listview_discover_details:
                 if (raiderBean != null){
                     Intent commentsIntent = new Intent(this, CommentsActivity.class);
-                    commentsIntent.putExtra("id", id);
+                    commentsIntent.putExtra("urlId", urlId);
                     startActivity(commentsIntent);
                 }
                 break;

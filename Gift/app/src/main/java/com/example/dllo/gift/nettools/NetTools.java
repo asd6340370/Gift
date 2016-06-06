@@ -26,27 +26,27 @@ public class NetTools {
         eventBus = EventBus.getDefault();
     }
 
-    public void getHotData (final NetListener listener){
+    public void getHotData(final NetListener listener) {
         StringRequest request = new StringRequest(URLValues.HOT_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-            listener.onSuccessed(response);
+                listener.onSuccessed(response);
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-            listener.onFailed(error);
+                listener.onFailed(error);
             }
         });
         queue.add(request);
     }
 
-    public void getDiscoverBanner(){
+    public void getDiscoverBanner() {
         StringRequest request = new StringRequest(URLValues.DISCOVER_SPECIAL_BANNER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                SpecialBannerBean specialBannerBean =  gson.fromJson(response, SpecialBannerBean.class);
+                SpecialBannerBean specialBannerBean = gson.fromJson(response, SpecialBannerBean.class);
                 eventBus.post(specialBannerBean);
 
             }
@@ -58,12 +58,13 @@ public class NetTools {
         });
         queue.add(request);
     }
-    public void getDiscoverSpecialListHeader(){
+
+    public void getDiscoverSpecialListHeader() {
         StringRequest request = new StringRequest(URLValues.DISCOVER_SPECIAL_LIST_Header, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                SpecialListHeaderBean listBean = gson.fromJson(response,SpecialListHeaderBean.class);
+                SpecialListHeaderBean listBean = gson.fromJson(response, SpecialListHeaderBean.class);
                 eventBus.post(listBean);
             }
         }, new Response.ErrorListener() {
@@ -75,11 +76,11 @@ public class NetTools {
         queue.add(request);
     }
 
-    public void getDiscoverSpecialList(){
+    public void getDiscoverSpecialList() {
         StringRequest request = new StringRequest(URLValues.DISCOVER_SPECIAL_LIST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                ListBean listBean = gson.fromJson(response,ListBean.class);
+                ListBean listBean = gson.fromJson(response, ListBean.class);
                 eventBus.post(listBean);
             }
         }, new Response.ErrorListener() {
@@ -91,12 +92,11 @@ public class NetTools {
     }
 
 
-
-    public void getDiscoverTitles(){
+    public void getDiscoverTitles() {
         StringRequest request = new StringRequest(URLValues.DISCOVER_TABLAYOUT_TITLES, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                DiscoverTitlesBean titlesBean = gson.fromJson(response,DiscoverTitlesBean.class);
+                DiscoverTitlesBean titlesBean = gson.fromJson(response, DiscoverTitlesBean.class);
                 eventBus.post(titlesBean);
             }
         }, new Response.ErrorListener() {
@@ -108,7 +108,7 @@ public class NetTools {
         queue.add(request);
     }
 
-    public void getNormalData(String url, final NetListener listener){
+    public void getNormalData(String url, final NetListener listener) {
 
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
@@ -126,12 +126,12 @@ public class NetTools {
     }
 
     //以下为通用方法
-    public <T> void  getDataForEventBus (String url, final Class<T> classOfNetBean){
+    public <T> void getDataForEventBus(String url, final Class<T> classOfNetBean) {
 
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-             T netBean = gson.fromJson(response,classOfNetBean);
+                T netBean = gson.fromJson(response, classOfNetBean);
                 eventBus.post(netBean);
             }
         }, new Response.ErrorListener() {
@@ -142,7 +142,6 @@ public class NetTools {
         });
         queue.add(request);
     }
-
 
 
 }

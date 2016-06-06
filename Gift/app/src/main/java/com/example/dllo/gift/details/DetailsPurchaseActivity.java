@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.dllo.gift.LoginActivity;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.comments.CommentsActivity;
+import com.example.dllo.gift.comments.CommentsPurchaseActivity;
 import com.example.dllo.gift.hot.HotBean;
 import com.example.dllo.gift.tools.MyPopupWindow;
 
@@ -116,9 +117,8 @@ public class DetailsPurchaseActivity extends AppCompatActivity implements Compou
                 startActivity(intent);
                 break;
             case R.id.iv_title_comments_details:
-                Intent commentsIntent = new Intent(this, CommentsActivity.class);
-                commentsIntent.putExtra("id", urlId);
-                //TODO 接口有问题
+                Intent commentsIntent = new Intent(this, CommentsPurchaseActivity.class);
+                commentsIntent.putExtra("urlId", urlId);
                 startActivity(commentsIntent);
                 break;
             case R.id.iv_title_share_details:

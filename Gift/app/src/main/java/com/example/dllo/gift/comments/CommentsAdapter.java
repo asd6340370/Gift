@@ -46,7 +46,7 @@ public class CommentsAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         MyViewHolder holder;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_listview_comments, parent, false);
@@ -71,6 +71,13 @@ public class CommentsAdapter extends BaseAdapter {
         holder.tvUserTime.setText(DateUtils.formatData(", hh:mm a", commentsBean.getData().getComments().get(position).getCreated_at()));
         holder.tvUserContent.setText(commentsBean.getData().getComments().get(position).getContent());
         holder.checkBoxUserLike.setText(String.valueOf(commentsBean.getData().getComments().get(position).getLikes_count()));
+        holder.checkBoxUserLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CheckBox checkBox = (CheckBox) v;
+                commentsBean.getData().getComments().get(position).setDoes_like(checkBox.isChecked());
+            }
+        });
         return convertView;
     }
 

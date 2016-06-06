@@ -39,7 +39,7 @@ public class CommentsHotMoreActivity extends BaseActivity implements View.OnClic
         id = intent.getStringExtra("url");
 
         netTools = new NetTools();
-        netTools.getNormalData(URLValues.COMMENTS_BEFORE + id +URLValues.COMMENTS_HOT_AFTER + URLValues.COMMENTS_HOT_OTHER ,
+        netTools.getNormalData(URLValues.COMMENTS_RAIDER_BEFORE + id +URLValues.COMMENTS_RAIDER_HOT_AFTER + URLValues.COMMENTS_RAIDER_HOT_OTHER,
                 new NetListener() {
             @Override
             public void onSuccessed(String result) {

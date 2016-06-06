@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.example.dllo.gift.R;
@@ -31,7 +31,7 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
     private NetTools netTools;
     private CommentsBean commentsTopBean,commentsBottomBean;
     private CommentsAdapter adapterTop, adapterBottom;
-    private String id;
+    private String urlId;
     private MyPopupWindow popupWindow;
     private LinearLayout commentsAll;
     private Gson gson;
@@ -65,11 +65,11 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
 
 
         Intent intent = getIntent();
-        id = intent.getStringExtra("id");
-
+        urlId = intent.getStringExtra("urlId");
+//        Log.d("CommentsActivity", id);
         netTools = new NetTools();
         //上部分数据
-        String urlTop = URLValues.COMMENTS_BEFORE + id + URLValues.COMMENTS_HOT_AFTER + URLValues.COMMENTS_HOT_TOP;
+        String urlTop = URLValues.COMMENTS_RAIDER_BEFORE + urlId + URLValues.COMMENTS_RAIDER_HOT_AFTER + URLValues.COMMENTS_RAIDER_HOT_TOP;
         netTools.getNormalData(urlTop, new NetListener() {
             @Override
             public void onSuccessed(String result) {
@@ -88,7 +88,7 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
         });
 
         //下部分数据
-        String urlBottom = URLValues.COMMENTS_BEFORE + id + URLValues.COMMENTS_AFTER;
+        String urlBottom = URLValues.COMMENTS_RAIDER_BEFORE + urlId + URLValues.COMMENTS_RAIDER_AFTER;
         netTools.getNormalData(urlBottom,new NetListener() {
             @Override
             public void onSuccessed(String result) {
@@ -111,7 +111,7 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.comments_hot_more_comments:
                 Intent intent = new Intent(this,CommentsHotMoreActivity.class);
-                intent.putExtra("url",id);
+                intent.putExtra("url",urlId);
                 startActivity(intent);
                 break;
             case R.id.tv_send_message_comments_details:

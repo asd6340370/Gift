@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
@@ -21,15 +22,29 @@ public class MyPopupWindow implements View.OnClickListener {
 
     private Activity activity;
     private int id;
-    public MyPopupWindow(Activity activity,int id ,int v){
+    private MenuGiftSortOnClickListener menuGiftSortOnClickListener;
+    private ImageView ivNormal;
+    private ImageView ivHot, ivDowntotop, ivToptodown;
+    private int position;
+    private MenuRaiderSortOnClickListener menuRaiderSortOnClickListener;
+
+    public void setMenuRaiderSortOnClickListener(MenuRaiderSortOnClickListener menuRaiderSortOnClickListener) {
+        this.menuRaiderSortOnClickListener = menuRaiderSortOnClickListener;
+    }
+
+    public void setMenuGiftSortOnClickListener(MenuGiftSortOnClickListener menuGiftSortOnClickListener) {
+        this.menuGiftSortOnClickListener = menuGiftSortOnClickListener;
+    }
+
+    public MyPopupWindow(Activity activity, int id, int v) {
         this.id = id;
         this.activity = activity;
-        popupWindow = new PopupWindow(400,WindowManager.LayoutParams.WRAP_CONTENT);
+        popupWindow = new PopupWindow(400, WindowManager.LayoutParams.WRAP_CONTENT);
 
     }
 
 
-    public MyPopupWindow( Activity activity, int id) {
+    public MyPopupWindow(Activity activity, int id) {
         this.id = id;
         this.activity = activity;
         popupWindow = new PopupWindow(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT) {
@@ -44,27 +59,75 @@ public class MyPopupWindow implements View.OnClickListener {
             }
         };
     }
-    public void  showMenuSortPopupWindow(){
-        View view = LayoutInflater.from(activity).inflate(R.layout.item_popupwindow_menu_sort,null);
-        view.findViewById(R.id.tv_normal_menu_sort_popupwindow).setOnClickListener(this);
-        view.findViewById(R.id.iv_normal_menu_sort_popupwindow).setOnClickListener(this);
-        view.findViewById(R.id.tv_hot_menu_sort_popupwindow).setOnClickListener(this);
-        view.findViewById(R.id.iv_hot_menu_sort_popupwindow).setOnClickListener(this);
-        view.findViewById(R.id.tv_downtotop_menu_sort_menu_sort_popupwindow).setOnClickListener(this);
-        view.findViewById(R.id.iv_downtotop_menu_sort_menu_sort_popupwindow).setOnClickListener(this);
-        view.findViewById(R.id.tv_toptodown_menu_sort_menu_sort_popupwindow).setOnClickListener(this);
-        view.findViewById(R.id.iv_toptodown_menu_sort_menu_sort_popupwindow).setOnClickListener(this);
+
+    public void showRaiderMenuSortPopupWindow() {
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_popupwindow_raider_menu_sort, null);
+        view.findViewById(R.id.tv_raider_normal_menu_sort_popupwindow).setOnClickListener(this);
+        ivNormal = (ImageView) view.findViewById(R.id.iv_raider_normal_menu_sort_popupwindow);
+        view.findViewById(R.id.tv_raider_hot_menu_sort_popupwindow).setOnClickListener(this);
+        ivHot = (ImageView) view.findViewById(R.id.iv_raider_hot_menu_sort_popupwindow);
+
         popupWindow.setContentView(view);
         popupWindow.setFocusable(true);
         ColorDrawable drawable = new ColorDrawable(0x00000000);
         popupWindow.setBackgroundDrawable(drawable);
         popupWindow.showAsDropDown(activity.findViewById(id));
+
+        if (position == 0) {
+            ivNormal.setVisibility(View.VISIBLE);
+        } else {
+            ivNormal.setVisibility(View.GONE);
+        }
+        if (position == 1) {
+            ivHot.setVisibility(View.VISIBLE);
+        } else {
+            ivHot.setVisibility(View.GONE);
+        }
+    }
+
+    public void showGiftMenuSortPopupWindow() {
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_popupwindow_gift_menu_sort, null);
+        view.findViewById(R.id.tv_normal_menu_sort_popupwindow).setOnClickListener(this);
+        ivNormal = (ImageView) view.findViewById(R.id.iv_normal_menu_sort_popupwindow);
+        view.findViewById(R.id.tv_hot_menu_sort_popupwindow).setOnClickListener(this);
+        ivHot = (ImageView) view.findViewById(R.id.iv_hot_menu_sort_popupwindow);
+        view.findViewById(R.id.tv_downtotop_menu_sort_menu_sort_popupwindow).setOnClickListener(this);
+        ivDowntotop = (ImageView) view.findViewById(R.id.iv_downtotop_menu_sort_menu_sort_popupwindow);
+        view.findViewById(R.id.tv_toptodown_menu_sort_menu_sort_popupwindow).setOnClickListener(this);
+        ivToptodown = (ImageView) view.findViewById(R.id.iv_toptodown_menu_sort_menu_sort_popupwindow);
+        popupWindow.setContentView(view);
+        popupWindow.setFocusable(true);
+        ColorDrawable drawable = new ColorDrawable(0x00000000);
+        popupWindow.setBackgroundDrawable(drawable);
+        popupWindow.showAsDropDown(activity.findViewById(id));
+
+        if (position == 0) {
+            ivNormal.setVisibility(View.VISIBLE);
+        } else {
+            ivNormal.setVisibility(View.GONE);
+        }
+        if (position == 1) {
+            ivHot.setVisibility(View.VISIBLE);
+        } else {
+            ivHot.setVisibility(View.GONE);
+        }
+        if (position == 2) {
+            ivDowntotop.setVisibility(View.VISIBLE);
+        } else {
+            ivDowntotop.setVisibility(View.GONE);
+        }
+        if (position == 3) {
+            ivToptodown.setVisibility(View.VISIBLE);
+        } else {
+            ivToptodown.setVisibility(View.GONE);
+        }
+
     }
 
 
-    public void showCommentsSendMessagePopupWindow(){
+    public void showCommentsSendMessagePopupWindow() {
 
-       View view  = LayoutInflater.from(activity).inflate(R.layout.item_comments_popupwindow,null);
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_comments_popupwindow, null);
         view.findViewById(R.id.tv_cancel_comments_popupwindow).setOnClickListener(this);
         view.findViewById(R.id.tv_send_comments_popupwindow).setOnClickListener(this);
 //        view.findViewById(R.id.et_message_cotent_popupwindow);
@@ -72,7 +135,7 @@ public class MyPopupWindow implements View.OnClickListener {
         popupWindow.setFocusable(true);
         ColorDrawable drawable = new ColorDrawable(0XFFFFFFFF);
         popupWindow.setBackgroundDrawable(drawable);
-        popupWindow.showAtLocation(activity.findViewById(id),Gravity.BOTTOM,0,0);
+        popupWindow.showAtLocation(activity.findViewById(id), Gravity.BOTTOM, 0, 0);
 
         WindowManager.LayoutParams params = activity.getWindow().getAttributes();
         params.alpha = 0.7f;
@@ -154,23 +217,57 @@ public class MyPopupWindow implements View.OnClickListener {
             case R.id.tv_send_comments_popupwindow:
                 popupWindow.dismiss();
                 break;
-            //showMenuSort
+
+            //showGiftMenuSort
             case R.id.tv_normal_menu_sort_popupwindow:
-            break;
+                menuGiftSortOnClickListener.getDefaultUrl();
+                popupWindow.dismiss();
+                position = 0;
+                break;
             case R.id.tv_hot_menu_sort_popupwindow:
+                menuGiftSortOnClickListener.getHotUrl();
+                popupWindow.dismiss();
+                position = 1;
                 break;
             case R.id.tv_downtotop_menu_sort_menu_sort_popupwindow:
+                menuGiftSortOnClickListener.getPriceLowToHigh();
+                popupWindow.dismiss();
+                position = 2;
                 break;
             case R.id.tv_toptodown_menu_sort_menu_sort_popupwindow:
+                menuGiftSortOnClickListener.getPriceHighToLow();
+                popupWindow.dismiss();
+                position = 3;
+                break;
+
+            //showRaiderMenuSort
+            case R.id.tv_raider_normal_menu_sort_popupwindow:
+                menuRaiderSortOnClickListener.getDefaultUrl();
+                popupWindow.dismiss();
+                position = 0;
+                break;
+            case R.id.tv_raider_hot_menu_sort_popupwindow:
+                menuRaiderSortOnClickListener.getHotUrl();
+                popupWindow.dismiss();
+                position = 1;
                 break;
         }
     }
-    public interface SortOnClickListener{
-        void getHotUrl();
-        void getDefaultUrl();
-        void getPriceHighToLow();
-        void getPriceLowToHigh();
 
+    public interface MenuGiftSortOnClickListener {
+        void getHotUrl();
+
+        void getDefaultUrl();
+
+        void getPriceHighToLow();
+
+        void getPriceLowToHigh();
+    }
+
+    public interface MenuRaiderSortOnClickListener {
+        void getHotUrl();
+
+        void getDefaultUrl();
     }
 }
 

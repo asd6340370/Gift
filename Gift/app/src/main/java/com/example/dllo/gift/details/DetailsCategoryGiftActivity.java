@@ -21,7 +21,7 @@ import org.greenrobot.eventbus.Subscribe;
 /**
  * Created by dllo on 16/6/3.
  */
-public class DetailsCategoryGiftActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class DetailsCategoryGiftActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener, MyPopupWindow.MenuGiftSortOnClickListener {
 
     private ImageView back;
     private ImageView menuSort;
@@ -31,6 +31,8 @@ public class DetailsCategoryGiftActivity extends BaseActivity implements View.On
     private NetTools netTools;
     private DetailsCategoryGiftBean giftBean;
     private MyPopupWindow myPopupWindow;
+    private String urlId;
+    private String url;
 
     @Override
     public void initActivity() {
@@ -49,21 +51,25 @@ public class DetailsCategoryGiftActivity extends BaseActivity implements View.On
         //接收页面跳转传来的值
         Intent intent = getIntent();
         String titleNanme = intent.getStringExtra("titleName");
-        String urlId = intent.getStringExtra("urlId");
+         urlId = intent.getStringExtra("urlId");
 //        Log.d("DetailsCategoryGiftActi", titleNanme);
 //        Log.d("DetailsCategoryGiftActi", urlId);
-
         //设置标题
         tvTitle.setText(titleNanme);
-        //拼接url
-        String url = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER;
+        if (urlId == null){
+             url = URLValues.CATEGORY_GIFT_SELECT;
+        }else {
+            //拼接url
+            url = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER;
+        }
+
 //        Log.d("DetailsCategoryGiftActi", url);
         //网络解析
         netTools = new NetTools();
         netTools.getDataForEventBus(url, DetailsCategoryGiftBean.class);
 
         myPopupWindow = new MyPopupWindow(this,R.id.menu_sort_details_category_gift_gridview,1);
-
+        myPopupWindow.setMenuGiftSortOnClickListener(this);
 
     }
 
@@ -74,7 +80,7 @@ public class DetailsCategoryGiftActivity extends BaseActivity implements View.On
                 finish();
                 break;
             case R.id.menu_sort_details_category_gift_gridview:
-                myPopupWindow.showMenuSortPopupWindow();
+                myPopupWindow.showGiftMenuSortPopupWindow();
                 break;
 
         }
@@ -107,5 +113,52 @@ public class DetailsCategoryGiftActivity extends BaseActivity implements View.On
             intent.putExtra("titleName",titleName);
             startActivity(intent);
 
+    }
+
+    //popupWindow点击事件
+    @Override
+    public void getHotUrl() {
+        String urlHot;
+        if (urlId == null){
+            urlHot = URLValues.CATEGORY_GIFT_SELECT_HOT;
+        }else {
+            urlHot = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER;
+        }
+        String url = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER + "&sort=hot";
+        netTools.getDataForEventBus(urlHot, DetailsCategoryGiftBean.class);
+    }
+
+    @Override
+    public void getDefaultUrl() {
+        String urlDefault;
+        if (urlId == null){
+            urlDefault = URLValues.CATEGORY_GIFT_SELECT;
+        }else {
+             urlDefault = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER;
+        }
+        netTools.getDataForEventBus(urlDefault, DetailsCategoryGiftBean.class);
+    }
+
+    @Override
+    public void getPriceHighToLow() {
+        if (urlId == null){
+            url = URLValues.CATEGORY_GIFT_SELECT_PRICEL_HIGHTOLOW;
+        }else {
+
+            url = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER;
+        }
+        String url = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER +"&sort=price:desc";
+        netTools.getDataForEventBus(url, DetailsCategoryGiftBean.class);
+    }
+
+    @Override
+    public void getPriceLowToHigh() {
+        if (urlId == null){
+            url = URLValues.CATEGORY_GIFT_SELECT_PRICEL_LOWTOHIGH;
+        }else {
+            url = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER;
+        }
+        String url = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER +"&sort=price:asc";
+        netTools.getDataForEventBus(url, DetailsCategoryGiftBean.class);
     }
 }
