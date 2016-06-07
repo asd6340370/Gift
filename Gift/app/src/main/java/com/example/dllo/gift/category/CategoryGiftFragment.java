@@ -13,6 +13,7 @@ import com.example.dllo.gift.category.categoryadapter.CategoryGiftListViewConten
 import com.example.dllo.gift.category.categoryadapter.CategoryGiftListViewTitleAdapter;
 import com.example.dllo.gift.category.categorybean.CategoryGiftBean;
 import com.example.dllo.gift.details.DetailsCategoryGiftActivity;
+import com.example.dllo.gift.details.DetailsCategoryGiftSelectionActivity;
 import com.example.dllo.gift.nettools.NetTools;
 import com.example.dllo.gift.nettools.URLValues;
 
@@ -103,7 +104,7 @@ public class CategoryGiftFragment extends BaseFragment implements View.OnClickLi
     @Override
     public void onClick(View v) {
         String titleNme = "挑选礼物";
-        Intent intent = new Intent(context, DetailsCategoryGiftActivity.class);
+        Intent intent = new Intent(context, DetailsCategoryGiftSelectionActivity.class);
         intent.putExtra("titleName",titleNme);
         startActivity(intent);
     }

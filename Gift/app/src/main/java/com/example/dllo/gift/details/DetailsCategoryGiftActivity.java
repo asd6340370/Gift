@@ -118,46 +118,24 @@ public class DetailsCategoryGiftActivity extends BaseActivity implements View.On
     //popupWindow点击事件
     @Override
     public void getHotUrl() {
-        String urlHot;
-        if (urlId == null){
-            urlHot = URLValues.CATEGORY_GIFT_SELECT_HOT;
-        }else {
-            urlHot = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER;
-        }
-        String url = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER + "&sort=hot";
+        String urlHot = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER + "&sort=hot";
         netTools.getDataForEventBus(urlHot, DetailsCategoryGiftBean.class);
     }
 
     @Override
     public void getDefaultUrl() {
-        String urlDefault;
-        if (urlId == null){
-            urlDefault = URLValues.CATEGORY_GIFT_SELECT;
-        }else {
-             urlDefault = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER;
-        }
+        String urlDefault = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER;
         netTools.getDataForEventBus(urlDefault, DetailsCategoryGiftBean.class);
     }
 
     @Override
     public void getPriceHighToLow() {
-        if (urlId == null){
-            url = URLValues.CATEGORY_GIFT_SELECT_PRICEL_HIGHTOLOW;
-        }else {
-
-            url = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER;
-        }
         String url = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER +"&sort=price:desc";
         netTools.getDataForEventBus(url, DetailsCategoryGiftBean.class);
     }
 
     @Override
     public void getPriceLowToHigh() {
-        if (urlId == null){
-            url = URLValues.CATEGORY_GIFT_SELECT_PRICEL_LOWTOHIGH;
-        }else {
-            url = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER;
-        }
         String url = URLValues.CATEGORY_GIFT_DETAILS_BEFORE + urlId + URLValues.CATEGORY_GIFT_DETAILS_AFTER +"&sort=price:asc";
         netTools.getDataForEventBus(url, DetailsCategoryGiftBean.class);
     }

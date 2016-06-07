@@ -31,11 +31,11 @@ public final class URLValues {
     public static final String CATEGORY_GIFT_DETAILS_AFTER =  "/items?limit=20&offset=0";
     //选礼神器
     public static final String CATEGORY_GIFT_SELECT = "http://api.liwushuo.com/v2/search/item_by_type?limit=20&offset=0";//item 圆角正方形图片
-    public static final String CATEGORY_GIFT_SELECT_POPUP = "http://api.liwushuo.com/v2/search/item_filter";//popupwindow  每一个小挑选条件的url
+    public static final String CATEGORY_GIFT_SELECT_MENU_FRAGMENT = "http://api.liwushuo.com/v2/search/item_filter";//popupwindow  每一个小挑选条件的url
     //选礼神器 menuSort 排序
     public static final String CATEGORY_GIFT_SELECT_HOT ="http://api.liwushuo.com/v2/search/item_by_type?target=&limit=20&scene=&price=&sort=hot&personality=&offset=0";
-    public static final String CATEGORY_GIFT_SELECT_PRICEL_LOWTOHIGH ="http://api.liwushuo.com/v2/search/item_by_type?target=&limit=20&scene=&price=&sort=price:desc&personality=&offset=0";
-    public static final String CATEGORY_GIFT_SELECT_PRICEL_HIGHTOLOW ="http://api.liwushuo.com/v2/search/item_by_type?target=&limit=20&scene=&price=&sort=price:asc&personality=&offset=0";
+    public static final String CATEGORY_GIFT_SELECT_PRICEL_HIGHTOLOW ="http://api.liwushuo.com/v2/search/item_by_type?target=&limit=20&scene=&price=&sort=price:desc&personality=&offset=0";
+    public static final String CATEGORY_GIFT_SELECT_PRICEL_LOWTOHIGH ="http://api.liwushuo.com/v2/search/item_by_type?target=&limit=20&scene=&price=&sort=price:asc&personality=&offset=0";
     //攻略专题图片
     public static final String CATEGORY_RAIDER_HEADER_BANNER = "http://api.liwushuo.com/v2/collections?limit=10&offset=0";
 //    点击图片跳转页面

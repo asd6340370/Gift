@@ -1,7 +1,12 @@
 package com.example.dllo.gift.me;
 
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dllo.gift.R;
@@ -13,6 +18,10 @@ import com.example.dllo.gift.base.BaseFragment;
 public class MeFragment extends BaseFragment {
 
     private ImageView ivMessage;
+    private TextView tvBuy;
+    private FrameLayout frameLayout;
+    private LinearLayout linearLayout;
+    private ScrollView scrollView;
 
     @Override
     public int setLayout() {
@@ -22,12 +31,16 @@ public class MeFragment extends BaseFragment {
     @Override
     public void initView(View view) {
         ivMessage = (ImageView) view.findViewById(R.id.iv_message_me);
-        ivMessage.setFocusable(true);
-        ivMessage.setFocusableInTouchMode(true);
         ivMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "yoyo", Toast.LENGTH_SHORT).show();
+            }
+        });
+            view.findViewById(R.id.iv_avatar_me).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "TEST", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -64,6 +65,7 @@ public class DetailsPurchaseActivity extends AppCompatActivity implements Compou
         urlId = intent.getStringExtra("urlId");
         titleName = intent.getStringExtra("titleName");
         loadWeb(purchaseUrl);
+//        Log.d("DetailsPurchaseActivity", purchaseUrl);
     }
 
     //加载web数据
