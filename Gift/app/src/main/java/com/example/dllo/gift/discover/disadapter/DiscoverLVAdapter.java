@@ -14,6 +14,8 @@ import com.example.dllo.gift.discover.disbean.ListBean;
 import com.example.dllo.gift.tools.RoundRect;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 
 /**
  * Created by dllo on 16/5/21.
@@ -21,7 +23,17 @@ import com.squareup.picasso.Picasso;
 public class DiscoverLVAdapter extends BaseAdapter {
     private ListBean datas;
     private Context context;
+    private List<ListBean.DataBean.ItemsBean> ListItems;
 
+    public ListBean getDatas() {
+        return datas;
+    }
+
+    public void setListItems(List<ListBean.DataBean.ItemsBean> listItems) {
+        ListItems = listItems;
+        datas.getData().getItems().addAll(listItems);
+        notifyDataSetChanged();
+    }
 
     public DiscoverLVAdapter(Context context) {
         this.context = context;

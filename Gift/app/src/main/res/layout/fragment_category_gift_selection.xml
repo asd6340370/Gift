@@ -16,7 +16,8 @@
         android:layout_weight="1"
         android:verticalSpacing="15dp"
         android:horizontalSpacing="10dp"
-        android:numColumns="3"></GridView>
+        android:numColumns="3"
+        android:choiceMode="singleChoice"></GridView>
 
     <TextView
         android:layout_width="match_parent"

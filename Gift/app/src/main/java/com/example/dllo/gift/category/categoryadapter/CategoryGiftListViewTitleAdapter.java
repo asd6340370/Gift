@@ -15,7 +15,7 @@ import com.example.dllo.gift.category.categorybean.CategoryGiftBean;
  */
 public class CategoryGiftListViewTitleAdapter extends BaseAdapter {
     private CategoryGiftBean giftBean;
-    private int mCheckedPosition = - 1;
+    private int mCheckedPosition = 0;
 
     public void setmCheckedPosition(int mCheckedPosition) {
         this.mCheckedPosition = mCheckedPosition;

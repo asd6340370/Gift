@@ -49,6 +49,10 @@
                 android:src="@mipmap/ic_menu_sort" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
         <GridView
             android:layout_marginTop="35dp"
             android:id="@+id/gridView_details_category_gift_selection"
@@ -59,11 +63,16 @@
             android:horizontalSpacing="6dp"
             android:numColumns="2"
             android:scrollbars="none"></GridView>
+            <FrameLayout
+                android:id="@+id/framelayout_selection"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></FrameLayout>
+        </RelativeLayout>
     </LinearLayout>
 
 
     <LinearLayout
-        android:id="@+id/linearlayout_category_gift_selection"
+        android:id="@+id/linearlayout_category_gift_menu_selection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

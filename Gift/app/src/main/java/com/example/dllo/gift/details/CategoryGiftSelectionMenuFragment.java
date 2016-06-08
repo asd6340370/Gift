@@ -1,5 +1,6 @@
 package com.example.dllo.gift.details;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -20,11 +21,16 @@ public class CategoryGiftSelectionMenuFragment extends BaseFragment implements V
 
     private GridView gridView;
     private ImageView dismiss;
-    private MenuFragmentOnClickListener listener;
+    private MenuFragmentOnClickListener onClickListener;
     private CategoryGiftSelectionMenuAdapter adapter;
+    private MenuFragmentItemOnClickListener itemOnClickListener;
 
-    public  void setListener(MenuFragmentOnClickListener listener) {
-        this.listener = listener;
+    public void setItemOnClickListener(MenuFragmentItemOnClickListener itemOnClickListener) {
+        this.itemOnClickListener = itemOnClickListener;
+    }
+
+    public void setOnClickListener(MenuFragmentOnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
     }
 
     @Override
@@ -46,20 +52,25 @@ public class CategoryGiftSelectionMenuFragment extends BaseFragment implements V
         adapter = new CategoryGiftSelectionMenuAdapter(context);
         gridView.setAdapter(adapter);
     }
-    @Subscribe
-    public void getMenuBean(CategoryGiftSelectionMenuBean.DataBean.FiltersBean bean){
-            adapter.setMenuBean(bean);
 
+    @Subscribe
+    public void getMenuBean(CategoryGiftSelectionMenuBean.DataBean.FiltersBean bean) {
+        adapter.setMenuBean(bean);
+    }
+    @Subscribe
+    public void getIndex(Integer index){
+        adapter.setmCheckedPosition(index);
     }
 
     @Override
     public void onClick(View v) {
-        listener.onClickListener();
+        onClickListener.onClickListener();
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        itemOnClickListener.onItemClickListener(position);
+        adapter.setmCheckedPosition(position);
     }
 
     @Override
@@ -70,5 +81,9 @@ public class CategoryGiftSelectionMenuFragment extends BaseFragment implements V
 
     interface MenuFragmentOnClickListener {
         void onClickListener();
+    }
+
+    interface MenuFragmentItemOnClickListener {
+        void onItemClickListener(int position);
     }
 }

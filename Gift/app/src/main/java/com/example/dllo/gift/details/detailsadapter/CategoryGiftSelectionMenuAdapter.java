@@ -16,6 +16,12 @@ import com.example.dllo.gift.details.detailsbean.CategoryGiftSelectionMenuBean;
 public class CategoryGiftSelectionMenuAdapter extends BaseAdapter {
     private Context context ;
     private CategoryGiftSelectionMenuBean.DataBean.FiltersBean menuBean;
+    private int mCheckedPosition = 0;
+
+    public void setmCheckedPosition(int mCheckedPosition) {
+        this.mCheckedPosition = mCheckedPosition;
+        notifyDataSetChanged();
+    }
 
     public void setMenuBean(CategoryGiftSelectionMenuBean.DataBean.FiltersBean menuBean) {
         this.menuBean = menuBean;
@@ -52,6 +58,12 @@ public class CategoryGiftSelectionMenuAdapter extends BaseAdapter {
             myViewHolder = (MyViewHolder) convertView .getTag();
         }
 
+        if (mCheckedPosition == position){
+            myViewHolder.showName.setSelected(true);
+        }else {
+            myViewHolder.showName.setSelected(false);
+        }
+
         myViewHolder.showName.setText(menuBean.getChannels().get(position).getName());
         return convertView;
     }
@@ -63,5 +75,8 @@ public class CategoryGiftSelectionMenuAdapter extends BaseAdapter {
         public MyViewHolder (View view){
             showName = (TextView) view.findViewById(R.id.tv_name_gift_selection_menu);
         }
+    }
+    interface mCheckedPosition{
+
     }
 }

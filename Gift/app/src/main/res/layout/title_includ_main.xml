@@ -22,6 +22,14 @@
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="normal" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:src="@mipmap/btn_signin"
+        android:layout_alignParentRight="true"
+        android:paddingRight="15dp"/>
 
 
 </RelativeLayout>
