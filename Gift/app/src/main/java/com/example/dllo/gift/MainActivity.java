@@ -1,5 +1,6 @@
 package com.example.dllo.gift;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,6 +14,9 @@ import com.example.dllo.gift.category.CategoryFragment;
 import com.example.dllo.gift.discover.DiscoverFragment;
 import com.example.dllo.gift.hot.HotFragment;
 import com.example.dllo.gift.me.MeFragment;
+import com.example.dllo.gift.search.SearchActivity;
+
+import cn.bmob.v3.BmobUser;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton btnDiscover, btnHot, btnCategory, btnMe;
@@ -34,6 +38,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         btnMe = (RadioButton) findViewById(R.id.btn_me);
         tvTitle = (TextView) findViewById(R.id.tv_title_main);
         titleLayout = (RelativeLayout) findViewById(R.id.title_layout_main);
+        findViewById(R.id.iv_search_title).setOnClickListener(this);
+        findViewById(R.id.date_title_main).setOnClickListener(this);
         btnDiscover.setChecked(true);
         btnDiscover.setOnClickListener(this);
         btnHot.setOnClickListener(this);
@@ -58,6 +64,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     //通过FragmentManager 碎片管理器 替换fragment方法
     private void showFragment(Fragment fragment) {
         FragmentManager manager = getSupportFragmentManager();
+
         transaction = manager.beginTransaction();
         transaction.hide(discoverFragment).hide(hotFragment).hide(categoryFragment).hide(meFragment)
                 .show(fragment).commit();
@@ -90,6 +97,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.btn_me:
                 showFragment( meFragment);
                 titleLayout.setVisibility(View.GONE);
+                break;
+            case R.id.iv_search_title:
+
+                Intent intent = new Intent(this, SearchActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.date_title_main:
+                BmobUser user = BmobUser.getCurrentUser(this);
+                if(user == null){
+                    Intent intentLogin = new Intent(this,LoginActivity.class);
+                    startActivity(intentLogin);
+                }else {
+                    Intent intentDate = new Intent(this, DateActivity.class);
+                    startActivity(intentDate);
+                }
                 break;
 
         }

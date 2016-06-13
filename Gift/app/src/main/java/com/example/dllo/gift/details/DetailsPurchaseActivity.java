@@ -17,10 +17,16 @@ import android.widget.Toast;
 
 import com.example.dllo.gift.LoginActivity;
 import com.example.dllo.gift.R;
+import com.example.dllo.gift.bmob.BmobData;
+import com.example.dllo.gift.bmob.UserBmobBean;
 import com.example.dllo.gift.comments.CommentsActivity;
 import com.example.dllo.gift.comments.CommentsPurchaseActivity;
 import com.example.dllo.gift.hot.HotBean;
 import com.example.dllo.gift.tools.MyPopupWindow;
+
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.DeleteListener;
+import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by dllo on 16/5/24.
@@ -37,6 +43,11 @@ public class DetailsPurchaseActivity extends AppCompatActivity implements Compou
     private HotBean.DataBean.ItemsBean.DataItem dataItem;
     private String urlId;
     private String titleName;
+    private UserBmobBean userBmobBean,getUserBmobBean;
+    private BmobUser user;
+    private BmobData bmobData;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,17 +66,24 @@ public class DetailsPurchaseActivity extends AppCompatActivity implements Compou
         backTitleDetails.setOnClickListener(this);
 
 
+
         //初始化popupWindow
         popupWindow = new MyPopupWindow(this, R.id.iv_title_share_details);
 
         //接收页面跳转传来的数据
         Intent intent = getIntent();
 //        dataItem = intent.getParcelableExtra("buy");
+        getUserBmobBean = intent.getParcelableExtra("bmobBean");
         String purchaseUrl = intent.getStringExtra("purchaseUrl");
         urlId = intent.getStringExtra("urlId");
         titleName = intent.getStringExtra("titleName");
         loadWeb(purchaseUrl);
 //        Log.d("DetailsPurchaseActivity", purchaseUrl);
+        if (BmobUser.getCurrentUser(this) != null){
+            bmobData = new BmobData(this);
+            bmobData.queryIsLike(urlId,checkBoxTitleDetails,BmobUser.getCurrentUser(this).getUsername());
+        }
+
     }
 
     //加载web数据
@@ -101,11 +119,13 @@ public class DetailsPurchaseActivity extends AppCompatActivity implements Compou
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
-            Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "取消收藏成功", Toast.LENGTH_SHORT).show();
-        }
+//        if (user != null){
+//            if (isChecked) {
+//                Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
+//            } else {
+//                Toast.makeText(this, "取消收藏成功", Toast.LENGTH_SHORT).show();
+//            }
+//        }
     }
 
     @Override
@@ -115,8 +135,11 @@ public class DetailsPurchaseActivity extends AppCompatActivity implements Compou
                 finish();
                 break;
             case R.id.checkBox_title_detail:
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
+                //TODO checkBox
+                if(BmobUser.getCurrentUser(this) != null){
+                    CheckBoxSelectedSetData(checkBoxTitleDetails);
+                }
+
                 break;
             case R.id.iv_title_comments_details:
                 Intent commentsIntent = new Intent(this, CommentsPurchaseActivity.class);
@@ -128,4 +151,36 @@ public class DetailsPurchaseActivity extends AppCompatActivity implements Compou
                 break;
         }
     }
+    private void CheckBoxSelectedSetData(final CheckBox checkBox) {
+        user = BmobUser.getCurrentUser(this);
+        if (user == null) {
+            Intent intent = new Intent(this, LoginActivity.class);
+         startActivity(intent);
+            checkBox.setChecked(false);
+        }else if (checkBox.isChecked()){
+            userBmobBean = new UserBmobBean();
+            userBmobBean.setId(getUserBmobBean.getId());
+            userBmobBean.setImgUrl(getUserBmobBean.getImgUrl());
+            userBmobBean.setTitleName(getUserBmobBean.getTitleName());
+            userBmobBean.setKey(getUserBmobBean.getKey());
+            userBmobBean.setUserName(BmobUser.getCurrentUser(this).getUsername());
+            userBmobBean.setPurchaseUrl(getUserBmobBean.getPurchaseUrl());
+            userBmobBean.setLikeCount(getUserBmobBean.getLikeCount());
+            userBmobBean.save(this, new SaveListener() {
+                @Override
+                public void onSuccess() {
+                    Toast.makeText(DetailsPurchaseActivity.this, "收藏成功", Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onFailure(int i, String s) {
+                    Toast.makeText(DetailsPurchaseActivity.this, "收藏失败", Toast.LENGTH_SHORT).show();
+                    checkBox.setChecked(false);
+                }
+            });
+        }else {
+                bmobData.cancleLike(urlId,BmobUser.getCurrentUser(this).getUsername());
+
+        }
+    }
+
 }

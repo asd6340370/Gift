@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.android.volley.VolleyError;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseActivity;
+import com.example.dllo.gift.bmob.UserBmobBean;
 import com.example.dllo.gift.details.detailsadapter.DetailsCategoryGiftGVAdapter;
 import com.example.dllo.gift.details.detailsbean.CategoryGiftSelectionMenuBean;
 import com.example.dllo.gift.details.detailsbean.DetailsCategoryGiftBean;
@@ -58,6 +60,7 @@ public class DetailsCategoryGiftSelectionActivity extends BaseActivity implement
     private RadioButton[] buttons;
     private int[] index ;
     private int popupPosition = 0;
+    private UserBmobBean userBmobBean;
 
 
     @Override
@@ -328,10 +331,22 @@ public class DetailsCategoryGiftSelectionActivity extends BaseActivity implement
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         if (frameLayout.getVisibility() == View.GONE) {
+            //重新构建实体类 用于跳转传递数据
+            userBmobBean = new UserBmobBean();
+            userBmobBean.setKey("gift");
+            userBmobBean.setId(String.valueOf(giftBean.getData().getItems().get(position).getId()));
+            userBmobBean.setImgUrl(giftBean.getData().getItems().get(position).getCover_image_url());
+            userBmobBean.setLikeCount(String.valueOf(giftBean.getData().getItems().get(position).getFavorites_count()));
+            userBmobBean.setPrice(giftBean.getData().getItems().get(position).getPrice());
+            userBmobBean.setTitleName(giftBean.getData().getItems().get(position).getName());
+            userBmobBean.setPurchaseUrl(giftBean.getData().getItems().get(position).getPurchase_url());
+
             String purchaseUrl = giftBean.getData().getItems().get(position).getPurchase_url();
             String urlId = String.valueOf(giftBean.getData().getItems().get(position).getId());
             String titleName = giftBean.getData().getItems().get(position).getName();
             Intent intent = new Intent(this, DetailsPurchaseActivity.class);
+
+            intent.putExtra("bmobBean", (Parcelable) userBmobBean);
             intent.putExtra("purchaseUrl", purchaseUrl);
             intent.putExtra("urlId", urlId);
             intent.putExtra("titleName", titleName);

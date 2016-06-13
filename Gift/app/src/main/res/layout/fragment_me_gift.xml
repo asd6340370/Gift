@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.dllo.gift.tools.NoScrollGridView
+        android:id="@+id/gridview_me_gift"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:horizontalSpacing="6dp"
+        android:numColumns="2"
+        android:scrollbars="none"
+        android:background="@color/white"></com.example.dllo.gift.tools.NoScrollGridView>
+
+</LinearLayout>

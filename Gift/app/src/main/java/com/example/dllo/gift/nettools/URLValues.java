@@ -48,4 +48,7 @@ public final class URLValues {
     public static final String CATEGORY_RAIDER_DETAILS_AFTER =  "/items?limit=20&offset=0";
     public static final String CATEGORY_RAIDER_DETAILS = "http://api.liwushuo.com/v2/channels/id=/items?limit=20&offset=0";
 
+    //搜索列表
+    public static final String SEARCH_LIST = "http://api.liwushuo.com/v2/search/hot_words";
+
 }

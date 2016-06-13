@@ -6,10 +6,10 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.android.volley.VolleyError;
-import com.example.dllo.gift.details.DetailsRaidActivtiy;
+import com.example.dllo.gift.bmob.BmobData;
+import com.example.dllo.gift.details.DetailsRaiderActivtiy;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.discover.disadapter.DiscoverLVAdapter;
@@ -22,6 +22,8 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.BmobUser;
+
 /**
  * Created by dllo on 16/5/21.
  */
@@ -32,6 +34,9 @@ public class DiscoverListViewFragment extends BaseFragment implements AdapterVie
     private String url;
     private ListBean listBean;
     private ArrayList<String> idArray;
+    private BmobData bmobData;
+    private BmobUser bmobUser;
+    private List<String> ids;
 
     public static Fragment createListViewFragment (String url) {
         Fragment fragment = new DiscoverListViewFragment();
@@ -68,7 +73,13 @@ public class DiscoverListViewFragment extends BaseFragment implements AdapterVie
         lvDiscoverListView.setPullRefreshEnable(true);
         lvDiscoverListView.setPullLoadEnable(true);
         lvDiscoverListView.setXListViewListener(this);
+        bmobUser = BmobUser.getCurrentUser(context);
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
     }
 
@@ -92,7 +103,7 @@ public class DiscoverListViewFragment extends BaseFragment implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         int index = (int) parent.getAdapter().getItemId(position);
-        Intent intent = new Intent(context, DetailsRaidActivtiy.class);
+        Intent intent = new Intent(context, DetailsRaiderActivtiy.class);
 
         idArray = new ArrayList<>();
         for (ListBean.DataBean.ItemsBean b :

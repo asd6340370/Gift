@@ -5,4 +5,8 @@
     <dimen name="fifty_dp">50dp</dimen>
     <dimen name="five_dp">5dp</dimen>
     <dimen name="fourty_dp">40dp</dimen>
+    <dimen name="fifteen_dp">15dp</dimen>
+    <dimen name="one_hundred_and_fifty_dp">150dp</dimen>
+    <dimen name="twenty_sp">20sp</dimen>
+    <dimen name="one_dp">1dp</dimen>
 </resources>

@@ -11,12 +11,12 @@
 
 
 
-        <Button
+        <ImageView
             android:id="@+id/iv_avatar_me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:background="@mipmap/me_avatar_boy"/>
+            android:src="@mipmap/me_avatar_boy"/>
 
         <TextView
             android:id="@+id/tv_account_me"
@@ -42,7 +42,7 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="none"
       >
 
@@ -53,12 +53,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <FrameLayout
-                android:id="@+id/framelayout"
-                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/framelayout_me"
+                android:layout_width="70dp"
                 android:layout_height="200dp"
                 android:splitMotionEvents="false"></FrameLayout>
 
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/color_grey_category_gift_title">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -110,13 +115,20 @@
                 android:orientation="horizontal"
                 android:background="@color/white">
                 <TextView
+                    android:id="@+id/gift_me"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="礼物"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@color/color_grey_category_gift_title"/>
 
                 <TextView
+                    android:id="@+id/raider_me"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -124,9 +136,31 @@
                     android:text="攻略"/>
             </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/color_gift_me"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/title_color_red"
+                        />
+                    <TextView
+                        android:id="@+id/color_raider_me"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/title_color_red"
+                        android:visibility="invisible"/>
+                </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp">
+                android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
 
                 <ImageView
                     android:id="@+id/iv_favourite_me"
@@ -143,14 +177,14 @@
                     android:layout_below="@id/iv_favourite_me"
                     android:text="喜欢的礼物摆在这里哦"
                     />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/title_color_red"/>
-
             </RelativeLayout>
 
+                <FrameLayout
+                    android:id="@+id/framelayout_favorite_me"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></FrameLayout>
+            </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>

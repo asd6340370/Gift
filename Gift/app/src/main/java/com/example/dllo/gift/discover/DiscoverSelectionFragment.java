@@ -13,7 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.example.dllo.gift.details.DetailsRaidActivtiy;
+import com.example.dllo.gift.FriendActivity;
+import com.example.dllo.gift.details.DetailsRaiderActivtiy;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.details.DetailsSpecialActivity;
@@ -24,6 +25,7 @@ import com.example.dllo.gift.discover.disbean.ListBean;
 
 import com.example.dllo.gift.nettools.NetTools;
 import com.example.dllo.gift.tools.RecyclerOnClickListener;
+import com.example.dllo.gift.DateActivity;
 
 
 import org.greenrobot.eventbus.EventBus;
@@ -101,8 +103,12 @@ public class DiscoverSelectionFragment extends BaseFragment implements AdapterVi
             public void onClick(int position) {
                 switch (position){
                     case 1 :
+                        Intent intentfriend = new Intent(context, FriendActivity.class);
+                        startActivity(intentfriend);
                         break;
                     case 2 :
+                        Intent intentdate = new Intent(context, DateActivity.class);
+                        startActivity(intentdate);
                         break;
                     case 3:
                         break;
@@ -178,7 +184,7 @@ public class DiscoverSelectionFragment extends BaseFragment implements AdapterVi
             idArray.add(String.valueOf(b.getId()));
         }
         //跳转页面并传值 id集合 和 位置信息 position
-        Intent intent = new Intent(context, DetailsRaidActivtiy.class);
+        Intent intent = new Intent(context, DetailsRaiderActivtiy.class);
         intent.putStringArrayListExtra("idArray", idArray);
         intent.putExtra("position", index);
         startActivity(intent);

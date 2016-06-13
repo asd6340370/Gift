@@ -1,7 +1,6 @@
 package com.example.dllo.gift.details;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -89,7 +88,7 @@ public class DetailsSpecialActivity extends BaseActivity implements View.OnClick
                 specialBean.getData().getPosts()) {
                 idArray.add(String.valueOf(b.getId()));
         }
-        Intent intent = new Intent(this,DetailsRaidActivtiy.class);
+        Intent intent = new Intent(this,DetailsRaiderActivtiy.class);
         intent.putExtra("idArray",idArray);
         intent.putExtra("position",position);
         startActivity(intent);

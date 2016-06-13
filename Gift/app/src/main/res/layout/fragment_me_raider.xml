@@ -3,9 +3,10 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
+    <com.example.dllo.gift.tools.NoScrollListView
         android:id="@+id/listView_meRaider"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"
+        android:background="@color/white"></com.example.dllo.gift.tools.NoScrollListView>
 
 </LinearLayout>

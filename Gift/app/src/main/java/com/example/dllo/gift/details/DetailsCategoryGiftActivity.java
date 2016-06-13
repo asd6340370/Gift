@@ -1,6 +1,7 @@
 package com.example.dllo.gift.details;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseActivity;
+import com.example.dllo.gift.bmob.UserBmobBean;
 import com.example.dllo.gift.details.detailsadapter.DetailsCategoryGiftGVAdapter;
 import com.example.dllo.gift.details.detailsbean.DetailsCategoryGiftBean;
 import com.example.dllo.gift.nettools.NetTools;
@@ -33,6 +35,7 @@ public class DetailsCategoryGiftActivity extends BaseActivity implements View.On
     private MyPopupWindow myPopupWindow;
     private String urlId;
     private String url;
+    private UserBmobBean userBmobBean;
 
     @Override
     public void initActivity() {
@@ -103,11 +106,22 @@ public class DetailsCategoryGiftActivity extends BaseActivity implements View.On
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        userBmobBean = new UserBmobBean();
+        userBmobBean.setKey("gift");
+        userBmobBean.setId(String.valueOf(giftBean.getData().getItems().get(position).getId()));
+        userBmobBean.setImgUrl(giftBean.getData().getItems().get(position).getCover_image_url());
+        userBmobBean.setLikeCount(String.valueOf(giftBean.getData().getItems().get(position).getFavorites_count()));
+        userBmobBean.setPrice(giftBean.getData().getItems().get(position).getPrice());
+        userBmobBean.setTitleName(giftBean.getData().getItems().get(position).getName());
+        userBmobBean.setPurchaseUrl(giftBean.getData().getItems().get(position).getPurchase_url());
+
 
             String purchaseUrl = giftBean.getData().getItems().get(position).getPurchase_url();
             String urlId = String.valueOf(giftBean.getData().getItems().get(position).getId());
             String titleName = giftBean.getData().getItems().get(position).getName();
             Intent intent = new Intent(this, DetailsPurchaseActivity.class);
+
+            intent.putExtra("bmobBean", (Parcelable) userBmobBean);
             intent.putExtra("purchaseUrl",purchaseUrl);
             intent.putExtra("urlId",urlId);
             intent.putExtra("titleName",titleName);
