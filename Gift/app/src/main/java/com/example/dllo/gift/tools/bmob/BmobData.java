@@ -1,4 +1,4 @@
-package com.example.dllo.gift.bmob;
+package com.example.dllo.gift.tools.bmob;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,10 +6,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-import com.example.dllo.gift.LoginActivity;
-import com.example.dllo.gift.bmob.UserBmobBean;
-import com.example.dllo.gift.details.DetailsPurchaseActivity;
-import com.example.dllo.gift.details.DetailsRaiderActivtiy;
+import com.example.dllo.gift.mainactivity.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -192,6 +189,9 @@ public class BmobData {
                     Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
                 }
             });
+        }else {
+            ids = new ArrayList<>();
+            baseAdapter.notifyDataSetChanged();
         }
     }
 

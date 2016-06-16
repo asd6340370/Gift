@@ -1,6 +1,7 @@
 package com.example.dllo.gift.details;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -47,9 +48,9 @@ public class DetailsSpecialActivity extends BaseActivity implements View.OnClick
 
         Intent intent = getIntent();
         String urlId = intent.getStringExtra("urlId");
-//        Log.d("DetailsSpecialActivity", urlId);
         netTools = new NetTools();
         String url = URLValues.DETAILS_SPECIAL_BEFORE + urlId + URLValues.DETAILS_SPECIAL_AFTER;
+//        Log.d("DetailsSpecialActivity", url);
         netTools.getDataForEventBus(url,DetailsSpecialBean.class);
 
 
@@ -88,6 +89,7 @@ public class DetailsSpecialActivity extends BaseActivity implements View.OnClick
                 specialBean.getData().getPosts()) {
                 idArray.add(String.valueOf(b.getId()));
         }
+
         Intent intent = new Intent(this,DetailsRaiderActivtiy.class);
         intent.putExtra("idArray",idArray);
         intent.putExtra("position",position);

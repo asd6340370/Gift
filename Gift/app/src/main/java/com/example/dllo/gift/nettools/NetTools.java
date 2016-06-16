@@ -4,7 +4,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.dllo.gift.discover.DiscoverTitlesBean;
+import com.example.dllo.gift.discover.disbean.DiscoverTitlesBean;
 import com.example.dllo.gift.discover.disbean.SpecialBannerBean;
 import com.example.dllo.gift.discover.disbean.ListBean;
 import com.example.dllo.gift.discover.disbean.SpecialListHeaderBean;

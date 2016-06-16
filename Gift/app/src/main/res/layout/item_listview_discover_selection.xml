@@ -5,20 +5,20 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    android:paddingLeft="6dp"
-    android:paddingRight="6dp"
-    android:paddingTop="6dp"
+    android:paddingLeft="@dimen/six_dp"
+    android:paddingRight="@dimen/six_dp"
+    android:paddingTop="@dimen/six_dp"
     android:descendantFocusability="blocksDescendants">
 
     <ImageView
         android:id="@+id/iv_listview_discover_selection"
         android:layout_width="match_parent"
-        android:layout_height="160dp" />
+        android:layout_height="@dimen/one_hundred_and_sixty_dp" />
 
     <ImageView
         android:id="@+id/iv_new_title_listview_discover_selection"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/fifty_dp"
+        android:layout_height="@dimen/fifty_dp"
         android:src="@mipmap/ig_marker_fresh" />
 
     <CheckBox
@@ -26,17 +26,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/twelve_dp"
         android:background="@drawable/article_like_count_bg"
         android:button="@null"
         android:drawableLeft="@drawable/item_like_checkbox_discover_selection"
-        android:drawablePadding="5dp"
+        android:drawablePadding="@dimen/five_dp"
         android:gravity="center_vertical"
         android:lines="1"
-        android:paddingLeft="10dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="@dimen/ten_dp"
+        android:paddingRight="@dimen/five_dp"
         android:text="12"
-        android:textSize="10sp"
+        android:textSize="@dimen/ten_sp"
         />
 
     <TextView
@@ -45,14 +45,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="@dimen/ten_dp"
+        android:layout_marginRight="@dimen/ten_dp"
         android:ellipsize="end"
         android:lines="1"
-        android:paddingBottom="10dp"
+        android:paddingBottom="@dimen/ten_dp"
         android:text="title"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="@dimen/sixteen_sp" />
 
 
 </RelativeLayout>

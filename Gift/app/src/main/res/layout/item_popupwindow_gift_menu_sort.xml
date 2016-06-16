@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="150dp"
+        android:layout_width="@dimen/one_hundred_and_fifty_dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_dropdown"
         android:orientation="vertical">
@@ -13,10 +13,10 @@
                 android:id="@+id/tv_normal_menu_sort_popupwindow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="默认排序"
+                android:layout_margin="@dimen/ten_dp"
+                android:text="@string/normal_list"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="@dimen/sixteen_sp" />
 
             <ImageView
                 android:id="@+id/iv_normal_menu_sort_popupwindow"
@@ -40,10 +40,10 @@
                 android:id="@+id/tv_hot_menu_sort_popupwindow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="按热度排序"
+                android:layout_margin="@dimen/ten_dp"
+                android:text="@string/hot_list"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="@dimen/sixteen_sp" />
 
             <ImageView
                 android:id="@+id/iv_hot_menu_sort_popupwindow"
@@ -68,10 +68,10 @@
                 android:id="@+id/tv_downtotop_menu_sort_menu_sort_popupwindow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="价格由低到高"
+                android:layout_margin="@dimen/ten_dp"
+                android:text="@string/low_to_high"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="@dimen/sixteen_sp" />
 
             <ImageView
                 android:id="@+id/iv_downtotop_menu_sort_menu_sort_popupwindow"
@@ -96,12 +96,12 @@
                 android:id="@+id/tv_toptodown_menu_sort_menu_sort_popupwindow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="10dp"
-                android:text="价格由高到低"
+                android:layout_marginBottom="@dimen/five_dp"
+                android:layout_marginLeft="@dimen/eight_dp"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:text="@string/high_to_low"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="@dimen/sixteen_sp" />
 
             <ImageView
                 android:id="@+id/iv_toptodown_menu_sort_menu_sort_popupwindow"

@@ -5,6 +5,11 @@
     <GridView
         android:id="@+id/gridview_gift_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></GridView>
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/seven_dp"
+        android:layout_marginRight="@dimen/seven_dp"
+        android:horizontalSpacing="@dimen/six_dp"
+        android:numColumns="2"
+        android:scrollbars="none"></GridView>
 
 </LinearLayout>

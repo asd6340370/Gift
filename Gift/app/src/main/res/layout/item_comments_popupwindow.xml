@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#f8f8f8"
+    android:background="@color/color_linearlayout_background"
     android:orientation="vertical">
 
     <TextView
@@ -10,42 +10,42 @@
         android:id="@+id/tv_cancel_comments_popupwindow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="取消"
+        android:layout_margin="@dimen/ten_dp"
+        android:text="@string/cancle"
         android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:text="写评论"
+        android:layout_margin="@dimen/ten_dp"
+        android:text="@string/write_comment"
         android:textColor="@android:color/black"
-        android:textSize="16sp" />
+        android:textSize="@dimen/sixteen_sp" />
 
     <TextView
         android:id="@+id/tv_send_comments_popupwindow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
-        android:text="发送"
-        android:textColor="#f8b4b4" />
+        android:layout_margin="@dimen/ten_dp"
+        android:text="@string/tv_text_comment_send"
+        android:textColor="@color/color_send_comment_popup" />
 
     <EditText
         android:id="@+id/et_message_cotent_popupwindow"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/one_hundred_dp"
         android:layout_below="@id/tv_cancel_comments_popupwindow"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="@dimen/fifteen_dp"
+        android:layout_marginLeft="@dimen/ten_dp"
+        android:layout_marginRight="@dimen/ten_dp"
+        android:layout_marginTop="@dimen/five_dp"
         android:background="@drawable/shap_round_send_message_comments"
         android:gravity="top"
-        android:hint="和大家分享你的看法吧~"
-        android:padding="10dp"
-        android:textSize="12sp"/>
+        android:hint="@string/share_content"
+        android:padding="@dimen/ten_dp"
+        android:textSize="@dimen/twelve_sp"/>
 
 
 </RelativeLayout>

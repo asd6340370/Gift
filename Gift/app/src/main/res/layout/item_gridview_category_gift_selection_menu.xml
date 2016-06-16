@@ -8,10 +8,10 @@
         android:gravity="center"
         android:id="@+id/tv_name_gift_selection_menu"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="@dimen/thirty_five_dp"
         android:textColor="@color/color_gift_selection_menu"
         android:background="@drawable/selector_gift_selection_menu"
-        android:text="test"
+
         />
 
 </LinearLayout>

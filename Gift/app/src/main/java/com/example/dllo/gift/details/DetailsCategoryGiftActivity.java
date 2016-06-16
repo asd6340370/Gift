@@ -2,6 +2,7 @@ package com.example.dllo.gift.details;
 
 import android.content.Intent;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseActivity;
-import com.example.dllo.gift.bmob.UserBmobBean;
+import com.example.dllo.gift.tools.bmob.UserBmobBean;
 import com.example.dllo.gift.details.detailsadapter.DetailsCategoryGiftGVAdapter;
 import com.example.dllo.gift.details.detailsbean.DetailsCategoryGiftBean;
 import com.example.dllo.gift.nettools.NetTools;

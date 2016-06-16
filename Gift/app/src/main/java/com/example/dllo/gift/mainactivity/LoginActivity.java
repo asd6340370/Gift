@@ -1,10 +1,11 @@
-package com.example.dllo.gift;
+package com.example.dllo.gift.mainactivity;
 
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseActivity;
 
 import cn.bmob.v3.BmobUser;

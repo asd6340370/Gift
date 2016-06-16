@@ -3,7 +3,7 @@ package com.example.dllo.gift.welcome;
 import android.content.Intent;
 import android.os.CountDownTimer;
 
-import com.example.dllo.gift.MainActivity;
+import com.example.dllo.gift.mainactivity.MainActivity;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseActivity;
 

@@ -9,21 +9,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp"
-            android:paddingLeft="10dp"
+            android:paddingBottom="@dimen/fifteen_dp"
+            android:paddingTop="@dimen/fifteen_dp"
+            android:paddingLeft="@dimen/ten_dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="专题"
-            android:textSize="18sp"
+            android:text="@string/special"
+            android:textSize="@dimen/eighteen_sp"
             android:textColor="@android:color/black"/>
         <TextView
             android:id="@+id/tv_content_all_category_raider"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/ten_dp"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="查看全部"
+            android:text="@string/selection_all"
             android:layout_alignParentRight="true"/>
 
     </RelativeLayout>

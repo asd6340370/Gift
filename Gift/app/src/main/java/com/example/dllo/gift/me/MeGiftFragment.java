@@ -3,13 +3,12 @@ package com.example.dllo.gift.me;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
-import com.example.dllo.gift.bmob.UserBmobBean;
+import com.example.dllo.gift.tools.bmob.UserBmobBean;
 import com.example.dllo.gift.details.DetailsPurchaseActivity;
 
 import java.util.List;
@@ -72,6 +71,9 @@ public class MeGiftFragment extends BaseFragment implements AdapterView.OnItemCl
                 public void onError(int i, String s) {
                 }
             });
+        }else {
+            beans = null;
+            gridViewAdapter.setDatas(beans);
         }
     }
 

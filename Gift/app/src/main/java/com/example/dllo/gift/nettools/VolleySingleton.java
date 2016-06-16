@@ -2,7 +2,7 @@ package com.example.dllo.gift.nettools;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.example.dllo.gift.MyApp;
+import com.example.dllo.gift.mainactivity.MyApp;
 
 /**
  * Created by dllo on 16/5/24.

@@ -1,9 +1,8 @@
-package com.example.dllo.gift;
+package com.example.dllo.gift.mainactivity;
 
-import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
 
+import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseActivity;
 
 import cn.bmob.v3.BmobUser;
@@ -27,8 +26,9 @@ public class LogoutActivity extends BaseActivity implements View.OnClickListener
                 break;
             case R.id.exit_logout:
                 BmobUser.logOut(this);
-                Intent intent = new Intent("com.example.dllo.gift.LOGOUT");
-                   sendBroadcast(intent);
+                //不用发广播了
+//                Intent intent = new Intent("com.example.dllo.gift.LOGOUT");
+//                sendBroadcast(intent);
                 finish();
                 break;
         }

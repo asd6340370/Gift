@@ -3,18 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="6dp"
-    android:paddingLeft="6dp"
-    android:paddingRight="6dp">
+    android:paddingTop="@dimen/six_dp"
+    android:paddingLeft="@dimen/six_dp"
+    android:paddingRight="@dimen/six_dp">
 
     <ImageView
         android:id="@+id/iv_detials_category_raider_specialall"
         android:layout_width="match_parent"
-        android:layout_height="160dp" />
+        android:layout_height="@dimen/one_hundred_and_sixty_dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="@dimen/one_hundred_and_sixty_dp"
         android:background="@drawable/shape_round_item_category_raider_specialall"
         android:gravity="center"
         android:orientation="vertical">
@@ -28,14 +28,14 @@
                 android:id="@+id/tv_item_title_category_raider_specialall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="文艺家生活"
+                android:text="@string/lift"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="@dimen/twenty_five_sp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="@dimen/ten_dp"
+                android:layout_marginTop="@dimen/five_dp"
                 android:background="@drawable/ig_topic_horizontal_rule" />
         </LinearLayout>
 
@@ -43,8 +43,8 @@
             android:id="@+id/tv_item_subtitle_category_raider_specialall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="将生活过程诗的文艺风家居"
+            android:layout_marginTop="@dimen/five_dp"
+            android:text="@string/life_like"
             android:textColor="@color/white" />
     </LinearLayout>
 

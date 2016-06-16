@@ -6,7 +6,7 @@
         android:id="@+id/listview_category_raider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:dividerHeight="10dp"
+        android:dividerHeight="@dimen/ten_dp"
         android:divider="@color/color_grey_category_gift_title">
     </ListView>
 

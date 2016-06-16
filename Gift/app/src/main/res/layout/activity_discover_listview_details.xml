@@ -7,15 +7,15 @@
     <RelativeLayout
 
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/fifty_dp"
         android:background="@color/title_color_red">
 
         <ImageView
             android:id="@+id/back_title_discover_details"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/fifty_dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:padding="15dp"
+            android:padding="@dimen/fifteen_dp"
             android:src="@mipmap/ic_action_back" />
 
         <TextView
@@ -25,10 +25,10 @@
             android:layout_centerInParent="true"
             android:ellipsize="end"
             android:lines="1"
-            android:maxWidth="150dp"
-            android:text="攻略详情"
+            android:maxWidth="@dimen/one_hundred_and_fifty_dp"
+            android:text="@string/raider_details"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="@dimen/twenty_sp" />
 
         <!--<ImageView-->
         <!--android:id="@+id/iv_title_share_details"-->
@@ -62,53 +62,52 @@
     <WebView
         android:id="@+id/webView_listview_discover_details"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/zero_dp"
         android:layout_weight="1">
 
     </WebView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/fifty_dp"
         android:background="@color/white"
         android:orientation="horizontal">
 
         <CheckBox
             android:id="@+id/checkBox_listview_discover_detail"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:button="@null"
             android:drawableLeft="@drawable/like_checkbox_listview_discover"
-            android:drawablePadding="5dp"
-            android:paddingLeft="30dp"
-            android:text="123"
-            android:textColor="#757575"/>
+            android:drawablePadding="@dimen/five_dp"
+            android:paddingLeft="@dimen/thirty_dp"
+            android:textColor="@color/color_grey_checkbox_text"/>
 
         <TextView
             android:id="@+id/iv_share_listview_discover_details"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableLeft="@mipmap/ic_action_compact_share"
-            android:drawablePadding="5dp"
+            android:drawablePadding="@dimen/five_dp"
             android:gravity="center_vertical"
-            android:paddingLeft="30dp"
+            android:paddingLeft="@dimen/thirty_dp"
             android:src="@mipmap/baichuan_btn_share"
-            android:text="123" />
+           />
 
         <TextView
             android:id="@+id/iv_comments_listview_discover_details"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableLeft="@mipmap/ic_action_compact_comment"
-            android:drawablePadding="5dp"
+            android:drawablePadding="@dimen/five_dp"
             android:gravity="center_vertical"
-            android:paddingLeft="30dp"
+            android:paddingLeft="@dimen/thirty_dp"
             android:src="@mipmap/baichuan_btn_comments"
-            android:text="123" />
+             />
 
 
     </LinearLayout>

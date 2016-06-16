@@ -1,4 +1,4 @@
-package com.example.dllo.gift;
+package com.example.dllo.gift.mainactivity;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseActivity;

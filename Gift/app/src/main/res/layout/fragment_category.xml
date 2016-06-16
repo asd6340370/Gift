@@ -7,40 +7,40 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/title_layout_main"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/fifty_dp"
         android:background="@color/title_color_red"
         android:orientation="horizontal">
 
 
 
             <RadioGroup
-                android:layout_width="180dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/one_hundred_eighty_dp"
+                android:layout_height="@dimen/thirty_dp"
                 android:background="@drawable/shap_round_item_category"
-                android:padding="2dp"
+                android:padding="@dimen/two_dp"
                 android:layout_centerInParent="true"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/btn_left_title_category"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/zero_dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/title_btn_left_category"
                     android:button="@null"
                     android:gravity="center"
-                    android:text="攻略"
+                    android:text="@string/raider"
                     android:textColor="@color/color_title_text_category" />
 
                 <RadioButton
                     android:id="@+id/btn_right_title_category"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/zero_dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/title_btn_right_category"
                     android:button="@null"
                     android:gravity="center"
-                    android:text="礼物"
+                    android:text="@string/gift"
                     android:textColor="@color/color_title_text_category" />
             </RadioGroup>
 

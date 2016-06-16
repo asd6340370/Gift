@@ -13,10 +13,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dllo.gift.LoginActivity;
+import com.example.dllo.gift.mainactivity.LoginActivity;
 import com.example.dllo.gift.R;
-import com.example.dllo.gift.bmob.BmobData;
-import com.example.dllo.gift.bmob.UserBmobBean;
+import com.example.dllo.gift.tools.bmob.BmobData;
+import com.example.dllo.gift.tools.bmob.UserBmobBean;
 import com.example.dllo.gift.discover.disbean.ListBean;
 import com.example.dllo.gift.tools.RoundRect;
 import com.squareup.picasso.Picasso;
@@ -45,10 +45,17 @@ public class DiscoverSLVAdapter extends BaseAdapter {
         bmobData.queryAllLike(this);
 
     }
+    public void setListItems(List<ListBean.DataBean.ItemsBean> listItems) {
+        datas.getData().getItems().addAll(listItems);
+        notifyDataSetChanged();
+    }
 
     public void setDatas(ListBean datas) {
         this.datas = datas;
         notifyDataSetChanged();
+    }
+    public void queryAllLikes(){
+        bmobData.queryAllLike(this);
     }
 
     @Override
@@ -78,7 +85,7 @@ public class DiscoverSLVAdapter extends BaseAdapter {
         }
 
         Picasso.with(context).load(datas.getData().getItems().get(position).getCover_image_url())
-        .transform(new RoundRect(20)).centerCrop().fit().into(viewHolder.ivShow);
+        .transform(new RoundRect(20)).centerCrop().fit().placeholder(R.mipmap.ig_logo_text).error(R.mipmap.ig_logo_text).into(viewHolder.ivShow);
 
         viewHolder.tvTitleDiscover.setText(datas.getData().getItems().get(position).getTitle());
         viewHolder.checkBoxLikesCounts.setText(datas.getData().getItems().get(position).getLikes_count() + "");

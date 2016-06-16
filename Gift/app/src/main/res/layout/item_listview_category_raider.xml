@@ -9,10 +9,10 @@
             android:id="@+id/tv_item_title_category_raider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:gravity="center"
-            android:text="分类"
-            android:textSize="18sp"/>
+            android:text="@string/category"
+            android:textSize="@dimen/eighteen_sp"/>
 
 
     <com.example.dllo.gift.tools.NoScrollGridView

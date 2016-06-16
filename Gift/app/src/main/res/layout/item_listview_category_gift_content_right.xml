@@ -11,8 +11,8 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="@dimen/one_dp"
             android:layout_weight="1"
             android:background="@color/color_text_normal" />
 
@@ -20,13 +20,13 @@
             android:id="@+id/tv_item_title_category_gift"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:gravity="center"
-            android:text="分类" />
+            android:text="@string/category" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="@dimen/one_dp"
             android:layout_weight="1"
             android:background="@color/color_text_normal" />
     </LinearLayout>

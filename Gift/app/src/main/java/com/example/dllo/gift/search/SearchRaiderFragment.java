@@ -1,5 +1,9 @@
 package com.example.dllo.gift.search;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.view.View;
 import android.widget.ListView;
 
@@ -12,6 +16,7 @@ import com.example.dllo.gift.base.BaseFragment;
 public class SearchRaiderFragment  extends BaseFragment{
 
     private ListView listViewRaiderSearch;
+    private MyBroadCast myBroadCast;
 
     @Override
     public int setLayout() {
@@ -27,5 +32,21 @@ public class SearchRaiderFragment  extends BaseFragment{
     @Override
     public void initData() {
 
+        //注册动态广播
+        myBroadCast = new MyBroadCast();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.example.dllo.gift.SEARCH");
+        context.registerReceiver(myBroadCast,intentFilter);
+
     }
+
+    class MyBroadCast extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String name = intent.getStringExtra("name");
+//            getNetData(name);
+        }
+    }
+
 }

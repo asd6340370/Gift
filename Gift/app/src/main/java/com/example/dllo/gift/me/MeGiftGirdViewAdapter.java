@@ -9,8 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dllo.gift.R;
-import com.example.dllo.gift.bmob.UserBmobBean;
-import com.example.dllo.gift.hot.HotBean;
+import com.example.dllo.gift.tools.bmob.UserBmobBean;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

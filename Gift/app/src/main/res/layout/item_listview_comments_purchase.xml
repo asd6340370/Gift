@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/iv_icon_user_comments_purchase"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_margin="10dp"
+        android:layout_width="@dimen/thirty_five_dp"
+        android:layout_height="@dimen/thirty_five_dp"
+        android:layout_margin="@dimen/ten_dp"
         android:src="@mipmap/ic_launcher" />
 
     <RelativeLayout
@@ -22,7 +22,7 @@
             android:id="@+id/tv_username_comments_purchase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/ten_dp"
             android:gravity="center"
             android:text="name" />
 
@@ -33,7 +33,7 @@
             android:layout_below="@id/tv_username_comments_purchase"
             android:gravity="center"
             android:text="time"
-            android:textSize="10sp" />
+            android:textSize="@dimen/ten_sp" />
 
         <TextView
             android:id="@+id/tv_usertime_comments_purchase"
@@ -42,25 +42,25 @@
             android:layout_below="@id/tv_username_comments_purchase"
             android:layout_toRightOf="@id/tv_usertime_comments_purchase_ago"
             android:gravity="center"
-            android:textSize="10sp" />
+            android:textSize="@dimen/ten_sp" />
 
         <TextView
             android:id="@+id/tv_content_comments_purchase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_usertime_comments_purchase_ago"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/twenty_dp"
+            android:layout_marginTop="@dimen/ten_dp"
             android:lineSpacingMultiplier="1.2"
             android:text="content" />
 
         <TextView
             android:id="@+id/tv_bottom_line_comments_purchase"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/one_dp"
             android:layout_below="@id/tv_content_comments_purchase"
             android:layout_gravity="right"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/ten_dp"
             android:background="@android:color/darker_gray" />
     </RelativeLayout>
 

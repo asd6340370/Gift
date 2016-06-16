@@ -3,19 +3,19 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginTop="@dimen/five_dp"
+        android:layout_marginBottom="@dimen/five_dp"
+        android:layout_marginLeft="@dimen/fifteen_dp"
+        android:layout_marginRight="@dimen/fifteen_dp"
         android:id="@+id/iv_listview_me_raider"
-        android:layout_width="100dp"
-        android:layout_height="60dp" />
+        android:layout_width="@dimen/one_hundred_dp"
+        android:layout_height="@dimen/sixty_dp" />
 
     <TextView
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="@dimen/twenty_dp"
         android:id="@+id/tv_title_listview_me_raider"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/sixty_dp"
         android:text="title"
         android:gravity="center_vertical"/>
 </LinearLayout>

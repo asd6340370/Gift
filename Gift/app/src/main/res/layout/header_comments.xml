@@ -5,7 +5,7 @@
     <com.example.dllo.gift.tools.NoScrollListView
         android:id="@+id/listview_top_comments_details"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/zero_dp"
         android:layout_weight="1"
         android:divider="@null"></com.example.dllo.gift.tools.NoScrollListView>
 
@@ -18,8 +18,8 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="@dimen/one_dp"
             android:layout_weight="1"
             android:background="@android:color/darker_gray" />
 
@@ -27,16 +27,16 @@
             android:id="@+id/tv_comments_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="@dimen/twenty_dp"
+            android:layout_marginRight="@dimen/twenty_dp"
             android:gravity="center"
-            android:text="更多热门评论 >>"
+            android:text="@string/other_comment"
             android:textColor="@color/title_color_red"
-            android:textSize="12sp" />
+            android:textSize="@dimen/twelve_sp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="@dimen/one_dp"
             android:layout_weight="1"
             android:background="@android:color/darker_gray" />
 

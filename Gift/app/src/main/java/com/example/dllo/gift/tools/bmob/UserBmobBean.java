@@ -1,4 +1,4 @@
-package com.example.dllo.gift.bmob;
+package com.example.dllo.gift.tools.bmob;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -12,6 +12,7 @@ public class UserBmobBean extends BmobObject implements Parcelable {
     private String id,price,titleName,likeCount,imgUrl,purchaseUrl;
     private String key;
     private String userName;
+
 
     protected UserBmobBean(Parcel in) {
         id = in.readString();

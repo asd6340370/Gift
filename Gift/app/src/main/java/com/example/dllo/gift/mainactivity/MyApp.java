@@ -1,4 +1,4 @@
-package com.example.dllo.gift;
+package com.example.dllo.gift.mainactivity;
 
 import android.app.Application;
 import android.content.Context;

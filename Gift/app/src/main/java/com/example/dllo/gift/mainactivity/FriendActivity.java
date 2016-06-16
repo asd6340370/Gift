@@ -1,7 +1,8 @@
-package com.example.dllo.gift;
+package com.example.dllo.gift.mainactivity;
 
 import android.view.View;
 
+import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseActivity;
 import com.example.dllo.gift.tools.MyPopupWindow;
 

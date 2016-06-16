@@ -4,13 +4,13 @@
     android:layout_height="match_parent">
     <TextView
         android:id="@+id/tv_listview_title_left_iv"
-        android:layout_width="3dp"
+        android:layout_width="@dimen/three_dp"
         android:layout_height="match_parent"
         android:background="@drawable/selector_category_gift_title_left_iv"/>
     <TextView
         android:id="@+id/tv_listview_title_left"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/fifty_dp"
         android:gravity="center"
         android:text="test"
         android:textColor="@color/color_title_text_left_category_gift"

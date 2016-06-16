@@ -7,15 +7,13 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.android.volley.VolleyError;
-import com.example.dllo.gift.bmob.UserBmobBean;
+import com.example.dllo.gift.tools.bmob.UserBmobBean;
 import com.example.dllo.gift.details.DetailsPurchaseActivity;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 import com.example.dllo.gift.nettools.NetListener;
 import com.example.dllo.gift.nettools.NetTools;
 import com.google.gson.Gson;
-
-import cn.bmob.v3.BmobUser;
 
 /**
  * Created by dllo on 16/5/19.

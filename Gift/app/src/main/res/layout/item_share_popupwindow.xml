@@ -7,13 +7,13 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/fifty_dp"
         android:gravity="center"
-        android:text="分享到"
-        android:textSize="25sp" />
+        android:text="@string/share_to"
+        android:textSize="@dimen/twenty_five_sp" />
 
     <LinearLayout
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/five_dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -21,80 +21,80 @@
         <Button
             android:id="@+id/share_wechat_timeline_popup"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
             android:background="@null"
             android:drawableTop="@drawable/share_selector_wechat_timeline"
-            android:drawablePadding="5dp"
-            android:text="微信朋友圈"/>
+            android:drawablePadding="@dimen/five_dp"
+            android:text="@string/wechat_timeline"/>
         <Button
             android:id="@+id/share_wechat_popup"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
             android:background="@null"
             android:drawableTop="@drawable/share_selector_wechat"
-            android:drawablePadding="5dp"
-            android:text="微信好友"/>
+            android:drawablePadding="@dimen/five_dp"
+            android:text="@string/wechat"/>
         <Button
             android:id="@+id/share_sina_weibo_popup"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
             android:background="@null"
             android:drawableTop="@drawable/share_selector_sina"
-            android:drawablePadding="5dp"
-            android:text="微信新浪微博"/>
+            android:drawablePadding="@dimen/five_dp"
+            android:text="@string/sina"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginBottom="@dimen/ten_dp"
+        android:layout_marginTop="@dimen/fifteen_dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
             android:id="@+id/share_qq_zone_popup"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
             android:background="@null"
             android:drawableTop="@drawable/share_selector_qqzone"
-            android:drawablePadding="5dp"
-            android:text="QQ空间"/>
+            android:drawablePadding="@dimen/five_dp"
+            android:text="@string/qq_zone"/>
         <Button
             android:id="@+id/share_qq_popup"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
             android:background="@null"
             android:drawableTop="@drawable/share_selector_qq"
-            android:drawablePadding="5dp"
-            android:text="QQ好友"/>
+            android:drawablePadding="@dimen/five_dp"
+            android:text="@string/qq"/>
         <Button
             android:id="@+id/share_hyperlink_popup"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
             android:background="@null"
             android:drawableTop="@drawable/share_selector_hyperlink"
-            android:drawablePadding="5dp"
-            android:text="复制链接"/>
+            android:drawablePadding="@dimen/five_dp"
+            android:text="@string/hyper_link"/>
     </LinearLayout>
     <TextView
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingLeft="@dimen/fifteen_dp"
+        android:paddingRight="@dimen/fifteen_dp"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/one_dp"
         android:background="@android:color/darker_gray"/>
     <TextView
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/five_dp"
         android:id="@+id/share_cancle_popup"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="取消"
-        android:textSize="25sp"
+        android:layout_height="@dimen/fifty_dp"
+        android:text="@string/cancel"
+        android:textSize="@dimen/twenty_five_sp"
         android:gravity="center"/>
 
 

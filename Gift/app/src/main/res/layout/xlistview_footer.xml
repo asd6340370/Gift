@@ -7,5 +7,5 @@
     <RelativeLayout
         android:id="@+id/xListView_footer_content"
         android:layout_width="match_parent"
-        android:layout_height="30dp"></RelativeLayout>
+        android:layout_height="@dimen/thirty_dp"></RelativeLayout>
 </LinearLayout>

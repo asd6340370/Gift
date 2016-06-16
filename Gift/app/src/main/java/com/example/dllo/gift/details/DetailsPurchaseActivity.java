@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -15,17 +14,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dllo.gift.LoginActivity;
+import com.example.dllo.gift.mainactivity.LoginActivity;
 import com.example.dllo.gift.R;
-import com.example.dllo.gift.bmob.BmobData;
-import com.example.dllo.gift.bmob.UserBmobBean;
-import com.example.dllo.gift.comments.CommentsActivity;
+import com.example.dllo.gift.tools.bmob.BmobData;
+import com.example.dllo.gift.tools.bmob.UserBmobBean;
 import com.example.dllo.gift.comments.CommentsPurchaseActivity;
 import com.example.dllo.gift.hot.HotBean;
 import com.example.dllo.gift.tools.MyPopupWindow;
 
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.listener.DeleteListener;
 import cn.bmob.v3.listener.SaveListener;
 
 /**

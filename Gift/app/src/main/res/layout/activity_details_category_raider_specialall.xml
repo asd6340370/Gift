@@ -5,15 +5,15 @@
     <RelativeLayout
 
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/fifty_dp"
         android:background="@color/title_color_red">
 
         <ImageView
             android:id="@+id/back_details_category_raider_specialall_title"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/fifty_dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:padding="15dp"
+            android:padding="@dimen/fifteen_dp"
             android:src="@mipmap/ic_action_back" />
 
         <ImageView
@@ -23,9 +23,9 @@
             android:layout_centerInParent="true"
             android:ellipsize="end"
             android:lines="1"
-            android:text="评论"
+            android:text="@string/tv_text_comment"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="@dimen/twenty_sp" />
     </RelativeLayout>
 <ListView
     android:id="@+id/listview_details_category_raider_specialall"

@@ -50,5 +50,7 @@ public final class URLValues {
 
     //搜索列表
     public static final String SEARCH_LIST = "http://api.liwushuo.com/v2/search/hot_words";
+    //搜索框拼接网址
+    public static final String SEARCH_GIFT = "http://api.liwushuo.com/v2/search/item?limit=20&offset=0&sort=&keyword=";
 
 }

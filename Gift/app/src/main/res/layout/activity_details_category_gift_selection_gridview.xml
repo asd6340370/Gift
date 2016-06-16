@@ -12,15 +12,15 @@
         <RelativeLayout
 
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/fifty_dp"
             android:background="@color/title_color_red">
 
             <ImageView
                 android:id="@+id/back_details_category_gift_selection_gridview"
-                android:layout_width="50dp"
+                android:layout_width="@dimen/fifty_dp"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:padding="15dp"
+                android:padding="@dimen/fifteen_dp"
                 android:src="@mipmap/ic_action_back" />
 
             <TextView
@@ -30,22 +30,22 @@
                 android:layout_centerInParent="true"
                 android:ellipsize="end"
                 android:lines="1"
-                android:maxWidth="150dp"
+                android:maxWidth="@dimen/one_hundred_and_fifty_dp"
                 android:text="test"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/twenty_sp" />
 
             <ImageView
                 android:id="@+id/menu_sort_details_category_gift_selection_gridview"
-                android:layout_width="50dp"
+                android:layout_width="@dimen/fifty_dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginBottom="10dp"
-                android:paddingBottom="10dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingTop="10dp"
+                android:layout_marginBottom="@dimen/ten_dp"
+                android:paddingBottom="@dimen/ten_dp"
+                android:paddingLeft="@dimen/fifteen_dp"
+                android:paddingRight="@dimen/fifteen_dp"
+                android:paddingTop="@dimen/ten_dp"
                 android:src="@mipmap/ic_menu_sort" />
         </RelativeLayout>
 
@@ -54,13 +54,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
         <GridView
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="@dimen/thirty_five_dp"
             android:id="@+id/gridView_details_category_gift_selection"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:horizontalSpacing="6dp"
+            android:layout_marginLeft="@dimen/seven_dp"
+            android:layout_marginRight="@dimen/seven_dp"
+            android:horizontalSpacing="@dimen/six_dp"
             android:numColumns="2"
             android:scrollbars="none"></GridView>
             <FrameLayout
@@ -76,11 +76,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="50dp">
+        android:paddingTop="@dimen/fifty_dp">
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="@dimen/thirty_five_dp"
             android:background="@android:color/white"
             android:orientation="horizontal">
 
@@ -92,12 +92,12 @@
                 android:button="@null"
                 android:drawableRight="@drawable/selector_category_gift_selection"
                 android:gravity="center"
-                android:paddingRight="10dp"
-                android:text="对象" />
+                android:paddingRight="@dimen/ten_dp"
+                android:text="@string/object" />
 
             <TextView
-                android:layout_width="1dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/one_dp"
+                android:layout_height="@dimen/twenty_dp"
                 android:background="@android:color/darker_gray" />
 
             <RadioButton
@@ -108,12 +108,12 @@
                 android:button="@null"
                 android:drawableRight="@drawable/selector_category_gift_selection"
                 android:gravity="center"
-                android:paddingRight="10dp"
-                android:text="场合" />
+                android:paddingRight="@dimen/ten_dp"
+                android:text="@string/occasion" />
 
             <TextView
-                android:layout_width="1dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/one_dp"
+                android:layout_height="@dimen/twenty_dp"
                 android:background="@android:color/darker_gray" />
 
             <RadioButton
@@ -124,12 +124,12 @@
                 android:button="@null"
                 android:drawableRight="@drawable/selector_category_gift_selection"
                 android:gravity="center"
-                android:paddingRight="10dp"
-                android:text="个性" />
+                android:paddingRight="@dimen/ten_dp"
+                android:text="@string/individuality" />
 
             <TextView
-                android:layout_width="1dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/one_dp"
+                android:layout_height="@dimen/twenty_dp"
                 android:background="@android:color/darker_gray" />
 
             <RadioButton
@@ -140,20 +140,20 @@
                 android:button="@null"
                 android:drawableRight="@drawable/selector_category_gift_selection"
                 android:gravity="center"
-                android:paddingRight="10dp"
-                android:text="价格" />
+                android:paddingRight="@dimen/ten_dp"
+                android:text="@string/price" />
         </RadioGroup>
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/one_dp"
             android:background="@android:color/darker_gray"/>
 
         <FrameLayout
             android:id="@+id/framelayout_category_gift_selection"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/two_hundred_dp"
             android:visibility="gone"
-            ></FrameLayout>
+            />
 
     </LinearLayout>
 

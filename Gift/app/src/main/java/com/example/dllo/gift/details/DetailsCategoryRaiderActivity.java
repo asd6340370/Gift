@@ -1,6 +1,7 @@
 package com.example.dllo.gift.details;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -57,6 +58,7 @@ public class DetailsCategoryRaiderActivity extends BaseActivity implements View.
 //        String url = URLValues.CATEGORY_RAIDER_DETAILS_BEFORE + id + URLValues.CATEGORY_RAIDER_DETAILS_AFTER;
         String url =URLValues.CATEGORY_RAIDER_DETAILS;
         String url1 = url.replace("id=",id);
+        Log.d("DetailsCategoryRaiderAc", url1);
         getListBeanData(url1);
 
         myPopupWindow = new MyPopupWindow(this, R.id.menu_sort_details_category_raider_listview, 1);

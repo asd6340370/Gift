@@ -1,14 +1,16 @@
-package com.example.dllo.gift;
+package com.example.dllo.gift.mainactivity;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseActivity;
 import com.example.dllo.gift.category.CategoryFragment;
 import com.example.dllo.gift.discover.DiscoverFragment;
@@ -117,4 +119,42 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
 
     }
+
+    //判断点击位置在指定view上
+    private boolean inRangeOfView(View view, MotionEvent ev) {
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        int x = location[0];
+        int y = location[1];
+        if (ev.getX() < x || ev.getX() > (x + view.getWidth()) || ev.getY() < y || ev.getY() > (y + view.getHeight())) {
+            return false;
+        }
+        return true;
+    }
+
+    //复写
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (inRangeOfView(discoverFragment.getFrameLayoutMenu(), ev) == false
+                && discoverFragment.getFrameLayoutMenu().getVisibility() == View.VISIBLE) {
+            discoverFragment.getCheckBoxMenu().setChecked(false);
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        switch (event.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                if (inRangeOfView(discoverFragment.getFrameLayoutMenu(), event) == false
+//                        && discoverFragment.getFrameLayoutMenu().getVisibility() == View.VISIBLE) {
+//                    discoverFragment.getCheckBoxMenu().setChecked(false);
+//                }
+//                break;
+//            case MotionEvent.ACTION_UP:
+//
+//                break;
+//        }
+//        return super.onTouchEvent(event);
+//    }
 }

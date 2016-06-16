@@ -7,9 +7,9 @@
 
     <ImageView
         android:id="@+id/close_login"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_margin="15dp"
+        android:layout_width="@dimen/twenty_dp"
+        android:layout_height="@dimen/twenty_dp"
+        android:layout_margin="@dimen/fifteen_dp"
         android:src="@mipmap/btn_close_login" />
 
 
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="@dimen/sixty_dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -25,14 +25,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/ten_dp"
             android:src="@mipmap/icon_cellphone" />
 
         <EditText
             android:id="@+id/et_cellphone_login"
-            android:layout_width="260dp"
+            android:layout_width="@dimen/two_hundred_sixty_dp"
             android:layout_height="wrap_content"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/ten_dp"
             android:hint="@string/login_cellphone" />
     </LinearLayout>
 
@@ -46,53 +46,54 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/ten_dp"
             android:src="@mipmap/icon_password" />
 
         <EditText
             android:id="@+id/et_password_login"
-            android:layout_width="260dp"
+            android:layout_width="@dimen/two_hundred_sixty_dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/et_cellphone_login"
             android:layout_centerHorizontal="true"
+            android:password="true"
             android:hint="@string/login_password" />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/btn_login"
-        android:layout_width="280dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/two_hundred_eighty_dp"
+        android:layout_height="@dimen/fourty_dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/thirty_dp"
         android:background="@drawable/shap_login"
         android:gravity="center"
         android:text="@string/login"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="@dimen/sixteen_sp" />
 
     <TextView
         android:id="@+id/tv_register_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/fifty_dp"
+        android:layout_marginTop="@dimen/twenty_dp"
         android:text="@string/login_securitycode"
         android:textColor="@color/color_login"
-        android:textSize="10sp" />
+        android:textSize="@dimen/ten_sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="@dimen/ninety_dp"
         android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="80dp"
-            android:layout_height="1dp"
-            android:layout_margin="10dp"
+            android:layout_width="@dimen/eighty_dp"
+            android:layout_height="@dimen/one_dp"
+            android:layout_margin="@dimen/ten_dp"
             android:background="@android:color/darker_gray" />
 
         <TextView
@@ -101,9 +102,9 @@
             android:text="@string/login_ortheraccount" />
 
         <TextView
-            android:layout_width="80dp"
-            android:layout_height="1dp"
-            android:layout_margin="10dp"
+            android:layout_width="@dimen/eighty_dp"
+            android:layout_height="@dimen/one_dp"
+            android:layout_margin="@dimen/ten_dp"
             android:background="@android:color/darker_gray" />
     </LinearLayout>
 
@@ -111,29 +112,29 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginBottom="@dimen/fifty_dp"
+        android:layout_marginLeft="@dimen/twenty_dp"
+        android:layout_marginRight="@dimen/twenty_dp"
+        android:layout_marginTop="@dimen/fifty_dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/login_sina"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@mipmap/icon_log_sina" />
 
         <ImageView
             android:id="@+id/login_wechat"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@mipmap/icon_log_wechat" />
 
         <ImageView
             android:id="@+id/login_qq"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@mipmap/icon_log_qq" />

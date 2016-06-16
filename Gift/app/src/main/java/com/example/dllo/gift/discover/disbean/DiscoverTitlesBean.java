@@ -1,4 +1,4 @@
-package com.example.dllo.gift.discover;
+package com.example.dllo.gift.discover.disbean;
 
 import java.util.List;
 

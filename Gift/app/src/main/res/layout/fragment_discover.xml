@@ -1,25 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-  >
+    android:orientation="vertical">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout_discover"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        app:tabIndicatorColor="@color/title_color_red"
-        />
+        android:layout_height="wrap_content">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager_discover"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-    </android.support.v4.view.ViewPager>
+        <LinearLayout
+            android:id="@+id/linearlayout_tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/thirty_five_dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabLayout_discover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    app:tabIndicatorColor="@color/title_color_red" />
+                <TextView
+                    android:visibility="gone"
+                    android:gravity="center_vertical"
+                    android:id="@+id/tv_tablayout_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/selected_channel"
+                    android:paddingLeft="@dimen/twelve_dp"
+                    android:background="@color/white"/>
+            </RelativeLayout>
+
+            <CheckBox
+                android:button="@null"
+                android:id="@+id/checkbox_tablayout_menu"
+                android:layout_width="@dimen/thirty_dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/ten_dp"
+                android:drawableLeft="@mipmap/arrow_index_down"
+                android:background="@color/white"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_bottom_line_tablayout"
+            android:layout_below="@id/linearlayout_tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/one_dp"
+            android:background="@color/color_grey_tv_background"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager_discover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_bottom_line_tablayout"></android.support.v4.view.ViewPager>
+
+        <FrameLayout
+            android:layout_below="@id/tv_bottom_line_tablayout"
+            android:visibility="gone"
+            android:id="@+id/framelayout_tablayout_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"></FrameLayout>
+
+    </RelativeLayout>
 
 
 </LinearLayout>

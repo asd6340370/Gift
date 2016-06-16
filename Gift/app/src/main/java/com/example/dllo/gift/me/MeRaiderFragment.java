@@ -1,16 +1,13 @@
 package com.example.dllo.gift.me;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
-import com.example.dllo.gift.bmob.UserBmobBean;
-import com.example.dllo.gift.UserInfo;
-import com.example.dllo.gift.details.DetailsPurchaseActivity;
+import com.example.dllo.gift.tools.bmob.UserBmobBean;
 import com.example.dllo.gift.details.DetailsRaiderActivtiy;
 
 import java.util.List;
@@ -75,6 +72,9 @@ public class MeRaiderFragment extends BaseFragment implements AdapterView.OnItem
                 public void onError(int i, String s) {
                 }
             });
+        }else {
+            beans = null;
+            listViewAdapter.setDatas(beans);
         }
     }
 

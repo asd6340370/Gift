@@ -1,7 +1,6 @@
 package com.example.dllo.gift.me;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -10,8 +9,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dllo.gift.LoginActivity;
-import com.example.dllo.gift.LogoutActivity;
+import com.example.dllo.gift.mainactivity.LoginActivity;
+import com.example.dllo.gift.mainactivity.LogoutActivity;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
 
@@ -45,8 +44,8 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
     public void initView(View view) {
         tvColorGift = (TextView)view.findViewById(R.id.color_gift_me);
         tvColorRaider = (TextView) view.findViewById(R.id.color_raider_me);
-        ivMessage = (ImageView) view.findViewById(R.id.iv_message_me);
-        ivMessage.setOnClickListener(this);
+//        ivMessage = (ImageView) view.findViewById(R.id.iv_message_me);
+//        ivMessage.setOnClickListener(this);
         ivAvatarMe = (ImageView) view.findViewById(R.id.iv_avatar_me);
         userName = (TextView) view.findViewById(R.id.tv_account_me);
         view.findViewById(R.id.framelayout_me).setOnClickListener(this);
@@ -81,10 +80,10 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.iv_message_me:
-                Toast.makeText(context, "yoyo", Toast.LENGTH_SHORT).show();
-
-                break;
+//            case R.id.iv_message_me:
+//                Toast.makeText(context, "yoyo", Toast.LENGTH_SHORT).show();
+//
+//                break;
             case R.id.framelayout_me:
                 if (bmobUser == null){
                     Intent intent = new Intent(context, LoginActivity.class);

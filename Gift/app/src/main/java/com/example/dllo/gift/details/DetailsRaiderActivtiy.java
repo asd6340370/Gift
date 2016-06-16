@@ -13,10 +13,10 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dllo.gift.LoginActivity;
+import com.example.dllo.gift.mainactivity.LoginActivity;
 import com.example.dllo.gift.R;
-import com.example.dllo.gift.bmob.BmobData;
-import com.example.dllo.gift.bmob.UserBmobBean;
+import com.example.dllo.gift.tools.bmob.BmobData;
+import com.example.dllo.gift.tools.bmob.UserBmobBean;
 import com.example.dllo.gift.comments.CommentsActivity;
 import com.example.dllo.gift.details.detailsbean.DetailsRaiderBean;
 import com.example.dllo.gift.discover.disbean.ListBean;
@@ -30,7 +30,6 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.DeleteListener;

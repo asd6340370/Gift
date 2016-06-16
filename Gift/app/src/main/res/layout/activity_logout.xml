@@ -34,9 +34,9 @@
     <TextView
         android:id="@+id/exit_logout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/fifty_dp"
         android:background="@color/white"
-        android:text="退出登陆"
+        android:text="@string/logout_text"
         android:gravity="center"
         android:textColor="@color/title_color_red"/>
 

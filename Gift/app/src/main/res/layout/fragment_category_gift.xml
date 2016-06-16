@@ -10,29 +10,29 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:drawableLeft="@mipmap/gift_category_guide"
-        android:drawablePadding="6dp"
+        android:drawablePadding="@dimen/six_dp"
         android:drawableRight="@mipmap/ic_chevron_alternative"
         android:gravity="center_vertical"
-        android:padding="12dp"
-        android:paddingEnd="20dp"
-        android:text="选礼神器"
-        android:textSize="15sp" />
+        android:padding="@dimen/twelve_dp"
+        android:paddingEnd="@dimen/twenty_dp"
+        android:text="@string/selected_gift"
+        android:textSize="@dimen/fifteen_sp" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#e0e0e0" />
+        android:layout_height="@dimen/one_dp"
+        android:background="@color/color_grey_tv_background" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="@dimen/one_dp"
         android:orientation="horizontal">
 
         <ListView
             android:id="@+id/listView_title_category_gift"
-            android:layout_width="80dp"
+            android:layout_width="@dimen/eighty_dp"
             android:layout_height="wrap_content"
             android:choiceMode="singleChoice"
             android:divider="@null"

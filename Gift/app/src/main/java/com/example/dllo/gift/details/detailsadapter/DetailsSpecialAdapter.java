@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dllo.gift.LoginActivity;
+import com.example.dllo.gift.mainactivity.LoginActivity;
 import com.example.dllo.gift.R;
-import com.example.dllo.gift.bmob.BmobData;
-import com.example.dllo.gift.bmob.UserBmobBean;
+import com.example.dllo.gift.tools.bmob.BmobData;
+import com.example.dllo.gift.tools.bmob.UserBmobBean;
 import com.example.dllo.gift.details.detailsbean.DetailsSpecialBean;
 import com.example.dllo.gift.tools.RoundRect;
 import com.squareup.picasso.Picasso;

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.android.volley.VolleyError;
-import com.example.dllo.gift.bmob.BmobData;
+import com.example.dllo.gift.tools.bmob.BmobData;
 import com.example.dllo.gift.details.DetailsRaiderActivtiy;
 import com.example.dllo.gift.R;
 import com.example.dllo.gift.base.BaseFragment;
@@ -80,6 +80,7 @@ public class DiscoverListViewFragment extends BaseFragment implements AdapterVie
     @Override
     public void onResume() {
         super.onResume();
+            lvAdapter.queryAllLikes();
 
     }
 

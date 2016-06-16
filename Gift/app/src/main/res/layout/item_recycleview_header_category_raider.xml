@@ -4,11 +4,11 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="@dimen/ten_dp"
         android:id="@+id/iv_item_header_category_raider"
-        android:layout_width="135dp"
-        android:layout_height="65dp"
+        android:layout_width="@dimen/one_hundred_and_thirty_five_dp"
+        android:layout_height="@dimen/sixty_five_dp"
         android:src="@mipmap/ic_launcher"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="@dimen/twelve_dp"/>
 
 </LinearLayout>

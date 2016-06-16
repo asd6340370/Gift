@@ -9,4 +9,9 @@
     <color name="title_color_red">#ff2d47</color>
     <color name="color_login">#ff8a9c</color>
     <color name="color_grey_category_gift_title">#f6f6f6</color>
+    <color name="color_grey_tv_background">#e0e0e0</color>
+    <color name="color_linearlayout_background">#f8f8f8</color>
+    <color name="color_grey_checkbox_text">#757575</color>
+    <color name="color_send_comment_popup">#f8b4b4</color>
+    <color name="color_item_textcolor">#2a2a2a</color>
 </resources>
